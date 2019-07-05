@@ -36,7 +36,7 @@
 									<tr>
 										<td><?= $i; ?></td>
 										<td style="width:40%;">Rp.<?php echo number_format($h['pinjaman'], 0, ".", ".") ?></td>
-										<td style="width:30%;"><center><?= $h['tanggal']; ?></center></td>
+										<td style="width:30%;"><center><?php echo tgl_indo($h['tanggal']); ?></center></td>
 										<td style="width:30%;"><center>
 											<?php $st = $h['status'];?>
 											<?php if ($st == "0"){ ?>
@@ -69,3 +69,25 @@
 		</div>
 	</div>
 </div>
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+} ?>

@@ -2,7 +2,11 @@
 	<div id="content-container">
 		<div class="pageheader hidden-xs">
       <h3>
-				<a class="back" href="<?= base_url().'nasabah' ?>"><i class="fas fa-arrow-circle-left  fa-lg"></i></a>
+				<?php if ($this->session->uid == "1"){ ?>
+					<a class="back" href="<?= base_url().'nasabah' ?>"><i class="fas fa-arrow-circle-left  fa-lg"></i></a>
+				<?php }else {?>
+					<a class="back" href="<?= base_url() ?>"><i class="fas fa-arrow-circle-left  fa-lg"></i></a>
+				<?php } ?>
 				Berkas </h3>
     </div>
 		<?php $data = "0"; ?>

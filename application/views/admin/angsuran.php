@@ -27,8 +27,7 @@
 									<tr>
 										<td><?= $i; ?></td>
 										<td style="width:40%;">Rp.<?php echo number_format($k['angsuran'], 0, ".", ".") ?></td>
-										<td style="width:30%;"><center>
-									<?php echo tgl_indo($k['tanggal']); ?></center></td>
+										<td style="width:30%;"><center><?php echo tgl_indo($k['tanggal']); ?></center></td>
 										<td style="width:30%;"><center>
 											<?php  $var = $k['status']; ?>
 											<?php if ($var == "1") {?>

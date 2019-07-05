@@ -137,7 +137,6 @@
             <!--Submenu-->
             <ul class="collapse">
               <li><a href="<?= base_url().'pinjaman' ?>"> Pinjaman </a></li>
-              <li><a href="<?= base_url().'angsuran' ?>"> Angsuran </a></li>
               <li><a href="<?= base_url().'berkas' ?>"> Berkas </a></li>
             </ul>
             </li>

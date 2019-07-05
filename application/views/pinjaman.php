@@ -18,20 +18,25 @@
 										<th data-toggle="true">Pinjaman</th>
 										<th data-hide="phone, tablet"><center>Tanggal Pengambilan</center></th>
 										<th data-hide="phone, tablet"><center>Status</center></th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php $i=1; foreach ($pinjaman as $l):?>
 									<tr>
 										<td><?= $i; ?></td>
-										<td style="width:40%;"><a href="<?= base_url().'angsuran/'. $l['id_pinjaman'].'/'. $this->session->uid; ?>">Rp.<?php echo number_format($l['pinjaman'], 0, ".", ".") ?></a></td>
-										<td style="width:30%;"><center><?= $l['tanggal']; ?></center></td>
+										<td style="width:40%;">Rp.<?php echo number_format($l['pinjaman'], 0, ".", ".") ?></td>
+										<td style="width:30%;"><center><?php echo tgl_indo($l['tanggal']); ?></center></td>
 										<td style="width:30%;"><center><?php $st = $l['status'];?>
 										<?php if ($st == "0"){ ?>
 											Belum Lunas
 										<?php }else{ ?>
 											Lunas
 										<?php } ?></center></td>
+										<td><center>
+											<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url().'angsuran/'. $l['id_pinjaman'].'/'. $this->session->uid; ?>'">Lihat</button>
+										</center>
+										</td>
 									</tr>
 								<?php $i++;
 							endforeach; ?>
@@ -53,3 +58,26 @@
 		</div>
 	</div>
 </div>
+
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+} ?>

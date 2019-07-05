@@ -107,10 +107,17 @@ class Home extends CI_Controller {
 		$uid=$this->session->uid;
 		if (isset($uid)) {
 			$data['user'] =$this->model_user->data_user($uid);
-			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
-			$tgl = date('Y-m-d');
-			$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
-			$data['jumlah'] = $set->num_rows();
+			if ($uid == "1") {
+				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+				$tgl = date('Y-m-d');
+				$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+				$data['jumlah'] = $set->num_rows();
+			}else {
+				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
+				$tgl = date('Y-m-d');
+				$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+				$data['jumlah'] = $set->num_rows();
+			}
 			$this->load->template('profil', $data);
 		}else {
 			redirect(base_url('login'));

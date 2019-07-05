@@ -15,6 +15,18 @@ class Berkas extends CI_Controller {
 		$uid=$this->session->uid;
 		if (isset($uid)) {
 			$data['user'] =$this->model_user->data_user($uid);
+			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
+			$tgl = date('Y-m-d');
+			$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+			$data['jumlah'] = $set->num_rows();
+			$data['user_berkas'] = $this->model_user->data_user($uid);
+			$data['kk'] = $this->model_berkas->data_berkas_kk($uid);
+			$data['slip'] = $this->model_berkas->data_berkas_slip($uid);
+			$data['npwp'] = $this->model_berkas->data_berkas_npwp($uid);
+			$data['karip'] = $this->model_berkas->data_berkas_karip($uid);
+			$data['foto_diri'] = $this->model_berkas->data_berkas_foto_diri($uid);
+			$data['ktp'] = $this->model_berkas->data_berkas_ktp($uid);
+			$data['sk'] = $this->model_berkas->data_berkas_sk($uid);
 			$this->load->template('berkas',$data);
 			}else {
 				redirect(base_url('login'));

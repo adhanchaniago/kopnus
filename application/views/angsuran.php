@@ -14,16 +14,18 @@
 							<table id="tabeluser" class="table table-bordered table-hover toggle-circle" data-page-size="10">
 								<thead>
 									<tr>
+										<th>No</th>
 										<th data-toggle="true">Angsuran</th>
 										<th data-hide="phone, tablet"><center>Tanggal</center></th>
 										<th data-hide="phone, tablet"><center>Status</center></th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($list_angsuran as $c):?>
+									<?php $i=1; foreach ($list_angsuran as $c):?>
 									<tr>
+										<td><?= $i; ?></td>
 										<td style="width:40%;">Rp.<?php echo number_format($c['angsuran'], 0, ".", ".") ?></td>
-										<td style="width:30%;"><center><?= $c['tanggal']; ?></center></td>
+										<td style="width:30%;"><center><?php echo tgl_indo($c['tanggal']); ?></center></td>
 										<td style="width:30%;"><center><?php $st = $c['status'];?>
 										<?php if ($st == "0"){ ?>
 											Belum Lunas
@@ -31,7 +33,7 @@
 											Lunas
 										<?php } ?></center></td>
 									</tr>
-								<?php endforeach; ?>
+								<?php $i++; endforeach; ?>
 								</tbody>
 								<tfoot>
 									<tr>
@@ -50,3 +52,26 @@
 		</div>
 	</div>
 </div>
+
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+} ?>

@@ -12,6 +12,10 @@ class Angsuran extends CI_Controller {
 	{
 		$uid=$this->session->uid;
 		$data['user'] =$this->model_user->data_user($uid);
+		$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
+		$tgl = date('Y-m-d');
+		$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+		$data['jumlah'] = $set->num_rows();
 		$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
 		$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
 		$this->load->template('angsuran',$data);
