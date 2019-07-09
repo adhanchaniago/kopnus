@@ -48,9 +48,13 @@ class Model_user extends CI_Model {
 	    // simpan ke database dalam tabel 'blogs'
 	    $this->db->update( 'tb_user', $data );
   }
-	public function tampil_user($limit,$start){
-		$q = "1";
-		$query = $this->db->query("SELECT * from tb_user where not norek='".$q."' limit $start, $limit");
+	public function tampil_user($limit,$start,$cari = null){
+		$q = "0000000001";
+		if ($cari) {
+			$query = $this->db->query("SELECT * from tb_user where not norek='".$q."' and nama like '%$cari%' limit $start, $limit");
+		}else {
+			$query = $this->db->query("SELECT * from tb_user where not norek='".$q."' limit $start, $limit");
+		}
 			return $query->result_array();
 	//	return $this->db->get_where('tb_user',array('norek ') $limit , $start)->result_array();
 	}
@@ -67,7 +71,10 @@ class Model_user extends CI_Model {
 			return $query->row_array();
 	}
 	public function countuser(){
-		return $this->db->get('tb_user')->num_rows();
+	//	return $this->db->get('tb_user')->num_rows();
+	$id = "0000000001";
+		$query = $this->db->query("SELECT * from tb_user where not norek='".$id."'");
+			return $query->num_rows();
 	}
 	public function cek_norek(){
 		$id = $this->input->post('norek');

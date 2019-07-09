@@ -18,8 +18,17 @@ class Nasabah extends CI_Controller {
 			$data['jumlah'] = $set->num_rows();
 			//Pagination
 			$this->load->library('pagination');
+			if ($this->input->post('submit')) {
+				$data['cari'] = $this->input->post('cari');
+				$this->session->set_userdata('keyword', $data['cari']);
+			}else{
+				$data['cari'] = $this->session->set_userdata('keyword');
+			}
 			$config['base_url'] = 'http://localhost/kopnus/nasabah/index/';
-			$config['total_rows'] = $this->model_user->countuser();
+			//$config['total_rows'] = $this->model_user->countuser();
+			$this->db->like('nama',$data['cari']);
+			$this->db->from('tb_user');
+			$config['total_rows'] = $this->db->count_all_results();
 			$config['per_page'] = 10;
 
 			$config['full_tag_open']= '<nav aria-label="Page navigation example"><ul class="pagination">';
@@ -42,7 +51,7 @@ class Nasabah extends CI_Controller {
 			$config['num_tag_close'] = '</li>';
 			$config['attributes'] = array('class' => 'page-link');
 			$data['start'] =($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-			$data['listusr']= $this->model_user->tampil_user($config['per_page'],$data['start']);
+			$data['listusr']= $this->model_user->tampil_user($config['per_page'],$data['start'],$data['cari']);
 			$this->pagination->initialize($config);
 			$this->load->template('admin/nasabah', $data);
 		}else {

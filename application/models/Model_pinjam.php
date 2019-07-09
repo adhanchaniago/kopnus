@@ -4,6 +4,19 @@ class Model_pinjam extends CI_Model {
 	public function __construct() {
 		parent::__construct();
 	}
+	public function countpinjam(){
+		$this->db->select('SUM(pinjaman) as total');
+		$this->db->from('tb_pinjaman');
+		return $this->db->get()->row()->total;
+	}
+	public function countangsuran(){
+	//	$this->db->select('SUM(angsuran) as total');
+		//$this->db->from('tb_angsuran');
+		//$this->db->where('status',"1")
+		//return $this->db->get()->row()->total;
+		$query = $this->db->query("SELECT SUM(angsuran) as total from tb_angsuran where status='1'");
+		return $query->row()->total;
+	}
 	public function simpan($id){
 		$d1 = $this->input->post('pinjaman');
 		$d2 = $this->input->post('angsuran_kali');

@@ -43,6 +43,6 @@ class Pinjaman extends CI_Controller {
 	}
 	public function simpan($id){
 		$this->model_pinjam->simpan($id);
-		redirect('/');
+		redirect('/nasabah');
 	}
 }

@@ -19,7 +19,7 @@
 													<input id="demo-foo-search" type="text" name="cari"placeholder="Cari nama" class="form-control search-input" autocomplete="off"  autofocus>
 												</div>
 												<div class="col-sm-4">
-													<input class="btn btn-primary" type="submit" value="Cari" name="submit">
+													<input class="btn btn-primary" height="250px" type="submit" value="Cari" name="submit">
 												</div>
 											</div>
 										</div>
@@ -30,8 +30,8 @@
 									<tr>
 										<th>Norek</th>
 										<th data-toggle="true">Nama Nasabah</th>
-										<th data-hide="phone, tablet"><center>Pinjaman</center></th>
-										<th data-hide="phone, tablet"><center>Berkas</center></th>
+										<th width="300px"><center>Pinjaman</center></th>
+										<th width="300px"><center>Berkas</center></th>
 									</tr>
 								</thead>
 								<tbody>

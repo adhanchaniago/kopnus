@@ -13,7 +13,7 @@ class Home extends CI_Controller {
 		if (isset( $this->session->uid )) {
 			$uid=$this->session->uid;
 			$data['user'] = $this->model_user->data_user($uid);
-			if ($uid == "1") {
+			if ($uid == "0000000001") {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
 				$set = $this->db->query("SELECT * from tb_angsuran where (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
@@ -24,9 +24,12 @@ class Home extends CI_Controller {
 				$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 				$data['jumlah'] = $set->num_rows();
 			}
+			$data['nasabah'] = $this->model_user->countuser();
+			$data['pinjaman'] = $this->model_pinjam->countpinjam();
+			$data['angsuran'] = $this->model_pinjam->countangsuran();
 			$this->load->view('layout/header');
 			$this->load->view('layout/nav',$data);
-			$this->load->view('index');
+			$this->load->view('index', $data);
 			$this->load->view('layout/footer');
 		}else {
 			$this->load->template('index');

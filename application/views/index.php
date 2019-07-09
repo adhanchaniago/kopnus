@@ -5,102 +5,67 @@
     </div>
     <div id="page-content">
       <div class="row">
-        <div class="col-md-12">
-          <div class="panel">
-                                    <div class="panel-body">
-                                        <div id="carousel-example-vertical" class="carousel vertical slide" data-ride="carousel">
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="item active">
-                                                    <div class="ticker-headline">
-                                                        <div class="media">
-                                                            <span class="pull-left"><i class="fa fa-twitter fa-4x text-azure"></i></span>
-                                                            <div class="media-body">
-                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur.Suspendisse id nunc sed massa cursus efficitur.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="ticker-headline">
-                                                        <div class="media">
-                                                            <span class="pull-left"><i class="fa fa-facebook fa-4x text-primary"></i></span>
-                                                            <div class="media-body">
-                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur. Suspendisse id nunc sed massa cursus efficitur.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="ticker-headline">
-                                                        <div class="media">
-                                                            <span class="pull-left"><i class="fa fa-google-plus fa-4x text-danger"></i></span>
-                                                            <div class="media-body">
-                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur. Suspendisse id nunc sed massa cursus efficitur.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Controls -->
-                                            <a class="up carousel-control" href="#carousel-example-vertical" role="button" data-slide="prev">
-                                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="down carousel-control" href="#carousel-example-vertical" role="button" data-slide="next">
-                                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel papernote">
-                                    <div class="panel-body">
-                                        <div class="carousel slide" id="c-slide" data-ride="carousel">
-                                            <div class="carousel-inner">
-                                                <div class="item active">
-                                                    <h4>This is my note #1</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod.
-                                                        Suspendisse id nunc sed massa cursus efficitur.
-                                                    </p>
-                                                </div>
-                                                <div class="item">
-                                                    <h4>This is my note #2</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod.
-                                                        Suspendisse id nunc sed massa cursus efficitur.
-                                                    </p>
-                                                </div>
-                                                <div class="item">
-                                                    <h4>This is my note #3</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod.
-                                                        Suspendisse id nunc sed massa cursus efficitur.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="col-md-3 eq-box-md grid">
+          <?php if (isset($this->session->uid)): ?>
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9 col-xs-10">
+                            <h3 class="mar-no"> <span class="counter"><?= $nasabah; ?> Orang</span></h3>
+                            <p class="mar-ver-5"> Jumlah Nasabah </p>
+
                         </div>
+                        <div class="col-md-3 col-sm-3 col-xs-2"> <i class="fas fa-users fa-3x text-success"></i> </div>
                     </div>
                 </div>
-                
-                <!--===================================================-->
-                <!--END MAIN NAVIGATION-->
             </div>
-            <!-- FOOTER -->
-            <!--===================================================-->
-            <footer id="footer">
-                <p class="pad-lft">&#0169; 2015 Your Company</p>
-            </footer>
-            <!--===================================================-->
-            <!-- END FOOTER -->
-            <!-- SCROLL TOP BUTTON -->
-            <!--===================================================-->
-            <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
-            <!--===================================================-->
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9 col-xs-10">
+                            <h3 class="mar-no"> <span class="counter">Rp.<?php echo number_format($pinjaman, 0, ".", ".") ?></span></h3>
+                            <p class="mar-ver-5"> Total Pinjaman </p>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-2"> <i class="fas fa-hand-holding-usd fa-3x text-danger"></i> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9 col-xs-10">
+                            <h3 class="mar-no"> <span class="counter">Rp.<?php echo number_format($angsuran, 0, ".", ".") ?></span></h3>
+                            <p class="mar-ver-5"> Total Pembayaran </p>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-2"> <i class="fas fa-money-bill fa-3x text-primary"></i> </div>
+                    </div>
+                </div>
+            </div>
         </div>
+      <?php endif; ?>
+        <div class="col-md-9 eq-box-md grid">
+            <div class="panel panel-1">
+                <div class="panel-body">
+                    <!--Flot Spline Chart placeholder -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="col-sm">
+
+                      <img src="" alt=""style="height:500px" width="100%">
+                    </div>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+     <!--===================================================-->
+    <!--END MAIN NAVIGATION-->
+  </div>
+  <!-- FOOTER -->
+  <!--===================================================-->
+  <footer id="footer">
+    <p class="pad-lft">&#0169; 2015 Your Company</p>
+  </footer>
+  <!--===================================================-->
+  <!-- END FOOTER -->
+</div>

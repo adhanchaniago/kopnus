@@ -21,13 +21,13 @@
 								<?php } ?>
 							</div>
 							<div class="panel-body">
-								<table id="demo-foo-filtering" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+								<table id="demo-foo-filtering" class="table mr-5 table-bordered table-hover toggle-circle" data-page-size="5">
 									<thead>
 										<tr>
-											<th data-hide="phone, tablet">Nama Berkas</th>
-											<th><center> Status Berkas </center></th>
-											<th> </th>
-											<th> </th>
+											<th data-hide="phone, tablet" width="700px">Nama Berkas</th>
+											<th width="250px"><center> Status Berkas </center></th>
+											<th width="250px"><center> Upload </center></th>
+											<th width="250px"> </th>
 										</tr>
 									</thead>
 									<tbody>
@@ -35,18 +35,19 @@
 											<td>
 												<div class="media-object">Kartu Keluarga</div>
 											</td>
-											<td class="tblbr">
+											<td><center>
 												<?php if ($kk['status'] == "0") { ?>
-													<i class="far fa-check-circle"></i>
+													<i class="far fa-check-circle fa-2x"></i>
 												<?php } ?>
+											</center>
 											</td>
 											<td>
 												<center>
 												<?php if ($this->session->uid == "0000000001"){ ?>
-													<button  type="button" name="button1" data-toggle="modal" data-target="#kk"> Upload </button>
+													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#kk"> Upload </button>
 												<?php }else {
 													if (!isset($kk['status'])) { ?>
-														<button  type="button" name="button1" data-toggle="modal" data-target="#kk"> Upload </button>
+														<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#kk"> Upload </button>
 													<?php } ?>
 												<?php } ?>
 												</center>
@@ -54,7 +55,7 @@
 											<td>
 												<center>
 												<?php if ($kk['status'] == "0") { ?>
-													<button  type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/1' ?>'"> Download </button>
+													<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/1' ?>'"> Download </button>
 												<?php } ?>
 												</center>
 											</td>
@@ -63,7 +64,7 @@
 											<td>
 												<div class="media-object">Slip Gaji</div>
 											</td>
-											<td class="tblbr">
+											<td >
 												<?php if ($slip['status'] == "0") { ?>
 													<i class="far fa-check-circle"></i>
 												<?php } ?>
@@ -71,10 +72,10 @@
 											<td>
 												<center>
 													<?php if ($this->session->uid == "0000000001"){ ?>
-														<button  type="button" name="button1" data-toggle="modal" data-target="#slip"> Upload </button>
+														<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#slip"> Upload </button>
 													<?php }else {
 														if (!isset($slip['status'])) { ?>
-													<button  type="button" name="button1" data-toggle="modal" data-target="#slip"> Upload </button>
+													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#slip"> Upload </button>
 													<?php } ?>
 												<?php } ?>
 												</center>
@@ -82,7 +83,7 @@
 											<td>
 												<center>
 											<?php if ($slip['status'] == "0") { ?>
-												<button  type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/2' ?>'"> Download </button>
+												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/2' ?>'"> Download </button>
 											<?php } ?>
 											</center>
 										</td>
@@ -91,7 +92,7 @@
 											<td>
 												<div class="media-object">NPWP</div>
 											</td>
-											<td class="tblbr">
+											<td >
 												<?php if ($npwp['status'] == "0") { ?>
 													<i class="far fa-check-circle"></i>
 												<?php } ?>
@@ -99,10 +100,10 @@
 											<td>
 												<center>
 													<?php if ($this->session->uid == "0000000001"){ ?>
-														<button  type="button" name="button1" data-toggle="modal" data-target="#npwp"> Upload </button>
+														<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#npwp"> Upload </button>
 													<?php }else {
 														if (!isset($npwp['status'])) { ?>
-												<button  type="button" name="button1" data-toggle="modal" data-target="#npwp"> Upload </button>
+												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#npwp"> Upload </button>
 												<?php } ?>
 											<?php } ?>
 												</center>
@@ -110,7 +111,7 @@
 											<td>
 												<center>
 													<?php if ($npwp['status'] == "0") { ?>
-												<button  type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/3' ?>'"> Download </button>
+												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/3' ?>'"> Download </button>
 										<?php } ?>
 											</center>
 										</td>
@@ -119,7 +120,7 @@
 											<td>
 												<div class="media-object">Foto Diri</div>
 											</td>
-											<td class="tblbr">
+											<td >
 												<?php if ($foto_diri['status'] == "0") { ?>
 													<i class="far fa-check-circle"></i>
 												<?php } ?>
@@ -127,10 +128,10 @@
 											<td>
 												<center>
 													<?php if ($this->session->uid == "0000000001"){ ?>
-														<button  type="button" name="button1" data-toggle="modal" data-target="#foto_diri"> Upload </button>
+														<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#foto_diri"> Upload </button>
 													<?php }else {
 														if (!isset($foto_diri['status'])) { ?>
-												<button  type="button" name="button1" data-toggle="modal" data-target="#foto_diri"> Upload </button>
+												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#foto_diri"> Upload </button>
 												<?php } ?>
 												<?php } ?>
 												</center>
@@ -138,7 +139,7 @@
 											<td>
 												<center>
 											<?php if ($foto_diri['status'] == "0") { ?>
-												<button  type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/4' ?>'"> Download </button>
+												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/4' ?>'"> Download </button>
 											<?php } ?>
 											</center>
 										</td>
@@ -147,7 +148,7 @@
 											<td>
 												<div class="media-object">Karip</div>
 											</td>
-											<td class="tblbr">
+											<td >
 												<?php if ($karip['status'] == "0") { ?>
 													<i class="far fa-check-circle"></i>
 												<?php } ?>
@@ -155,10 +156,10 @@
 											<td>
 												<center>
 													<?php if ($this->session->uid == "0000000001"){ ?>
-														<button  type="button" name="button1" data-toggle="modal" data-target="#karip"> Upload </button>
+														<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#karip"> Upload </button>
 													<?php }else {
 														if (!isset($karip['status'])) { ?>
-												<button  type="button" name="button1" data-toggle="modal" data-target="#karip"> Upload </button>
+												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#karip"> Upload </button>
 												<?php } ?>
 												<?php } ?>
 												</center>
@@ -166,7 +167,7 @@
 											<td>
 												<center>
 											<?php if ($karip['status'] == "0") { ?>
-												<button  type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/5' ?>'"> Download </button>
+												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/5' ?>'"> Download </button>
 												<?php } ?>
 											</center>
 										</td>
@@ -175,7 +176,7 @@
 											<td>
 												<div class="media-object">KTP Suami Istri</div>
 											</td>
-											<td class="tblbr">
+											<td >
 												<?php if ($ktp['status'] == "0") { ?>
 													<i class="far fa-check-circle"></i>
 												<?php } ?>
@@ -183,10 +184,10 @@
 											<td>
 												<center>
 												<?php if ($this->session->uid == "0000000001"){ ?>
-													<button  type="button" name="button1" data-toggle="modal" data-target="#ktpsi"> Upload </button>
+													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#ktpsi"> Upload </button>
 												<?php }else {
 													if (!isset($ktp['status'])) { ?>
-												<button  type="button" name="button1" data-toggle="modal" data-target="#ktpsi"> Upload </button>
+												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#ktpsi"> Upload </button>
 												<?php } ?>
 												<?php } ?>
 												</center>
@@ -194,7 +195,7 @@
 											<td>
 												<center>
 											<?php if ($ktp['status'] == "0") { ?>
-												<button  type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/6' ?>'"> Download </button>
+												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/6' ?>'"> Download </button>
 												<?php } ?>
 											</center>
 										</td>
@@ -203,7 +204,7 @@
 											<td>
 												<div class="media-object">SK</div>
 											</td>
-											<td class="tblbr">
+											<td >
 												<?php if ($sk['status'] == "0") { ?>
 													<i class="far fa-check-circle"></i>
 												<?php } ?>
@@ -211,10 +212,10 @@
 											<td>
 												<center>
 													<?php if ($this->session->uid == "0000000001"){ ?>
-														<button  type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
+														<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
 													<?php }else {
 														if (!isset($sk['status'])) { ?>
-															<button  type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
+															<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
 												<?php } ?>
 												<?php } ?>
 												</center>
@@ -222,7 +223,7 @@
 											<td>
 												<center>
 											<?php if ($sk['status'] == "0") { ?>
-												<button  type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/7' ?>'"> Download </button>
+												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/7' ?>'"> Download </button>
 											<?php } ?>
 											</center>
 										</td>
@@ -232,12 +233,13 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-lg-2"></div>
 				</div><!--End page content-->
 		</div>
 	</div>
 </div>
 <div class="modal fade" id="kk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog" role="document">
   	<div class="modal-content">
       <div class="modal-header">
       	<h4 class="modal-title" id="myModalLabel">Upload Berkas Kartu Keluarga (KK) </h4>
@@ -256,7 +258,7 @@
   </div>
 </div>
 <div class="modal fade" id="slip" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog" role="document">
   	<div class="modal-content">
       <div class="modal-header">
       	<h4 class="modal-title" id="myModalLabel">Upload Berkas Slip Gaji </h4>
@@ -275,7 +277,7 @@
   </div>
 </div>
 <div class="modal fade" id="npwp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog" role="document">
   	<div class="modal-content">
       <div class="modal-header">
       	<h4 class="modal-title" id="myModalLabel">Upload Berkas MPWP </h4>
@@ -294,7 +296,7 @@
   </div>
 </div>
 <div class="modal fade" id="foto_diri" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog" role="document">
   	<div class="modal-content">
       <div class="modal-header">
       	<h4 class="modal-title" id="myModalLabel">Upload Berkas Foto Diri </h4>
@@ -313,7 +315,7 @@
   </div>
 </div>
 <div class="modal fade" id="karip" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog" role="document">
   	<div class="modal-content">
       <div class="modal-header">
       	<h4 class="modal-title" id="myModalLabel">Upload Berkas Karip </h4>
@@ -332,7 +334,7 @@
   </div>
 </div>
 <div class="modal fade" id="ktpsi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog" role="document">
   	<div class="modal-content">
       <div class="modal-header">
       	<h4 class="modal-title" id="myModalLabel">Upload Berkas KTP Suami Istri </h4>
@@ -351,7 +353,7 @@
   </div>
 </div>
 <div class="modal fade" id="sk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog" role="document">
   	<div class="modal-content">
       <div class="modal-header">
       	<h4 class="modal-title" id="myModalLabel">Upload Berkas SK </h4>

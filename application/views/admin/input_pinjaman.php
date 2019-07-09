@@ -18,10 +18,7 @@
 									<label class="col-md-3 control-label">Tanggal</label>
 									<div class="col-md-9">
 										<p class="form-control-static">
-											<?php
-											 $tgl=date('d-m-Y');
-											 echo $tgl;
-											 ?>
+											 <?= tgl_indo(date('Y-m-d')); ?>
 										</p>
 									</div>
 								</div>
@@ -41,19 +38,19 @@
 										<label class="col-md-3 control-label" for="demo-text-input">Angsuran</label>
 										<div class="col-md-9">
 											<select class="form-control b2" name="angsuran_kali" id="select1" onchange="OnChange(this.value)">
-									      <option value="12">12 Bulan</option>
-									      <option value="13">13 Bulan</option>
-									      <option value="14">14 Bulan</option>
-									      <option value="15">15 Bulan</option>
-												<option value="16">16 Bulan</option>
-									      <option value="17">17 Bulan</option>
-									      <option value="18">18 Bulan</option>
-									      <option value="19">19 Bulan</option>
-												<option value="20">20 Bulan</option>
-									      <option value="21">21 Bulan</option>
-									      <option value="22">22 Bulan</option>
-									      <option value="23">23 Bulan</option>
-												<option value="24">24 Bulan</option>
+									      <option value="12">12 Kali</option>
+									      <option value="13">13 Kali</option>
+									      <option value="14">14 Kali</option>
+									      <option value="15">15 Kali</option>
+												<option value="16">16 Kali</option>
+									      <option value="17">17 Kali</option>
+									      <option value="18">18 Kali</option>
+									      <option value="19">19 Kali</option>
+												<option value="20">20 Kali</option>
+									      <option value="21">21 Kali</option>
+									      <option value="22">22 Kali</option>
+									      <option value="23">23 Kali</option>
+												<option value="24">24 Kali</option>
 									    </select>
 										</div>
 									</div>
@@ -111,3 +108,25 @@ function OnChange(value){
 		return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
 	}
 </script>
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+} ?>
