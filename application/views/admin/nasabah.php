@@ -11,13 +11,20 @@
 							<h3 class="panel-title">Daftar Nasabah</h3>
 						</div>
 						<div class="panel-body">
-							<div class="row">
 								<div class="col-sm-6">
-									<div class="form-group">
-										<input id="demo-foo-search" type="text" placeholder="Cari nama" class="form-control search-input" autocomplete="off">
-									</div>
+									<form class="" action="<?= base_url('nasabah') ?>" method="post">
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-8">
+													<input id="demo-foo-search" type="text" name="cari"placeholder="Cari nama" class="form-control search-input" autocomplete="off"  autofocus>
+												</div>
+												<div class="col-sm-4">
+													<input class="btn btn-primary" type="submit" value="Cari" name="submit">
+												</div>
+											</div>
+										</div>
+									</form>
 								</div>
-							</div>
 							<table id="tabeluser" class="table table-bordered table-hover toggle-circle" data-page-size="10">
 								<thead>
 									<tr>
@@ -41,7 +48,7 @@
 									<tr>
 										<td colspan="6">
 											<div class="text-right">
-												<ul class="pagination"></ul>
+												<ul class="pagination"><?= $this->pagination->create_links(); ?></ul>
 											</div>
 										</td>
 									</tr>

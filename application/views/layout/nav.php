@@ -10,7 +10,7 @@
         </ul>
         <ul class="nav navbar-top-links pull-left">
           <?php if (isset($this->session->uid)){
-            if ($this->session->uid == "1") {
+            if ($this->session->uid == "0000000001") {
             ?>
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle"> <i class="fa fa-bell fa-lg"></i> <span class="badge badge-header badge-danger"></span><?= $jumlah; ?></a>
@@ -124,7 +124,7 @@
             <li> <a href="<?= base_url().'register' ?>"> <i class="fas fa-user-plus"></i> <span class="menu-title"> Register </span></a></li>
             <?php endif; ?>
             <?php if( isset( $this->session->uid ) ){?>
-            <?php if ( $this->session->uid == "1"): ?>
+            <?php if ( $this->session->uid == "0000000001"): ?>
             <li><a href="#"><i class="fa fa-file"></i><span class="menu-title"> Dokumen </span><i class="arrow"></i></a>
             <!--Submenu-->
             <ul class="collapse">
@@ -132,7 +132,7 @@
             </ul>
             </li>
             <?php endif; ?>
-            <?php if ( $this->session->uid !== "1"): ?>
+            <?php if ( $this->session->uid !== "0000000001"): ?>
             <li><a href=""><i class="fa fa-file"></i><span class="menu-title"> Dokumen </span><i class="arrow"></i></a>
             <!--Submenu-->
             <ul class="collapse">

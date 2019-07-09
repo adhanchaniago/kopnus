@@ -15,6 +15,7 @@ class Model_user extends CI_Model {
 	}
 	public function register(){
 		$data = [
+						'norek'=> $this->input->post('norek'),
 						'nama' => $this->input->post('nama'),
 						'password' => md5($this->input->post('password')),
 						'alamat' => $this->input->post('alamat'),
@@ -47,10 +48,11 @@ class Model_user extends CI_Model {
 	    // simpan ke database dalam tabel 'blogs'
 	    $this->db->update( 'tb_user', $data );
   }
-	public function tampil_user(){
+	public function tampil_user($limit,$start){
 		$q = "1";
-		$query = $this->db->query("SELECT * from tb_user where not norek='".$q."'");
+		$query = $this->db->query("SELECT * from tb_user where not norek='".$q."' limit $start, $limit");
 			return $query->result_array();
+	//	return $this->db->get_where('tb_user',array('norek ') $limit , $start)->result_array();
 	}
 	public function dtlpinj($id){
 		$query = $this->db->query("SELECT * from tb_user where norek='".$id."'");
@@ -64,5 +66,12 @@ class Model_user extends CI_Model {
 		$query = $this->db->query("SELECT * from tb_user where norek='".$id."'");
 			return $query->row_array();
 	}
-
+	public function countuser(){
+		return $this->db->get('tb_user')->num_rows();
+	}
+	public function cek_norek(){
+		$id = $this->input->post('norek');
+		$query = $this->db->query("SELECT * from tb_user where norek='".$id."'");
+			return $query->row_array();
+	}
 }

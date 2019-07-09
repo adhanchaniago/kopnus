@@ -18,10 +18,21 @@
 						Register Berhasil
 					</div>
 				<?php endif; ?>
+				<?php if ($info == "3"): ?>
+					<div class="alert alert-danger" role="alert">
+						Norek Telah Digunakan.
+					</div>
+				<?php endif; ?>
 				<div class="row">
 						<form id="registration" class="form-inline" action="<?= base_url().'req' ?>" method="post">
 								<div class="form-group col-md-12 col-sm-12 col-xs-12">
 										<div id="demo-error-container"></div>
+								</div>
+								<div class="form-group col-md-12 col-sm-12 col-xs-12">
+										<div class="text-left">
+												<label for="signupInputName" class="control-label">Norek</label>
+												<input id="signupInputName" type="text" placeholder="isi norek" class="form-control" name="norek" required/>
+										</div>
 								</div>
 								<div class="form-group col-md-12 col-sm-12 col-xs-12">
 										<div class="text-left">

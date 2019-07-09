@@ -16,12 +16,12 @@ class Home extends CI_Controller {
 			if ($uid == "1") {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
-				$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+				$set = $this->db->query("SELECT * from tb_angsuran where (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 				$data['jumlah'] = $set->num_rows();
 			}else {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
 				$tgl = date('Y-m-d');
-				$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+				$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 				$data['jumlah'] = $set->num_rows();
 			}
 			$this->load->view('layout/header');
@@ -56,20 +56,6 @@ class Home extends CI_Controller {
 				$this->load->template('login',$data);
       }
 	}
-	public function Nasabah(){
-		$uid=$this->session->uid;
-		if (isset($uid)) {
-			$data['user'] =$this->model_user->data_user($uid);
-			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
-			$tgl = date('Y-m-d');
-			$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
-			$data['jumlah'] = $set->num_rows();
-			$data['listusr']= $this->model_user->tampil_user();
-			$this->load->template('admin/nasabah', $data);
-		}else {
-			redirect(base_url('login'));
-		}
-	}
 	public function signout()
 	{
 		$this->session->sess_destroy();
@@ -94,12 +80,30 @@ class Home extends CI_Controller {
 		$data['user'] =$this->model_user->data_user($uid);
 		$pass1 = $this->input->post('password');
 		$pass2 = $this->input->post('confirmPassword');
-		if ($pass1 == $pass2) {
-			$this->model_user->register();
-			$data['info'] = "0";
-			$this->load->template('admin/register', $data);
+		$norek = $this->model_user->cek_norek();
+		if ( empty($norek)) {
+			if ($pass1 == $pass2) {
+				$this->model_user->register();
+					$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+					$tgl = date('Y-m-d');
+					$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+					$data['jumlah'] = $set->num_rows();
+				$data['info'] = "0";
+				$this->load->template('admin/register', $data);
+			}else {
+				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+				$tgl = date('Y-m-d');
+				$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+				$data['jumlah'] = $set->num_rows();
+				$data['info'] = "1";
+				$this->load->template('admin/register', $data);
+			}
 		}else {
-			$data['info'] = "1";
+			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+			$tgl = date('Y-m-d');
+			$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+			$data['jumlah'] = $set->num_rows();
+			$data['info'] = "3";
 			$this->load->template('admin/register', $data);
 		}
 	}

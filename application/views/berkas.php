@@ -2,7 +2,7 @@
 	<div id="content-container">
 		<div class="pageheader hidden-xs">
       <h3>
-				<?php if ($this->session->uid == "1"){ ?>
+				<?php if ($this->session->uid == "0000000001"){ ?>
 					<a class="back" href="<?= base_url().'nasabah' ?>"><i class="fas fa-arrow-circle-left  fa-lg"></i></a>
 				<?php }else {?>
 					<a class="back" href="<?= base_url() ?>"><i class="fas fa-arrow-circle-left  fa-lg"></i></a>
@@ -16,7 +16,7 @@
 					<div class="col-lg-8">
 					<div class="panel">
 							<div class="panel-heading">
-								<?php if ($user['norek'] == "1"){ ?>
+								<?php if ($user['norek'] == "0000000001"){ ?>
 									<h3 class="panel-title">Berkas <?= $user_berkas['nama']; ?></h3>
 								<?php } ?>
 							</div>
@@ -42,9 +42,13 @@
 											</td>
 											<td>
 												<center>
-													<?php if (!isset($kk['status'])) { ?>
+												<?php if ($this->session->uid == "0000000001"){ ?>
+													<button  type="button" name="button1" data-toggle="modal" data-target="#kk"> Upload </button>
+												<?php }else {
+													if (!isset($kk['status'])) { ?>
 														<button  type="button" name="button1" data-toggle="modal" data-target="#kk"> Upload </button>
 													<?php } ?>
+												<?php } ?>
 												</center>
 											</td>
 											<td>
@@ -66,8 +70,12 @@
 											</td>
 											<td>
 												<center>
-												<?php if (!isset($slip['status'])) { ?>
+													<?php if ($this->session->uid == "0000000001"){ ?>
+														<button  type="button" name="button1" data-toggle="modal" data-target="#slip"> Upload </button>
+													<?php }else {
+														if (!isset($slip['status'])) { ?>
 													<button  type="button" name="button1" data-toggle="modal" data-target="#slip"> Upload </button>
+													<?php } ?>
 												<?php } ?>
 												</center>
 											</td>
@@ -90,14 +98,18 @@
 											</td>
 											<td>
 												<center>
-												<?php if (!isset($npwp['status'])) { ?>
+													<?php if ($this->session->uid == "0000000001"){ ?>
+														<button  type="button" name="button1" data-toggle="modal" data-target="#npwp"> Upload </button>
+													<?php }else {
+														if (!isset($npwp['status'])) { ?>
 												<button  type="button" name="button1" data-toggle="modal" data-target="#npwp"> Upload </button>
 												<?php } ?>
+											<?php } ?>
 												</center>
 											</td>
 											<td>
 												<center>
-											<?php if ($npwp['status'] == "0") { ?>
+													<?php if ($npwp['status'] == "0") { ?>
 												<button  type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/3' ?>'"> Download </button>
 										<?php } ?>
 											</center>
@@ -114,8 +126,12 @@
 											</td>
 											<td>
 												<center>
-												<?php if (!isset($foto_diri['status'])) { ?>
+													<?php if ($this->session->uid == "0000000001"){ ?>
+														<button  type="button" name="button1" data-toggle="modal" data-target="#foto_diri"> Upload </button>
+													<?php }else {
+														if (!isset($foto_diri['status'])) { ?>
 												<button  type="button" name="button1" data-toggle="modal" data-target="#foto_diri"> Upload </button>
+												<?php } ?>
 												<?php } ?>
 												</center>
 											</td>
@@ -138,8 +154,12 @@
 											</td>
 											<td>
 												<center>
-												<?php if (!isset($karip['status'])) { ?>
+													<?php if ($this->session->uid == "0000000001"){ ?>
+														<button  type="button" name="button1" data-toggle="modal" data-target="#karip"> Upload </button>
+													<?php }else {
+														if (!isset($karip['status'])) { ?>
 												<button  type="button" name="button1" data-toggle="modal" data-target="#karip"> Upload </button>
+												<?php } ?>
 												<?php } ?>
 												</center>
 											</td>
@@ -162,8 +182,12 @@
 											</td>
 											<td>
 												<center>
-												<?php if (!isset($ktp['status'])) { ?>
+												<?php if ($this->session->uid == "0000000001"){ ?>
+													<button  type="button" name="button1" data-toggle="modal" data-target="#ktpsi"> Upload </button>
+												<?php }else {
+													if (!isset($ktp['status'])) { ?>
 												<button  type="button" name="button1" data-toggle="modal" data-target="#ktpsi"> Upload </button>
+												<?php } ?>
 												<?php } ?>
 												</center>
 											</td>
@@ -186,8 +210,12 @@
 											</td>
 											<td>
 												<center>
-												<?php if (!isset($sk['status'])) { ?>
-												<button  type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
+													<?php if ($this->session->uid == "0000000001"){ ?>
+														<button  type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
+													<?php }else {
+														if (!isset($sk['status'])) { ?>
+															<button  type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
+												<?php } ?>
 												<?php } ?>
 												</center>
 											</td>

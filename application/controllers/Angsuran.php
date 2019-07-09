@@ -14,7 +14,7 @@ class Angsuran extends CI_Controller {
 		$data['user'] =$this->model_user->data_user($uid);
 		$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
 		$tgl = date('Y-m-d');
-		$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+		$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 		$data['jumlah'] = $set->num_rows();
 		$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
 		$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
@@ -25,7 +25,7 @@ class Angsuran extends CI_Controller {
 		$data['user'] =$this->model_user->data_user($uid);
 		$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 		$tgl = date('Y-m-d');
-		$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+		$set = $this->db->query("SELECT * from tb_angsuran where (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 		$data['jumlah'] = $set->num_rows();
 		$data['usr_angsuran']=$this->model_user->dtl_ang($id2);
 			$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);

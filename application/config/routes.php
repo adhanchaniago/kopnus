@@ -4,10 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['simpan_pinjaman/(:any)']    	= 'pinjaman/simpan/$1';
 $route['pinjaman']         						= 'pinjaman';
 $route['angsuran/(:num)/(:any)']      = 'angsuran/index/$1/$2';
-$route['bayar/(:num)/(:any)']         						= 'angsuran/bayar/$1/$2';
+$route['bayar/(:num)/(:any)']         = 'angsuran/bayar/$1/$2';
 $route['pinjaman_admin/(:any)']       = 'pinjaman/admin/$1';
-$route['angsuran_admin/(:num)/(:any)']      	= 'angsuran/admin/$1/$2';
-$route['nasabah']         						= 'home/nasabah';
+$route['angsuran_admin/(:num)/(:any)']= 'angsuran/admin/$1/$2';
+$route['nasabah']         						= 'nasabah';
+
 $route['input_pinjaman/(:any)']    		= 'pinjaman/input/$1';
 $route['download/(:num)/(:any)']      = 'berkas/download/$1/$2';
 
