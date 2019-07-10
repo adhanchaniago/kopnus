@@ -64,10 +64,10 @@
 											<td>
 												<div class="media-object">Slip Gaji</div>
 											</td>
-											<td >
+											<td><center>
 												<?php if ($slip['status'] == "0") { ?>
-													<i class="far fa-check-circle"></i>
-												<?php } ?>
+													<i class="far fa-check-circle fa-2x"></i>
+												<?php } ?></center>
 											</td>
 											<td>
 												<center>
@@ -92,10 +92,10 @@
 											<td>
 												<div class="media-object">NPWP</div>
 											</td>
-											<td >
+											<td><center>
 												<?php if ($npwp['status'] == "0") { ?>
-													<i class="far fa-check-circle"></i>
-												<?php } ?>
+													<i class="far fa-check-circle fa-2x"></i>
+												<?php } ?></center>
 											</td>
 											<td>
 												<center>
@@ -120,10 +120,10 @@
 											<td>
 												<div class="media-object">Foto Diri</div>
 											</td>
-											<td >
+											<td><center>
 												<?php if ($foto_diri['status'] == "0") { ?>
-													<i class="far fa-check-circle"></i>
-												<?php } ?>
+													<i class="far fa-check-circle fa-2x"></i>
+												<?php } ?></center>
 											</td>
 											<td>
 												<center>
@@ -148,10 +148,10 @@
 											<td>
 												<div class="media-object">Karip</div>
 											</td>
-											<td >
+											<td><center>
 												<?php if ($karip['status'] == "0") { ?>
-													<i class="far fa-check-circle"></i>
-												<?php } ?>
+													<i class="far fa-check-circle fa-2x"></i>
+												<?php } ?></center>
 											</td>
 											<td>
 												<center>
@@ -176,10 +176,10 @@
 											<td>
 												<div class="media-object">KTP Suami Istri</div>
 											</td>
-											<td >
+											<td><center>
 												<?php if ($ktp['status'] == "0") { ?>
-													<i class="far fa-check-circle"></i>
-												<?php } ?>
+													<i class="far fa-check-circle fa-2x"></i>
+												<?php } ?></center>
 											</td>
 											<td>
 												<center>
@@ -204,10 +204,10 @@
 											<td>
 												<div class="media-object">SK</div>
 											</td>
-											<td >
+											<td><center>
 												<?php if ($sk['status'] == "0") { ?>
-													<i class="far fa-check-circle"></i>
-												<?php } ?>
+													<i class="far fa-check-circle fa-2x"></i>
+												<?php } ?></center>
 											</td>
 											<td>
 												<center>
@@ -232,10 +232,10 @@
 											<td>
 												<div class="media-object">Perjanjian Kredit</div>
 											</td>
-											<td >
+											<td><center>
 												<?php if ($perjanjian['status'] == "0") { ?>
-													<i class="far fa-check-circle"></i>
-												<?php } ?>
+													<i class="far fa-check-circle fa-2x"></i>
+												<?php } ?></center>
 											</td>
 											<td>
 												<center>
