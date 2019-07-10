@@ -37,7 +37,7 @@
 								<div class="form-group col-md-12 col-sm-12 col-xs-12">
 										<div class="text-left">
 												<label for="signupInputName" class="control-label">Nama</label>
-												<input id="signupInputName" type="text" placeholder="Isi Nama" class="form-control" name="nama" minlength="5" required/>
+												<input id="signupInputName" type="text" placeholder="Isi Nama" class="form-control" name="nama" required/>
 										</div>
 								</div>
 								<div class="form-group col-md-12 col-sm-12 col-xs-12">

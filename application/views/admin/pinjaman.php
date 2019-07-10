@@ -16,7 +16,10 @@
 								</div>
 								<div class="col-sm-3"></div>
 								<div class="col-sm-3">
-									<button class="btn btn-primary btn-sm btns" style="float:right;" type="button" onclick="location.href='<?php echo base_url().'input_pinjaman/'.$dtlpinj['norek']; ?>'">Input Pinjaman</button>
+									<?php if (isset($berkas_kk, $berkas_slip,$berkas_npwp,$berkas_karip,$berkas_foto_diri,$berkas_ktp,$berkas_sk,$berkas_perjanjian)) {?>
+										<button class="btn btn-primary btn-sm btns" style="float:right;" type="button" onclick="location.href='<?php echo base_url().'input_pinjaman/'.$dtlpinj['norek']; ?>'">Input Pinjaman</button>
+
+									<?php } ?>
 								</div>
 							</div>
 						</div>

@@ -16,12 +16,14 @@ class Home extends CI_Controller {
 			if ($uid == "0000000001") {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
-				$set = $this->db->query("SELECT * from tb_angsuran where (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+				$status = '0';
+				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 				$data['jumlah'] = $set->num_rows();
 			}else {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
 				$tgl = date('Y-m-d');
-				$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+				$status = '0';
+				$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 				$data['jumlah'] = $set->num_rows();
 			}
 			$data['nasabah'] = $this->model_user->countuser();
@@ -70,7 +72,8 @@ class Home extends CI_Controller {
 			$data['user'] =$this->model_user->data_user($uid);
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
-			$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+			$status = '0';
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['info'] = "2";
 			$this->load->template('admin/register', $data);
@@ -89,14 +92,16 @@ class Home extends CI_Controller {
 				$this->model_user->register();
 					$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 					$tgl = date('Y-m-d');
-					$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+					$status = '0';
+					$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 					$data['jumlah'] = $set->num_rows();
 				$data['info'] = "0";
 				$this->load->template('admin/register', $data);
 			}else {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
-				$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+				$status = '0';
+				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 				$data['jumlah'] = $set->num_rows();
 				$data['info'] = "1";
 				$this->load->template('admin/register', $data);
@@ -104,7 +109,8 @@ class Home extends CI_Controller {
 		}else {
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
-			$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+			$status = '0';
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['info'] = "3";
 			$this->load->template('admin/register', $data);
@@ -117,12 +123,14 @@ class Home extends CI_Controller {
 			if ($uid == "1") {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
-				$set = $this->db->query("SELECT * from tb_angsuran where tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+				$status = '0';
+				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 				$data['jumlah'] = $set->num_rows();
 			}else {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
 				$tgl = date('Y-m-d');
-				$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and tanggal='".$tgl."' or tanggal < '".$tgl."' ");
+				$status = '0';
+				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 				$data['jumlah'] = $set->num_rows();
 			}
 			$this->load->template('profil', $data);

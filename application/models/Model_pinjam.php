@@ -85,12 +85,14 @@ class Model_pinjam extends CI_Model {
 	}
 	public function jatuh_tempo(){
 		$tgl = date('Y-m-d');
-		$query = $this->db->query("SELECT * from tb_angsuran inner join tb_user using(norek) where tb_angsuran.tanggal ='".$tgl."' or tb_angsuran.tanggal < '".$tgl."' ");
+		$i = "0";
+		$query = $this->db->query("SELECT * from tb_angsuran inner join tb_user using(norek) where tb_angsuran.status = '".$i."' and tb_angsuran.tanggal ='".$tgl."' or tb_angsuran.tanggal < '".$tgl."' ");
 		return $query->result_array();
 	}
 	public function jatuh_tempo_user($uid){
 		$tgl = date('Y-m-d');
-		$query = $this->db->query("SELECT * from tb_angsuran inner join tb_user using(norek) where tb_user.norek='".$uid."' and (now() >= DATE_SUB(tb_angsuran.tanggal, INTERVAL 3 DAY)) ");
+		$i = "0";
+		$query = $this->db->query("SELECT * from tb_angsuran inner join tb_user using(norek) where tb_angsuran.status = '".$i."' and tb_user.norek='".$uid."' and (now() >= DATE_SUB(tb_angsuran.tanggal, INTERVAL 3 DAY)) ");
 		return $query->result_array();
 	}
 }

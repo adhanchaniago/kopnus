@@ -228,6 +228,34 @@
 											</center>
 										</td>
 										</tr>
+										<tr>
+											<td>
+												<div class="media-object">Perjanjian Kredit</div>
+											</td>
+											<td >
+												<?php if ($perjanjian['status'] == "0") { ?>
+													<i class="far fa-check-circle"></i>
+												<?php } ?>
+											</td>
+											<td>
+												<center>
+													<?php if ($this->session->uid == "0000000001"){ ?>
+														<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#perjanjian"> Upload </button>
+													<?php }else {
+														if (!isset($perjanjian['status'])) { ?>
+															<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#perjanjian"> Upload </button>
+												<?php } ?>
+												<?php } ?>
+												</center>
+											</td>
+											<td>
+												<center>
+											<?php if ($perjanjian['status'] == "0") { ?>
+												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/8' ?>'"> Download </button>
+											<?php } ?>
+											</center>
+										</td>
+										</tr>
 									</tbody>
 								</table><!-- End Foo Table - Filtering -->
 							</div>
@@ -362,6 +390,25 @@
 			<form  action="<?= base_url().'upload_sk/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload SK (Max 2 Mb) : </h4>
+					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
+      </div>
+			<div class="modal-footer">
+          <input type="submit" value="Register" class="btn btn-primary" >
+        </div>
+		</form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="perjanjian" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+  	<div class="modal-content">
+      <div class="modal-header">
+      	<h4 class="modal-title" id="myModalLabel">Upload Berkas Perjanjian Kredit</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+			<form  action="<?= base_url().'upload_perjanjian/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
+      <div class="modal-body">
+					<h4 class="a" for="exampleFormControlFile1" >Upload Perjanjian Kredit (Max 2 Mb) : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">

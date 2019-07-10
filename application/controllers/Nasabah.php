@@ -14,7 +14,8 @@ class Nasabah extends CI_Controller {
 			$data['user'] =$this->model_user->data_user($uid);
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
-			$set = $this->db->query("SELECT * from tb_angsuran where (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$status = '0';
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 			$data['jumlah'] = $set->num_rows();
 			//Pagination
 			$this->load->library('pagination');
