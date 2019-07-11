@@ -10,7 +10,7 @@
 					<h3 class="panel-title">Laporan Nasabah Jatuh Tempo</h3>
 				</div>
 			<div class="panel-body">
-				<form class="form-inline" action="<?= base_url().'tampilkan_laporan' ?>" method="post">
+				<form class="form-inline" action="<?= base_url().'tampilkan_laporan' ?>" method="post">	
 					<div class="form-group mar-hor">
 						<input type="date" class="form-control" name="date1">
 					</div>

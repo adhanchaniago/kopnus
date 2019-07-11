@@ -43,10 +43,13 @@ class Model_user extends CI_Model {
   }
   // Fungsi untuk menyimpan data ke database
   public function save($upload,$nama){
+		$this->db->where('norek',$nama);
+		$query = $this->db->get('tb_user');
+		$row = $query->row();
+		unlink("./asset/upload/$row->foto");
     $data = array('foto' => $upload['file']['file_name']);
 		$this->db->where('norek',$nama);
-	    // simpan ke database dalam tabel 'blogs'
-	    $this->db->update( 'tb_user', $data );
+	  $this->db->update( 'tb_user', $data );
   }
 	public function tampil_user($limit,$start,$cari = null){
 		$q = "0000000001";
