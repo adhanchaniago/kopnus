@@ -31,7 +31,7 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label" for="demo-text-input">Pinjaman</label>
 										<div class="col-md-9">
-											<input type="text" id="input" class="form-control a2" name="pinjaman" class="uang" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="">
+											<input type="number" id="input" class="form-control a2" name="pinjaman" class="uang" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="Isi Pinjaman" required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -70,7 +70,6 @@
 			</div><!--End page content-->
 		</div>
 	</div>
-} ?>
 </div>
 <script >
 function OnChange(value){

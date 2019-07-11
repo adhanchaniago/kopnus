@@ -11,7 +11,8 @@ $route['nasabah']         						= 'nasabah';
 
 $route['input_pinjaman/(:any)']    		= 'pinjaman/input/$1';
 $route['download/(:num)/(:any)']      = 'berkas/download/$1/$2';
-
+$route['tampilkan_laporan']        	 	= 'home/laporan_tampil';
+$route['laporan']        	 						= 'home/laporan';
 $route['profil']        	 						= 'home/profil';
 $route['update']        	 						= 'home/upload';
 $route['upload_kk/(:any)']        	 	= 'berkas/upload_kk/$1';
@@ -21,6 +22,7 @@ $route['upload_foto_diri/(:any)']        	 	= 'berkas/upload_foto_diri/$1';
 $route['upload_karip/(:any)']        	 	= 'berkas/upload_karip/$1';
 $route['upload_ktp/(:any)']        	 	= 'berkas/upload_ktp/$1';
 $route['upload_sk/(:any)']        	 	= 'berkas/upload_sk/$1';
+$route['upload_perjanjian/(:any)']     = 'berkas/upload_perjanjian/$1';
 $route['angsuran']         						= 'angsuran';
 $route['berkas_admin/(:any)']        	= 'berkas/admin/$1';
 $route['berkas']							        = 'berkas';

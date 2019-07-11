@@ -124,10 +124,10 @@ class Model_berkas extends CI_Model {
  public function save_perjanjian($upload,$id){
   $data = [
           'norek' => $id,
-          'sk' => $upload['file']['file_name'],
+          'perjanjian' => $upload['file']['file_name'],
           'status' => "0"
       ];
-      $this->db->insert( 'tb_berkas_sk', $data );
+      $this->db->insert( 'tb_berkas_perjanjian', $data );
  }
  function download($id,$id2){
    if ($id2 == "1") {

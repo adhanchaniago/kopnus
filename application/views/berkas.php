@@ -241,10 +241,6 @@
 												<center>
 													<?php if ($this->session->uid == "0000000001"){ ?>
 														<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#perjanjian"> Upload </button>
-													<?php }else {
-														if (!isset($perjanjian['status'])) { ?>
-															<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#perjanjian"> Upload </button>
-												<?php } ?>
 												<?php } ?>
 												</center>
 											</td>

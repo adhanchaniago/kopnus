@@ -125,12 +125,8 @@
             <?php endif; ?>
             <?php if( isset( $this->session->uid ) ){?>
             <?php if ( $this->session->uid == "0000000001"): ?>
-            <li><a href="#"><i class="fa fa-file"></i><span class="menu-title"> Dokumen </span><i class="arrow"></i></a>
-            <!--Submenu-->
-            <ul class="collapse">
-              <li><a href="<?= base_url().'nasabah' ?>"> Nasabah </a></li>
-            </ul>
-            </li>
+            <li> <a href="<?= base_url().'nasabah' ?>"> <i class="fas fa-users"></i> <span class="menu-title"> Nasabah </span></a></li>
+            <li> <a href="<?= base_url().'laporan' ?>"> <i class="fas fa-file"></i> <span class="menu-title"> Laporan </span></a></li>
             <?php endif; ?>
             <?php if ( $this->session->uid !== "0000000001"): ?>
             <li><a href=""><i class="fa fa-file"></i><span class="menu-title"> Dokumen </span><i class="arrow"></i></a>

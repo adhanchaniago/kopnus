@@ -25,5 +25,7 @@
  <!--Switchery [ OPTIONAL ]-->
 <script src="<?= base_url().'asset/plugins/switchery/switchery.min.js' ?>"></script>
 <script src="<?= base_url().'asset/js/demo/pages-directory.js' ?>"></script>
+ <!--Bootstrap Datepicker [ OPTIONAL ]-->
+<script src="<?= base_url().'asset/plugins/bootstrap-datepicker/bootstrap-datepicker.js' ?>"></script>
 </body>
 </html>
