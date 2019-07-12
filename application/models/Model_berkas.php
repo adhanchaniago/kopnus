@@ -66,30 +66,77 @@ class Model_berkas extends CI_Model {
      return $query->row_array();
  }
  public function save_kk($upload,$id){
+   $query = $this->db->query("SELECT * from tb_berkas_kk where norek='".$id."'");
+   $i2 = $query->row_array();
+   if (isset($i2)) {
+     $this->db->where('norek',$id);
+     $query = $this->db->get('tb_berkas_kk');
+     $row = $query->row();
+     unlink("./asset/upload/berkas/kk/$row->kk");
+    $data = array('kk' => $upload['file']['file_name']);
+    $this->db->where('norek',$id);
+    $this->db->update( 'tb_berkas_kk', $data );
+   }else {
 	 $data = [
 					 'norek' => $id,
 					 'kk' => $upload['file']['file_name'],
 					 'status' => "0"
 			 ];
 			 $this->db->insert( 'tb_berkas_kk', $data );
+     }
  }
  public function save_foto_diri($upload,$id){
-	 $data = [
+   $query = $this->db->query("SELECT * from tb_berkas_foto_diri where norek='".$id."'");
+   $i2 = $query->row_array();
+   if (isset($i2)) {
+     $this->db->where('norek',$id);
+     $query = $this->db->get('tb_berkas_foto_diri');
+     $row = $query->row();
+     unlink("./asset/upload/berkas/foto_diri/$row->foto_diri");
+    $data = array('foto_diri' => $upload['file']['file_name']);
+    $this->db->where('norek',$id);
+    $this->db->update( 'tb_berkas_foto_diri', $data );
+   }else {
+   $data = [
 					 'norek' => $id,
 					 'foto_diri' => $upload['file']['file_name'],
 					 'status' => "0"
 			 ];
 			 $this->db->insert( 'tb_berkas_foto_diri', $data );
+     }
  }
  public function save_slip($upload,$id){
+   $query = $this->db->query("SELECT * from tb_berkas_slip where norek='".$id."'");
+   $i2 = $query->row_array();
+   if (isset($i2)) {
+     $this->db->where('norek',$id);
+     $query = $this->db->get('tb_berkas_slip');
+     $row = $query->row();
+     unlink("./asset/upload/berkas/slip/$row->foto_diri");
+    $data = array('slip' => $upload['file']['file_name']);
+    $this->db->where('norek',$id);
+    $this->db->update( 'tb_berkas_slip', $data );
+   }else {
 	 $data = [
 					 'norek' => $id,
 					 'slip' => $upload['file']['file_name'],
 					 'status' => "0"
 			 ];
 			 $this->db->insert( 'tb_berkas_slip', $data );
+     }
  }
  public function save_npwp($upload,$id){
+   $query = $this->db->query("SELECT * from tb_berkas_npwp where norek='".$id."'");
+   $i2 = $query->row_array();
+   if (isset($i2)) {
+     $this->db->where('norek',$id);
+     $query = $this->db->get('tb_berkas_npwp');
+     $row = $query->row();
+     unlink("./asset/upload/berkas/npwp/$row->npwp");
+    $data = array('npwp' => $upload['file']['file_name']);
+    $this->db->where('norek',$id);
+    $this->db->update( 'tb_berkas_npwp', $data );
+   }else {
 	 $data = [
 					 'norek' => $id,
 					 'npwp' => $upload['file']['file_name'],
@@ -97,38 +144,83 @@ class Model_berkas extends CI_Model {
 			 ];
 			 $this->db->insert( 'tb_berkas_npwp', $data );
  }
+}
  public function save_karip($upload,$id){
+   $query = $this->db->query("SELECT * from tb_berkas_karip where norek='".$id."'");
+   $i2 = $query->row_array();
+   if (isset($i2)) {
+     $this->db->where('norek',$id);
+     $query = $this->db->get('tb_berkas_karip');
+     $row = $query->row();
+     unlink("./asset/upload/berkas/karip/$row->karip");
+    $data = array('karip' => $upload['file']['file_name']);
+    $this->db->where('norek',$id);
+    $this->db->update( 'tb_berkas_karip', $data );
+   }else {
 	 $data = [
 					 'norek' => $id,
 					 'karip' => $upload['file']['file_name'],
 					 'status' => "0"
 			 ];
 			 $this->db->insert( 'tb_berkas_karip', $data );
- }
+ }}
  public function save_ktp($upload,$id){
+   $query = $this->db->query("SELECT * from tb_berkas_ktp_suami_istri where norek='".$id."'");
+   $i2 = $query->row_array();
+   if (isset($i2)) {
+     $this->db->where('norek',$id);
+     $query = $this->db->get('tb_berkas_ktp_suami_istri');
+     $row = $query->row();
+     unlink("./asset/upload/berkas/ktp/$row->ktp_suami_istri");
+    $data = array('ktp_suami_istri' => $upload['file']['file_name']);
+    $this->db->where('norek',$id);
+    $this->db->update( 'tb_berkas_ktp_suami_istri', $data );
+   }else {
 	 $data = [
 					 'norek' => $id,
 					 'ktp_suami_istri' => $upload['file']['file_name'],
 					 'status' => "0"
 			 ];
 			 $this->db->insert( 'tb_berkas_ktp_suami_istri', $data );
- }
+ }}
  public function save_sk($upload,$id){
+   $query = $this->db->query("SELECT * from tb_berkas_sk where norek='".$id."'");
+   $i2 = $query->row_array();
+   if (isset($i2)) {
+     $this->db->where('norek',$id);
+     $query = $this->db->get('tb_berkas_sk');
+     $row = $query->row();
+     unlink("./asset/upload/berkas/sk/$row->sk");
+    $data = array('sk' => $upload['file']['file_name']);
+    $this->db->where('norek',$id);
+    $this->db->update( 'tb_berkas_sk', $data );
+   }else {
 	 $data = [
 					 'norek' => $id,
 					 'sk' => $upload['file']['file_name'],
 					 'status' => "0"
 			 ];
 			 $this->db->insert( 'tb_berkas_sk', $data );
- }
+ }}
  public function save_perjanjian($upload,$id){
+   $query = $this->db->query("SELECT * from tb_berkas_perjanjian where norek='".$id."'");
+   $i2 = $query->row_array();
+   if (isset($i2)) {
+     $this->db->where('norek',$id);
+     $query = $this->db->get('tb_berkas_perjanjian');
+     $row = $query->row();
+     unlink("./asset/upload/berkas/perjanjian/$row->perjanjian");
+    $data = array('perjanjian' => $upload['file']['file_name']);
+    $this->db->where('norek',$id);
+    $this->db->update( 'tb_berkas_perjanjian', $data );
+   }else {
   $data = [
           'norek' => $id,
           'perjanjian' => $upload['file']['file_name'],
           'status' => "0"
       ];
       $this->db->insert( 'tb_berkas_perjanjian', $data );
- }
+ }}
  function download($id,$id2){
    if ($id2 == "1") {
      $query = $this->db->query("SELECT * from tb_berkas_kk where norek='".$id."'");

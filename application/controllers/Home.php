@@ -34,7 +34,10 @@ class Home extends CI_Controller {
 			$this->load->view('index', $data);
 			$this->load->view('layout/footer');
 		}else {
-			$this->load->template('index');
+			$data['nasabah'] = $this->model_user->countuser();
+			$data['pinjaman'] = $this->model_pinjam->countpinjam();
+			$data['angsuran'] = $this->model_pinjam->countangsuran();
+			$this->load->template('index',$data);
 		}
 	}
 	public function login()
@@ -141,11 +144,9 @@ class Home extends CI_Controller {
 	public function upload(){
 		$nama = $this->session->uid;
 		$upload = $this->model_user->upload();
-
 		if($upload['result'] == "success"){ // Jika proses upload sukses
-			 // Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
+			 // Panggil function save yang ada di model_user.php untuk menyimpan data ke database
 			$this->model_user->save($upload,$nama);
-
 			redirect('/'); // Redirect kembali ke halaman awal / halaman view data
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
@@ -153,25 +154,33 @@ class Home extends CI_Controller {
 	}
 	public function laporan(){
 		$uid=$this->session->uid;
-		$data['user'] = $this->model_user->data_user($uid);
-		$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
-		$tgl = date('Y-m-d');
-		$status = '0';
-		$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
-		$data['jumlah'] = $set->num_rows();
-		$jth_tempo = $this->db->query("SELECT * from tb_angsuran inner join tb_user using (norek) where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
-		$data['laporan'] =$jth_tempo->result_array();
-		$this->load->template('admin/laporan', $data);
+		if (isset($uid)) {
+			$data['user'] = $this->model_user->data_user($uid);
+			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+			$tgl = date('Y-m-d');
+			$status = '0';
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$data['jumlah'] = $set->num_rows();
+			$jth_tempo = $this->db->query("SELECT * from tb_angsuran inner join tb_user using (norek) where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$data['laporan'] =$jth_tempo->result_array();
+			$this->load->template('admin/laporan', $data);
+		}else {
+			redirect(base_url('login'));
+		}
 	}
-	public function laporan_tampil(){
+public function laporan_tampil(){
 		$uid=$this->session->uid;
-		$data['user'] = $this->model_user->data_user($uid);
-		$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
-		$tgl = date('Y-m-d');
-		$status = '0';
-		$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
-		$data['jumlah'] = $set->num_rows();
-		$data['laporan']= $this->model_user->tampil_laporan();
-		$this->load->template('admin/laporan', $data);
+		if (isset($uid)) {
+			$data['user'] = $this->model_user->data_user($uid);
+			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+			$tgl = date('Y-m-d');
+			$status = '0';
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$data['jumlah'] = $set->num_rows();
+			$data['laporan']= $this->model_user->tampil_laporan();
+			$this->load->template('admin/laporan', $data);
+		}else {
+			redirect(base_url('login'));
+		}
 	}
 }

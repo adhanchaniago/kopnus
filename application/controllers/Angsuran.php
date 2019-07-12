@@ -11,28 +11,36 @@ class Angsuran extends CI_Controller {
 	public function index($id,$id2)
 	{
 		$uid=$this->session->uid;
-		$data['user'] =$this->model_user->data_user($uid);
-		$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
-		$tgl = date('Y-m-d');
-		$status = '0';
-		$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
-		$data['jumlah'] = $set->num_rows();
-		$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
-		$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
-		$this->load->template('angsuran',$data);
+		if (isset($uid)) {
+			$data['user'] =$this->model_user->data_user($uid);
+			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
+			$tgl = date('Y-m-d');
+			$status = '0';
+			$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$data['jumlah'] = $set->num_rows();
+			$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
+			$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
+			$this->load->template('angsuran',$data);
+		}else {
+			redirect(base_url('login'));
+		}
 	}
 	public function admin($id,$id2){
 		$uid=$this->session->uid;
-		$data['user'] =$this->model_user->data_user($uid);
-		$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
-		$tgl = date('Y-m-d');
-		$status = '0';
-		$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
-		$data['jumlah'] = $set->num_rows();
-		$data['usr_angsuran']=$this->model_user->dtl_ang($id2);
-			$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
-		$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
-		$this->load->template('admin/angsuran',$data);
+		if (isset($uid)) {
+			$data['user'] =$this->model_user->data_user($uid);
+			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+			$tgl = date('Y-m-d');
+			$status = '0';
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$data['jumlah'] = $set->num_rows();
+			$data['usr_angsuran']=$this->model_user->dtl_ang($id2);
+				$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
+			$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
+			$this->load->template('admin/angsuran',$data);
+		}else {
+			redirect(base_url('login'));
+		}
 	}
 	public function bayar($id,$id2){
 		$this->model_pinjam->bayar($id,$id2);
