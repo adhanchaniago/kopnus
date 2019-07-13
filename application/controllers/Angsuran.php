@@ -32,7 +32,7 @@ class Angsuran extends CI_Controller {
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
 			$data['jumlah'] = $set->num_rows();
 			$data['usr_angsuran']=$this->model_user->dtl_ang($id2);
 				$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);

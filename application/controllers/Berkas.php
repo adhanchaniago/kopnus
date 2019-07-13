@@ -42,7 +42,7 @@ class Berkas extends CI_Controller {
 		$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 		$tgl = date('Y-m-d');
 		$status = '0';
-		$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+		$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
 		$data['jumlah'] = $set->num_rows();
 		$data['user_berkas'] = $this->model_user->data_user($id);
 		$data['kk'] = $this->model_berkas->data_berkas_kk($id);

@@ -34,7 +34,7 @@ class Pinjaman extends CI_Controller {
 			$tgl = date('Y-m-d');
 			$status = '0';
 			$data['info'] = "0";
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
 			$data['jumlah'] = $set->num_rows();
 			$data['inptpinj'] =$this->model_user->input_pinj($id);
 			$this->load->template('admin/input_pinjaman', $data );
@@ -49,7 +49,7 @@ class Pinjaman extends CI_Controller {
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and(now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
 			$data['berkas_kk'] = $this->model_berkas->cek_berkas_kk($id);
 			$data['berkas_slip'] = $this->model_berkas->cek_berkas_slip($id);
 			$data['berkas_karip'] = $this->model_berkas->cek_berkas_karip($id);

@@ -10,7 +10,7 @@
 					<h3 class="panel-title">Laporan Nasabah Jatuh Tempo</h3>
 				</div>
 			<div class="panel-body">
-				<form class="form-inline" action="<?= base_url().'tampilkan_laporan' ?>" method="post">	
+				<form class="form-inline" action="<?= base_url().'tampilkan_laporan' ?>" method="post">
 					<div class="form-group mar-hor">
 						<input type="date" class="form-control" name="date1">
 					</div>
@@ -22,12 +22,13 @@
 					</div>
 					<button class="btn btn-info ml-2" type="submit">Tampilkan</button>
 				</form>
+				<div class="col-lg-8">
 				<div class="panel-body1">
 					<table id="tabel_laporan" class="table table-bordered table-hover toggle-circle" data-page-size="10">
 						<thead>
 							<tr>
 								<th>No</th>
-								<th data-toggle="true">Nama</th>
+								<th data-toggle="true" width="60%">Nama</th>
 								<th data-hide="phone, tablet"><center>Angsuran Ke-</center></th>
 								<th data-hide="phone, tablet"><center>Tanggal</center></th>
 							</tr>
@@ -38,6 +39,8 @@
 								<tr>
 									<td><?= $i; ?></td>
 									<td><?= $l['nama']; ?></td>
+									<td><center><?= $l['angsuran_ke']; ?></center></td>
+									<td><center><?= tgl_indo($l['tanggal']); ?></center></td>
 								</tr>
 							</tbody>
 							<?php $i++; endforeach; } ?>
@@ -53,9 +56,32 @@
 					</tfoot>
 					</table><!-- End Foo Table - Filtering -->
 				</div>
+			</div>
 				</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+} ?>
