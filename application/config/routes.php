@@ -10,6 +10,7 @@ $route['input_pinjaman/(:any)']    		= 'pinjaman/input/$1';
 $route['nasabah']         						= 'nasabah';
 $route['tampilkan_laporan']        	 	= 'home/laporan_tampil';
 $route['laporan']        	 						= 'home/laporan';
+$route['notifikasi']        	 						= 'home/notifikasi';
 $route['berkas_admin/(:any)']        	= 'berkas/admin/$1';
 //User
 $route['angsuran/(:num)/(:any)']      = 'angsuran/index/$1/$2';

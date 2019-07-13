@@ -2,14 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
-	public function __construct() {
+	public function __construct(){
 	parent::__construct();
-
 	$this->load->model('model_user');
 	$this->load->model('model_pinjam');
 	}
-	public function index()
-	{
+	public function index(){
 		if (isset( $this->session->uid )) {
 			$uid=$this->session->uid;
 			$data['user'] = $this->model_user->data_user($uid);
@@ -40,13 +38,11 @@ class Home extends CI_Controller {
 			$this->load->template('index',$data);
 		}
 	}
-	public function login()
-	{
+	public function login(){
 		$data['cek']="0";
 		$this->load->template('login',$data);
 	}
-	public function signin()
-	{
+	public function signin(){
 		$nama = $this->input->post('nama');
     $pass = $this->input->post('password');
 		$pass1 = md5($pass);
@@ -64,8 +60,7 @@ class Home extends CI_Controller {
 				$this->load->template('login',$data);
       }
 	}
-	public function signout()
-	{
+	public function signout(){
 		$this->session->sess_destroy();
 		redirect('/');
 	}
@@ -179,6 +174,22 @@ public function laporan_tampil(){
 			$data['jumlah'] = $set->num_rows();
 			$data['laporan']= $this->model_user->tampil_laporan();
 			$this->load->template('admin/laporan', $data);
+		}else {
+			redirect(base_url('login'));
+		}
+	}
+	public function notifikasi(){
+		$uid=$this->session->uid;
+		if (isset($uid)) {
+			$data['user'] = $this->model_user->data_user($uid);
+			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+			$tgl = date('Y-m-d');
+			$status = '0';
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+			$set1 = $this->db->query("SELECT * from tb_angsuran inner join tb_user using (norek) where status='".$status."' and tanggal <= now() ");
+			$data['jumlah'] = $set->num_rows();
+			$data['data_pesan'] = $set1->result_array();
+			$this->load->template('admin/notifikasi', $data);
 		}else {
 			redirect(base_url('login'));
 		}

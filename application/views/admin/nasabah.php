@@ -28,17 +28,17 @@
 							<table id="tabeluser" class="table table-bordered table-hover toggle-circle" data-page-size="10">
 								<thead>
 									<tr>
-										<th>Norek</th>
-										<th data-toggle="true">Nama Nasabah</th>
-										<th width="300px"><center>Pinjaman</center></th>
-										<th width="300px"><center>Berkas</center></th>
+										<th width="15%"><center>Norek</center></th>
+										<th data-toggle="true"><center>Nama Nasabah</center></th>
+										<th width="15%"><center>Pinjaman</center></th>
+										<th width="15%"><center>Berkas</center></th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php foreach ($listusr as $dft) : ?>
 									<tr>
 										<td><center><?= $dft['norek'];  ?></center></td>
-										<td style="width:65%;"><?= $dft['nama'];  ?></td>
+										<td><?= $dft['nama'];  ?></td>
 										<td><center><a style="width:70%;" href="<?= base_url().'pinjaman_admin/'.$dft['norek']; ?>" class="btn btn-primary btn-sm">Lihat</a></center></td>
 										<td><center><a style="width:70%;" href="<?= base_url().'berkas_admin/'.$dft['norek']; ?>" class="btn btn-primary btn-sm">Lihat</a></center></td>
 									</tr>

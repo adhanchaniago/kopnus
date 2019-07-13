@@ -46,6 +46,10 @@
                   </ul>
                 </div>
               </div>
+              <!--Dropdown footer-->
+              <div class="pad-all bord-top">
+                <a href="<?= base_url('notifikasi'); ?>" class="btn-link text-dark box-block"> <i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications </a>
+              </div>
             </div>
           </li>
         <?php }else {?>

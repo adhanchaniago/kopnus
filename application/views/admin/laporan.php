@@ -22,25 +22,32 @@
 					</div>
 					<button class="btn btn-info ml-2" type="submit">Tampilkan</button>
 				</form>
-				<div class="col-lg-8">
+				<div class="col-lg-10">
 				<div class="panel-body1">
 					<table id="tabel_laporan" class="table table-bordered table-hover toggle-circle" data-page-size="10">
 						<thead>
 							<tr>
-								<th>No</th>
-								<th data-toggle="true" width="60%">Nama</th>
+								<th><center>Norek</center></th>
+								<th data-toggle="true" width="25%"><center>Nama Nasabah</center></th>
 								<th data-hide="phone, tablet"><center>Angsuran Ke-</center></th>
-								<th data-hide="phone, tablet"><center>Tanggal</center></th>
+								<th data-hide="phone, tablet"><center>Biaya Angsuran</center></th>
+								<th data-hide="phone, tablet"><center>Tanggal Angsuran</center></th>
+								<th data-hide="phone, tablet"><center>Status</center></th>
 							</tr>
 						</thead>
 						<?php if (!empty($laporan)) {
 							$i=1; foreach ($laporan as $l ):?>
 							<tbody>
 								<tr>
-									<td><?= $i; ?></td>
+									<td><center><?= $l['norek']; ?></center></td>
 									<td><?= $l['nama']; ?></td>
-									<td><center><?= $l['angsuran_ke']; ?></center></td>
+									<td><center>Ke-<?= $l['angsuran_ke']; ?></center></td>
+									<td><center>Rp.<?= number_format($l['angsuran'], 0, ".", ".") ?></center></td>
 									<td><center><?= tgl_indo($l['tanggal']); ?></center></td>
+									<td><center><?php $st = $l['status'];?>
+									<?php if ($st == "0"){ ?>
+										Belum Lunas
+									<?php } ?></center></td>
 								</tr>
 							</tbody>
 							<?php $i++; endforeach; } ?>
