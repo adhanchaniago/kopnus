@@ -1,7 +1,7 @@
 <div class="boxed">
 	<div id="content-container">
 		<div class="pageheader hidden-xs">
-      <h3> Register </h3>
+      <h3><i class="fas fa-user-plus"></i> Register </h3>
     </div>
     <div id="page-content">
 

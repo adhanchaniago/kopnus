@@ -111,10 +111,11 @@
   <!--Brand logo & name-->
   <!--================================-->
   <div class="navbar-header">
-    <a href="index.html" class="navbar-brand">
-      <i class="brand-icon"></i>
-      <div class="brand-title"><span class="brand-text">KOPNUS</span></div>
-    </a>
+    <div class="navbar-brand">
+      <center>
+        <span class="brand-title"><img src="<?= base_url().'asset/img/logo.jpg' ?>" width="45" height="45" alt=""> KOPNUS</span>
+    </center>
+    </div>
   </div><!--End brand logo & name-->
   <div id="mainnav"><!--Menu-->
     <div id="mainnav-menu-wrap">
