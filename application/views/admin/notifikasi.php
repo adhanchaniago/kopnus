@@ -6,7 +6,8 @@
 		</div>
 		<div id="page-content">
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
 					<div class="panel">
 						<div class="panel-body">
 							<div class="tab-base">
@@ -22,15 +23,23 @@
 													<th data-hide="phone, tablet"><center>Tanggal</center></th>
 												</tr>
 											</thead>
-											<?php $i=1; foreach ($data_pesan as $d):?>
 											<tbody>
+												<?php $i=1; foreach ($data_pesan as $d):
+													if ($d['tanggal'] > date("Y-m-d") ) {?>
+												<tr>
+													<td><?= $i; ?></td>
+													<td><?= $d['nama']; ?></td>
+													<td>Angsuran Ke-<?= $d['angsuran_ke']; ?> akan jatuh tempo</td>
+													<td><?= tgl_indo($d['tanggal']); ?></td>
+												</tr>
+											<?php }else{ ?>
 												<tr>
 													<td><?= $i; ?></td>
 													<td><?= $d['nama']; ?></td>
 													<td>Angsuran Ke-<?= $d['angsuran_ke']; ?> telah jatuh tempo</td>
 													<td><?= tgl_indo($d['tanggal']); ?></td>
 												</tr>
-												<?php $i++; endforeach; ?>
+											<?php }$i++; endforeach; ?>
 											</tbody>
 										</table>
 									</div>

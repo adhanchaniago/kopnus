@@ -4,11 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pinjaman extends CI_Controller {
 
 	public function __construct() {
-	parent::__construct();
+		parent::__construct();
 
-	$this->load->model('model_user');
-	$this->load->model('model_pinjam');
-	$this->load->model('model_berkas');
+		$this->load->model('model_user');
+		$this->load->model('model_pinjam');
+		$this->load->model('model_berkas');
 	}
 
 	public function index(){
@@ -34,7 +34,7 @@ class Pinjaman extends CI_Controller {
 			$tgl = date('Y-m-d');
 			$status = '0';
 			$data['info'] = "0";
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['inptpinj'] =$this->model_user->input_pinj($id);
 			$this->load->template('admin/input_pinjaman', $data );
@@ -49,7 +49,7 @@ class Pinjaman extends CI_Controller {
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['berkas_kk'] = $this->model_berkas->cek_berkas_kk($id);
 			$data['berkas_slip'] = $this->model_berkas->cek_berkas_slip($id);
 			$data['berkas_karip'] = $this->model_berkas->cek_berkas_karip($id);
@@ -67,7 +67,7 @@ class Pinjaman extends CI_Controller {
 		}
 	}
 	public function simpan($id){
-			$this->model_pinjam->simpan($id);
-			redirect('/nasabah');
+		$this->model_pinjam->simpan($id);
+		redirect('/nasabah');
 	}
 }

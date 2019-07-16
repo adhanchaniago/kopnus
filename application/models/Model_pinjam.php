@@ -52,7 +52,7 @@ class Model_pinjam extends CI_Model {
 	}
 	public function list_pinjaman($id){
 		$query = $this->db->query("SELECT * from tb_pinjaman where norek='".$id."'");
-		return $query->result_array();
+							return $query->result_array();
 	}
 	public function list_angsuran($id,$id2){
 		$query = $this->db->query("SELECT * from tb_angsuran where norek='".$id2."' and id_pinjaman='".$id."'");
@@ -89,7 +89,7 @@ class Model_pinjam extends CI_Model {
 	public function jatuh_tempo(){
 		$tgl = date('Y-m-d');
 		$i = "0";
-		$query = $this->db->query("SELECT * from tb_angsuran inner join tb_user using(norek) where tb_angsuran.status = '".$i."' and (tb_angsuran.tanggal ='".$tgl."' or tb_angsuran.tanggal < '".$tgl."') ");
+		$query = $this->db->query("SELECT * from tb_angsuran inner join tb_user using(norek) where tb_angsuran.status = '".$i."' and (tb_angsuran.tanggal ='".$tgl."' or tb_angsuran.tanggal < '".$tgl."' or (now() >= DATE_SUB(tb_angsuran.tanggal, INTERVAL 3 DAY))) ");
 		return $query->result_array();
 	}
 	public function jatuh_tempo_user($uid){

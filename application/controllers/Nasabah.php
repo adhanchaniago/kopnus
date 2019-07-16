@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Nasabah extends CI_Controller {
 	public function __construct() {
-	parent::__construct();
+		parent::__construct();
 
-	$this->load->model('model_user');
-	$this->load->model('model_pinjam');
+		$this->load->model('model_user');
+		$this->load->model('model_pinjam');
 	}
 	public function index(){
 		$uid=$this->session->uid;
@@ -15,7 +15,7 @@ class Nasabah extends CI_Controller {
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
 			//Pagination
 			$this->load->library('pagination');

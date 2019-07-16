@@ -22,10 +22,10 @@
 <script src="<?= base_url().'asset/plugins/bootstrap-validator/bootstrapValidator.min.js' ?>"></script>
 <!--FooTable [ OPTIONAL ]-->
 <script src="<?= base_url().'asset/plugins/fooTable/dist/footable.all.min.js' ?>"></script>
- <!--Switchery [ OPTIONAL ]-->
+<!--Switchery [ OPTIONAL ]-->
 <script src="<?= base_url().'asset/plugins/switchery/switchery.min.js' ?>"></script>
 <script src="<?= base_url().'asset/js/demo/pages-directory.js' ?>"></script>
- <!--Bootstrap Datepicker [ OPTIONAL ]-->
+<!--Bootstrap Datepicker [ OPTIONAL ]-->
 <script src="<?= base_url().'asset/plugins/bootstrap-datepicker/bootstrap-datepicker.js' ?>"></script>
 </body>
 </html>

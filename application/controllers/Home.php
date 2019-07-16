@@ -15,7 +15,7 @@ class Home extends CI_Controller {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
 				$status = '0';
-				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now()");
+				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)))");
 				$data['jumlah'] = $set->num_rows();
 			}else {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
@@ -71,7 +71,7 @@ class Home extends CI_Controller {
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['info'] = "2";
 			$this->load->template('admin/register', $data);
@@ -91,7 +91,7 @@ class Home extends CI_Controller {
 					$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 					$tgl = date('Y-m-d');
 					$status = '0';
-					$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+					$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 					$data['jumlah'] = $set->num_rows();
 				$data['info'] = "0";
 				$this->load->template('admin/register', $data);
@@ -99,7 +99,7 @@ class Home extends CI_Controller {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
 				$status = '0';
-				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 				$data['jumlah'] = $set->num_rows();
 				$data['info'] = "1";
 				$this->load->template('admin/register', $data);
@@ -108,7 +108,7 @@ class Home extends CI_Controller {
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['info'] = "3";
 			$this->load->template('admin/register', $data);
@@ -122,7 +122,7 @@ class Home extends CI_Controller {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
 				$status = '0';
-				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 				$data['jumlah'] = $set->num_rows();
 			}else {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo_user($uid);
@@ -154,7 +154,7 @@ class Home extends CI_Controller {
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
 			$jth_tempo = $this->db->query("SELECT * from tb_angsuran inner join tb_user using (norek) where status='".$status."' and tanggal <= now() ");
 			$data['laporan'] =$jth_tempo->result_array();
@@ -170,7 +170,7 @@ public function laporan_tampil(){
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['laporan']= $this->model_user->tampil_laporan();
 			$this->load->template('admin/laporan', $data);
@@ -185,8 +185,8 @@ public function laporan_tampil(){
 			$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 			$tgl = date('Y-m-d');
 			$status = '0';
-			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and tanggal <= now() ");
-			$set1 = $this->db->query("SELECT * from tb_angsuran inner join tb_user using (norek) where status='".$status."' and tanggal <= now() ");
+			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
+			$set1 = $this->db->query("SELECT * from tb_angsuran inner join tb_user using (norek) where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['data_pesan'] = $set1->result_array();
 			$this->load->template('admin/notifikasi', $data);

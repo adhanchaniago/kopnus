@@ -1,9 +1,9 @@
 <div class="boxed">
 	<div id="content-container">
 		<div class="pageheader hidden-xs">
-      <h3> Pinjaman </h3>
-    </div>
-    <div id="page-content">
+			<h3> Pinjaman </h3>
+		</div>
+		<div id="page-content">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel">
@@ -23,23 +23,23 @@
 								</thead>
 								<tbody>
 									<?php $i=1; foreach ($pinjaman as $l):?>
-									<tr>
-										<td><?= $i; ?></td>
-										<td style="width:40%;">Rp.<?php echo number_format($l['pinjaman'], 0, ".", ".") ?></td>
-										<td style="width:30%;"><center><?php echo tgl_indo($l['tanggal']); ?></center></td>
-										<td style="width:30%;"><center><?php $st = $l['status'];?>
-										<?php if ($st == "0"){ ?>
-											Belum Lunas
-										<?php }else{ ?>
-											Lunas
-										<?php } ?></center></td>
-										<td><center>
-											<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url().'angsuran/'. $l['id_pinjaman'].'/'. $this->session->uid; ?>'">Lihat</button>
-										</center>
-										</td>
-									</tr>
-								<?php $i++;
-							endforeach; ?>
+										<tr>
+											<td><?= $i; ?></td>
+											<td style="width:40%;">Rp.<?php echo number_format($l['pinjaman'], 0, ".", ".") ?></td>
+											<td style="width:30%;"><center><?php echo tgl_indo($l['tanggal']); ?></center></td>
+											<td style="width:30%;"><center><?php $st = $l['status'];?>
+												<?php if ($st == "0"){ ?>
+													Belum Lunas
+												<?php }else{ ?>
+													Lunas
+												<?php } ?></center></td>
+												<td><center>
+													<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url().'angsuran/'. $l['id_pinjaman'].'/'. $this->session->uid; ?>'">Lihat</button>
+												</center>
+											</td>
+										</tr>
+										<?php $i++;
+									endforeach; ?>
 								</tbody>
 								<tfoot>
 									<tr>
@@ -58,7 +58,6 @@
 		</div>
 	</div>
 </div>
-
 <?php
 function tgl_indo($tanggal){
 	$bulan = array (
