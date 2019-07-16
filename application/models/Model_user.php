@@ -27,7 +27,6 @@ class Model_user extends CI_Model {
 	public function upload(){
     $config['upload_path'] = './asset/upload/';
     $config['allowed_types'] = 'jpg|png|jpeg|pdf';
-    $config['max_size']  = '2048';
     $config['remove_space'] = TRUE;
 
     $this->load->library('upload', $config); // Load konfigurasi uploadnya
@@ -37,7 +36,7 @@ class Model_user extends CI_Model {
       return $return;
     }else{
       // Jika gagal :
-      $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+      $return = array('error' => $this->upload->display_errors());
       return $return;
     }
   }
@@ -54,7 +53,7 @@ class Model_user extends CI_Model {
 	public function tampil_user($limit,$start,$cari = null){
 		$q = "0000000001";
 		if ($cari) {
-			$query = $this->db->query("SELECT * from tb_user where not norek='".$q."' and nama like '%$cari%' limit $start, $limit");
+			$query = $this->db->query("SELECT * from tb_user where not norek='".$q."' and nama like '%$cari%' or norek like '%$cari%' limit $start, $limit");
 		}else {
 			$query = $this->db->query("SELECT * from tb_user where not norek='".$q."' limit $start, $limit");
 		}

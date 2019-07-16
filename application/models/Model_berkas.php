@@ -20,7 +20,6 @@ class Model_berkas extends CI_Model {
        $config['upload_path'] = './asset/upload/berkas/perjanjian';
    }
 	 $config['allowed_types'] = 'jpg|png|jpeg|pdf';
-	 $config['max_size']  = '2048';
 	 $config['remove_space'] = TRUE;
 	 $this->load->library('upload', $config); // Load konfigurasi uploadnya
 	 if($this->upload->do_upload('foto')){ // Lakukan upload dan Cek jika proses upload berhasil
@@ -29,7 +28,7 @@ class Model_berkas extends CI_Model {
 		 return $return;
 	 }else{
 		 // Jika gagal :
-		 $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+		 $return = array('error' => $this->upload->display_errors());
 		 return $return;
 	 }
  }

@@ -46,19 +46,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-3">
-					<div class="card">
-						<div class="card-body" >
-							<form  action="<?= base_url().'update' ?>" method="post" enctype="multipart/form-data" >
-								<h4 class="a" for="exampleFormControlFile1" >Ubah Password : </h4>
-								<input type="password" name="pass1" placeholder="Password" required minlength="6">
-								<br>
-								<input type="password" name="pass2" placeholder="Konfirmasi Password" required minlength="6"><br>
-								<input type="submit" value="simpan" class="btn btn-primary" >
-							</form>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

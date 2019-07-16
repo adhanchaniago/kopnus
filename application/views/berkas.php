@@ -271,7 +271,7 @@
       </div>
 			<form  action="<?= base_url().'upload_kk/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload KK (Max 2 Mb) : </h4>
+					<h4 class="a" for="exampleFormControlFile1" >Upload KK : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">
@@ -290,7 +290,7 @@
       </div>
 			<form  action="<?= base_url().'upload_slip/'.$user_berkas['norek'] ?> ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload Slip Gaji (Max 2 Mb) : </h4>
+					<h4 class="a" for="exampleFormControlFile1" >Upload Slip Gaji : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">
@@ -309,7 +309,7 @@
       </div>
 			<form  action="<?= base_url().'upload_npwp/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload NPWP (Max 2 Mb) : </h4>
+					<h4 class="a" for="exampleFormControlFile1" >Upload NPWP : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">
@@ -328,7 +328,7 @@
       </div>
 			<form  action="<?= base_url().'upload_foto_diri/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload Foto Diri (Max 2 Mb) : </h4>
+					<h4 class="a" for="exampleFormControlFile1" >Upload Foto Diri : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">
@@ -347,7 +347,7 @@
       </div>
 			<form  action="<?= base_url().'upload_karip/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload Karip (Max 2 Mb) : </h4>
+					<h4 class="a" for="exampleFormControlFile1" >Upload Karip : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">
@@ -366,7 +366,7 @@
       </div>
 			<form  action="<?= base_url().'upload_ktp/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload KTP Suami Istri (Max 2 Mb) : </h4>
+					<h4 class="a" for="exampleFormControlFile1" >Upload KTP Suami Istri : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">
@@ -385,7 +385,7 @@
       </div>
 			<form  action="<?= base_url().'upload_sk/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload SK (Max 2 Mb) : </h4>
+					<h4 class="a" for="exampleFormControlFile1" >Upload SK : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">
@@ -404,7 +404,7 @@
       </div>
 			<form  action="<?= base_url().'upload_perjanjian/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload Perjanjian Kredit (Max 2 Mb) : </h4>
+					<h4 class="a" for="exampleFormControlFile1" >Upload Perjanjian Kredit : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
       </div>
 			<div class="modal-footer">

@@ -28,7 +28,7 @@
                       <a href="#" class="media">
                         <div class="media-left"> <span class="icon-wrap icon-circle bg-danger"> <i class="far fa-calendar-alt fa-lg"></i> </span> </div>
                         <div class="media-body">
-                          <div class="text-nowrap"><?= $p['nama']; ?> Angsuran Ke-<?= $p['id_angsuran']; ?> Telah Jatuh Tempo</div>
+                          <div class="text-nowrap"><?= $p['nama']; ?> Angsuran Ke-<?= $p['angsuran_ke']; ?> Telah Jatuh Tempo</div>
                         </div>
                       </a>
                     </li>

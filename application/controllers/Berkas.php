@@ -112,6 +112,7 @@ class Berkas extends CI_Controller {
 			redirect('/'); // Redirect kembali ke halaman awal / halaman view data
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
+			redirect('/berkas_admin/'.$id);
 		}
 	}
 	public function upload_ktp($id){

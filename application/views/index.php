@@ -47,7 +47,7 @@
                     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <div class="col-sm">
 
-                      <img src="" alt=""style="height:500px" width="100%">
+                      <img src="<?= base_url().'asset/img/logo.jpg' ?>" alt=""style="height:500px" width="100%">
                     </div>
                     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                 </div>
