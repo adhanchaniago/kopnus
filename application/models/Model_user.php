@@ -86,7 +86,7 @@ class Model_user extends CI_Model {
 	public function tampil_laporan(){
 		$tgl1 = $this->input->post('date1');
 		$tgl2 = $this->input->post('date2');
-		$query = $this->db->query("SELECT * from tb_user inner join tb_angsuran using(norek) where tanggal between '$tgl1' and '$tgl2'");
+		$query = $this->db->query("SELECT * from tb_user inner join tb_angsuran using(norek) where status = '0' and tanggal between '$tgl1' and '$tgl2'");
 		return $query->result_array();
 	}
 }

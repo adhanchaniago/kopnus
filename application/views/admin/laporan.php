@@ -15,7 +15,7 @@
 								<input type="date" class="form-control" name="date1">
 							</div>
 							<div class="form-group mar-hor"><h4>Sampai</h4></div>
-							<div class="form-group mar-rgt">
+							<div class="form-group mar-hor">
 								<input type="date" class="form-control" name="date2">
 							</div>
 							<button class="btn btn-info ml-2" type="submit">Tampilkan</button>

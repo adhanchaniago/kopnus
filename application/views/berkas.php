@@ -267,7 +267,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas Kartu Keluarga (KK) </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_kk/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_kk/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload KK : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
@@ -400,7 +400,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas Perjanjian Kredit</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_perjanjian/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_perjanjian/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload Perjanjian Kredit : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>

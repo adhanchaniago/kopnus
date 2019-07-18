@@ -19,7 +19,7 @@ $route['download/(:num)/(:any)']      = 'berkas/download/$1/$2';
 $route['angsuran']         						= 'angsuran';
 
 //Berkas
-$route['upload_kk/(:any)']        	 	= 'berkas/upload_kk/$1';
+$route['upload_kk/(:num)/(:any)']        	 	= 'berkas/upload_kk/$1/$2';
 $route['upload_slip/(:any)']        	 	= 'berkas/upload_slip/$1';
 $route['upload_npwp/(:any)']        	 	= 'berkas/upload_npwp/$1';
 $route['upload_foto_diri/(:any)']        	 	= 'berkas/upload_foto_diri/$1';

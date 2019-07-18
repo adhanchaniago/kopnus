@@ -19,6 +19,11 @@
 					<table class="table">
 						<tbody>
 							<tr>
+								<td><i class="fas fa-key	 ph-5"></i></td>
+								<td> Norek </td>
+								<td> <?= $user['norek']; ?> </td>
+							</tr>
+							<tr>
 								<td><i class="fas fa-map-marker-alt ph-5"></i></td>
 								<td> Alamat </td>
 								<td> <?= $user['alamat']; ?> </td>
