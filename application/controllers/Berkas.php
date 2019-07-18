@@ -73,7 +73,7 @@ class Berkas extends CI_Controller {
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
 	}
-	public function upload_slip($id){
+	public function upload_slip($id,$id1){
 		$id2 = "2";
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
@@ -88,7 +88,7 @@ class Berkas extends CI_Controller {
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
 	}
-	public function upload_npwp($id){
+	public function upload_npwp($id,$id1){
 		$id2 = "3";
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
@@ -103,7 +103,7 @@ class Berkas extends CI_Controller {
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
 	}
-	public function upload_foto_diri($id){
+	public function upload_foto_diri($id,$id1){
 		$id2 = "4";
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
@@ -119,7 +119,7 @@ class Berkas extends CI_Controller {
 		}
 	}
 
-	public function upload_karip($id){
+	public function upload_karip($id,$id1){
 		$id2 = "5";
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
@@ -135,7 +135,7 @@ class Berkas extends CI_Controller {
 			redirect('/berkas_admin/'.$id);
 		}
 	}
-	public function upload_ktp($id){
+	public function upload_ktp($id,$id1){
 		$id2 = "6";
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
@@ -150,7 +150,7 @@ class Berkas extends CI_Controller {
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
 	}
-	public function upload_sk($id){
+	public function upload_sk($id,$id1){
 		$id2 = "7";
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
@@ -165,7 +165,7 @@ class Berkas extends CI_Controller {
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
 	}
-	public function upload_perjanjian($id){
+	public function upload_perjanjian($id,$id1){
 		$id2 = "8";
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses

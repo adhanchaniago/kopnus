@@ -10,7 +10,7 @@ class Model_pinjam extends CI_Model {
 		return $this->db->get()->row()->total;
 	}
 	public function countangsuran(){
-	//	$this->db->select('SUM(angsuran) as total');
+		//	$this->db->select('SUM(angsuran) as total');
 		//$this->db->from('tb_angsuran');
 		//$this->db->where('status',"1")
 		//return $this->db->get()->row()->total;
@@ -39,20 +39,20 @@ class Model_pinjam extends CI_Model {
 		for ($i=0; $i < $d2 ; $i++) {
 			$tgl2 = date('Y-m-d', strtotime('+31 days', strtotime($tgl2)));
 			$data = [
-							'norek' => $this->input->post('id'),
-							'id_pinjaman' => $id_pinj,
-							'angsuran_ke' =>$z,
-							'angsuran' => $total,
-							'tanggal' => $tgl2,
-							'status' => '0'
-					];
-					$this->db->insert( 'tb_angsuran', $data );
-					$z++;
+				'norek' => $this->input->post('id'),
+				'id_pinjaman' => $id_pinj,
+				'angsuran_ke' =>$z,
+				'angsuran' => $total,
+				'tanggal' => $tgl2,
+				'status' => '0'
+			];
+			$this->db->insert( 'tb_angsuran', $data );
+			$z++;
 		}
 	}
 	public function list_pinjaman($id){
 		$query = $this->db->query("SELECT * from tb_pinjaman where norek='".$id."'");
-							return $query->result_array();
+		return $query->result_array();
 	}
 	public function list_angsuran($id,$id2){
 		$query = $this->db->query("SELECT * from tb_angsuran where norek='".$id2."' and id_pinjaman='".$id."'");
