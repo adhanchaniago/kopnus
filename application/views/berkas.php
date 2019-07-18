@@ -286,7 +286,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas Slip Gaji </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_slip/'.$user_berkas['norek'] ?> ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_slip/'.$user_berkas['norek'].'/'.$this->session->uid ?> ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload Slip Gaji : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
@@ -305,7 +305,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas MPWP </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_npwp/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_npwp/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload NPWP : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
@@ -324,7 +324,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas Foto Diri </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_foto_diri/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_foto_diri/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload Foto Diri : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
@@ -343,7 +343,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas Karip </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_karip/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_karip/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload Karip : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
@@ -362,7 +362,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas KTP Suami Istri </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_ktp/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_ktp/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload KTP Suami Istri : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
@@ -381,7 +381,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas SK </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_sk/'.$user_berkas['norek'] ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_sk/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload SK : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>

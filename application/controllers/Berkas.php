@@ -79,7 +79,11 @@ class Berkas extends CI_Controller {
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_slip($upload,$id);
-			redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			if ($id1 == '0000000001') {
+				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			}else {
+				redirect('/berkas/'); // Redirect kembali ke halaman awal / halaman view data
+			}
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
@@ -90,7 +94,11 @@ class Berkas extends CI_Controller {
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_npwp($upload,$id);
-			redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			if ($id1 == '0000000001') {
+				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			}else {
+				redirect('/berkas/'); // Redirect kembali ke halaman awal / halaman view data
+			}
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
@@ -101,7 +109,11 @@ class Berkas extends CI_Controller {
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_foto_diri($upload,$id);
-			redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			if ($id1 == '0000000001') {
+				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			}else {
+				redirect('/berkas/'); // Redirect kembali ke halaman awal / halaman view data
+			}
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
@@ -113,7 +125,11 @@ class Berkas extends CI_Controller {
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_karip($upload,$id);
-			redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			if ($id1 == '0000000001') {
+				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			}else {
+				redirect('/berkas/'); // Redirect kembali ke halaman awal / halaman view data
+			}
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 			redirect('/berkas_admin/'.$id);
@@ -125,7 +141,11 @@ class Berkas extends CI_Controller {
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_ktp($upload,$id);
-			redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			if ($id1 == '0000000001') {
+				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			}else {
+				redirect('/berkas/'); // Redirect kembali ke halaman awal / halaman view data
+			}
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
@@ -136,7 +156,11 @@ class Berkas extends CI_Controller {
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_sk($upload,$id);
-			redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			if ($id1 == '0000000001') {
+				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			}else {
+				redirect('/berkas/'); // Redirect kembali ke halaman awal / halaman view data
+			}
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
@@ -147,7 +171,11 @@ class Berkas extends CI_Controller {
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_perjanjian($upload,$id);
-			redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			if ($id1 == '0000000001') {
+				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
+			}else {
+				redirect('/berkas/'); // Redirect kembali ke halaman awal / halaman view data
+			}
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
