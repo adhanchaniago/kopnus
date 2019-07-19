@@ -20,7 +20,7 @@ $route['angsuran']         						= 'angsuran';
 
 //Berkas
 $route['upload_kk/(:num)/(:any)']        	 	= 'berkas/upload_kk/$1/$2';
-$route['upload_slip/(:num)/(:any)']        	= 'berkas/upload_slip$1/$2';
+$route['upload_slip/(:num)/(:any)']        	= 'berkas/upload_slip/$1/$2';
 $route['upload_npwp/(:num)/(:any)']        	= 'berkas/upload_npwp/$1/$2';
 $route['upload_foto_diri/(:num)/(:any)']    = 'berkas/upload_foto_diri/$1/$2';
 $route['upload_karip/(:num)/(:any)']        = 'berkas/upload_karip/$1/$2';
