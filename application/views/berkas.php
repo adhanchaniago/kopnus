@@ -14,9 +14,13 @@
 				<div class="col-lg-8">
 					<div class="panel">
 						<div class="panel-heading">
-							<?php if ($user['norek'] == "0000000001"){ ?>
-								<h3 class="panel-title">Berkas <?= $user_berkas['nama']; ?></h3>
-							<?php } ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<?php if ($user['norek'] == "0000000001"){ ?>
+										<h3 class="panel-title">Berkas <?= $user_berkas['nama']; ?></h3>
+									<?php } ?>
+								</div>
+							</div>
 						</div>
 						<div class="panel-body">
 							<table id="demo-foo-filtering" class="table mr-5 table-bordered table-hover toggle-circle" data-page-size="5">
@@ -226,30 +230,6 @@
 										</center>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<div class="media-object">Perjanjian Kredit</div>
-									</td>
-									<td><center>
-										<?php if ($perjanjian['status'] == "0") { ?>
-											<i class="far fa-check-circle fa-2x"></i>
-										<?php } ?></center>
-									</td>
-									<td>
-										<center>
-											<?php if ($this->session->uid == "0000000001"){ ?>
-												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#perjanjian"> Upload </button>
-											<?php } ?>
-										</center>
-									</td>
-									<td>
-										<center>
-											<?php if ($perjanjian['status'] == "0") { ?>
-												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/8' ?>'"> Download </button>
-											<?php } ?>
-										</center>
-									</td>
-								</tr>
 							</tbody>
 						</table><!-- End Foo Table - Filtering -->
 					</div>
@@ -384,25 +364,6 @@
 			<form  action="<?= base_url().'upload_sk/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload SK : </h4>
-					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
-				</div>
-				<div class="modal-footer">
-					<input type="submit" value="Register" class="btn btn-primary" >
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<div class="modal fade" id="perjanjian" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel">Upload Berkas Perjanjian Kredit</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			</div>
-			<form  action="<?= base_url().'upload_perjanjian/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
-				<div class="modal-body">
-					<h4 class="a" for="exampleFormControlFile1" >Upload Perjanjian Kredit : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
 				</div>
 				<div class="modal-footer">

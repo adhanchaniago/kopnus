@@ -12,14 +12,14 @@
 	width: 50%;
 }
 #tabeluser{
-	width: 65%;
+	width: 80%;
 }
 .btns{
 	margin-top: 10px;
 	margin-right: 30px;
 }
 .select{
-	width: 52%;
+	width: 56%;
 }
 .card-body {
     -webkit-box-flex: 1;
@@ -75,4 +75,10 @@ body{
 }
 .btn1{
 	height: 50px;
+}
+#tabelnasabah{
+	width: 65%;
+}
+#tabelangsuran{
+	width: 100%;
 }

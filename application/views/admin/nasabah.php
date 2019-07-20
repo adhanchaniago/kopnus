@@ -22,7 +22,7 @@
 								</div>
 							</div>
 						</form>
-						<table id="tabeluser" class="table table-sm table-bordered table-hover toggle-circle" data-page-size="10">
+						<table id="tabelnasabah" class="table table-sm table-bordered table-hover toggle-circle" data-page-size="10">
 							<thead>
 								<tr>
 									<th width="15%"><center>Norek</center></th>

@@ -28,7 +28,6 @@ class Berkas extends CI_Controller {
 			$data['foto_diri'] = $this->model_berkas->data_berkas_foto_diri($uid);
 			$data['ktp'] = $this->model_berkas->data_berkas_ktp($uid);
 			$data['sk'] = $this->model_berkas->data_berkas_sk($uid);
-			$data['perjanjian'] = $this->model_berkas->data_berkas_perjanjian($uid);
 			$this->load->template('berkas',$data);
 		}else {
 			redirect(base_url('login'));
@@ -52,7 +51,6 @@ class Berkas extends CI_Controller {
 			$data['foto_diri'] = $this->model_berkas->data_berkas_foto_diri($id);
 			$data['ktp'] = $this->model_berkas->data_berkas_ktp($id);
 			$data['sk'] = $this->model_berkas->data_berkas_sk($id);
-			$data['perjanjian'] = $this->model_berkas->data_berkas_perjanjian($id);
 			$this->load->template('berkas',$data);
 		}else {
 			redirect(base_url('login'));
@@ -165,17 +163,13 @@ class Berkas extends CI_Controller {
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
 	}
-	public function upload_perjanjian($id,$id1){
+	public function upload_perjanjian($id){
 		$id2 = "8";
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_perjanjian($upload,$id);
-			if ($id1 == '0000000001') {
-				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
-			}else {
-				redirect('/berkas/'); // Redirect kembali ke halaman awal / halaman view data
-			}
+				redirect('/nasabah/'); // Redirect kembali ke halaman awal / halaman view data
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}
@@ -212,7 +206,7 @@ class Berkas extends CI_Controller {
 			force_download($file, NULL);
 		}elseif ($id2 == "8") {
 			$fileinfo = $this->model_berkas->download($id,$id2);
-			$file = './asset/upload/berkas/perjanjian/'.$fileinfo	['sk'];
+			$file = './asset/upload/berkas/perjanjian/'.$fileinfo	['berkas'];
 			force_download($file, NULL);
 		}
 	}

@@ -36,6 +36,7 @@ class Angsuran extends CI_Controller {
 			$data['jumlah'] = $set->num_rows();
 			$data['usr_angsuran']=$this->model_user->dtl_ang($id2);
 			$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
+			$data['id']= $id;
 			$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
 			$this->load->template('admin/angsuran',$data);
 		}else {

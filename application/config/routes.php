@@ -26,9 +26,11 @@ $route['upload_foto_diri/(:num)/(:any)']    = 'berkas/upload_foto_diri/$1/$2';
 $route['upload_karip/(:num)/(:any)']        = 'berkas/upload_karip/$1/$2';
 $route['upload_ktp/(:num)/(:any)']        	= 'berkas/upload_ktp/$1/$2';
 $route['upload_sk/(:num)/(:any)']        	 	= 'berkas/upload_sk/$1/$2';
-$route['upload_perjanjian/(:num)/(:any)']   = 'berkas/upload_perjanjian/$1/$2';
 
-$route['berkas']							        = 'berkas';
+$route['upload_perjanjian/(:any)']   				= 'berkas/upload_perjanjian/$1';
+$route['berkas']							       				= 'berkas';
+
+$route['cetak/(:any)']							        = 'laporan/index/$1';
 
 $route['update']        	 						= 'home/upload';
 $route['profil']        	 						= 'home/profil';

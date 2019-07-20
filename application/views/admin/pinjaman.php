@@ -1,66 +1,57 @@
 <div class="boxed">
 	<div id="content-container">
 		<div class="pageheader hidden-xs">
-			<h3><a class="back" href="<?= base_url().'nasabah' ?>"><i class="fas fa-arrow-circle-left  fa-lg"></i></a>
-				Pinjaman <?= $dtlpinj['nama']; ?> </h3>
-			</div>
-			<div id="page-content">
-				<div class="col-lg-12">
-					<div class="panel">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-sm-6">
-									<h3 class="panel-title">Daftar Pinjaman</h3>
-								</div>
-								<div class="col-sm-3"></div>
-								<div class="col-sm-3">
-									<?php if (isset($berkas_kk, $berkas_slip,$berkas_npwp,$berkas_karip,$berkas_foto_diri,$berkas_ktp,$berkas_sk,$berkas_perjanjian)) {?>
-										<button class="btn btn-primary btn-sm btns" style="float:right;" type="button" onclick="location.href='<?php echo base_url().'input_pinjaman/'.$dtlpinj['norek']; ?>'">Input Pinjaman</button>
-									<?php } ?>
-								</div>
+			<h3><a class="back" href="<?= base_url().'nasabah' ?>"><i class="fas fa-arrow-circle-left  fa-lg"></i></a>Pinjaman <?= $dtlpinj['nama']; ?> </h3>
+		</div>
+		<div id="page-content">
+			<div class="col-lg-12">
+				<div class="panel">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-sm-6">
+								<h3 class="panel-title">Daftar Pinjaman</h3>
+							</div>
+							<div class="col-sm-3"></div>
+							<div class="col-sm-3">
+								<?php if (isset($berkas_kk, $berkas_slip,$berkas_npwp,$berkas_karip,$berkas_foto_diri,$berkas_ktp,$berkas_sk)) {?>
+									<button class="btn btn-primary btn-sm btns" style="float:right;" type="button" onclick="location.href='<?php echo base_url().'input_pinjaman/'.$dtlpinj['norek']; ?>'">Input Pinjaman</button>
+								<?php } ?>
 							</div>
 						</div>
-						<div class="panel-body">
-							<table id="tabeluser" class="table table-bordered table-hover toggle-circle" data-page-size="10">
-								<thead>
+					</div>
+					<div class="panel-body">
+						<table id="tabeluser" class="table table-bordered table-hover toggle-circle" data-page-size="10">
+							<thead>
+								<tr>
+									<th><center>No</center></th>
+									<th style="width:20%">Pinjaman</th>
+									<th data-hide="phone, tablet"><center>Tanggal Pengambilan</center></th>
+									<th data-hide="phone, tablet"><center>Status</center></th>
+									<th><center>Angsuran</center></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $i=1; foreach ($listpinj as $h) :?>
 									<tr>
-										<th>No</th>
-										<th data-toggle="true">Pinjaman</th>
-										<th data-hide="phone, tablet"><center>Tanggal Pengambilan</center></th>
-										<th data-hide="phone, tablet"><center>Status</center></th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php $i=1; foreach ($listpinj as $h) :?>
-										<tr>
-											<td><?= $i; ?></td>
-											<td style="width:40%;">Rp.<?php echo number_format($h['pinjaman'], 0, ".", ".") ?></td>
-											<td style="width:30%;"><center><?php echo tgl_indo($h['tanggal']); ?></center></td>
-											<td style="width:30%;"><center>
-												<?php $st = $h['status'];?>
-												<?php if ($st == "0"){ ?>
-													Belum Lunas
-												<?php }else{ ?>
-													Lunas
-												<?php } ?>
-											</center></td>
-											<td><center>
+										<td><center><?= $i; ?></center></td>
+										<td>Rp.<?php echo number_format($h['pinjaman'], 0, ".", ".") ?></td>
+										<td><center><?php echo tgl_indo($h['tanggal']); ?></center></td>
+										<td><center>
+											<?php $st = $h['status'];?>
+											<?php if ($st == "0"){ ?>
+												Belum Lunas
+											<?php }else{ ?>
+												Lunas
+											<?php } ?>
+										</center></td>
+										<td>
+											<center>
 												<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url().'angsuran_admin/'. $h['id_pinjaman'].'/'. $dtlpinj['norek']; ?>'">Lihat</button>
 											</center>
 										</td>
 									</tr>
 									<?php $i++; endforeach; ?>
 								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="6">
-											<div class="text-right">
-												<ul class="pagination"></ul>
-											</div>
-										</td>
-									</tr>
-								</tfoot>
 							</table><!-- End Foo Table - Filtering -->
 						</div>
 					</div>

@@ -4,13 +4,25 @@
 			<h3><a class="back" href="<?= base_url().'pinjaman_admin/'.$usr_angsuran['norek'] ?>"><i class="fas fa-arrow-circle-left  fa-lg"></i></a>Angsuran <?= $usr_angsuran['nama']; ?></h3>
 		</div>
 		<div id="page-content">
-			<div class="col-lg-12">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">Pinjaman Rp.<?php echo number_format($list_pinjaman['pinjaman'], 0, ".", ".") ?></h3>
+						<div class="row">
+							<div class="col-sm-6">
+								<h3 class="panel-title">Pinjaman Rp.<?php echo number_format($list_pinjaman['pinjaman'], 0, ".", ".") ?></h3>
+							</div>
+							<div class="col-sm-3"></div>
+							<div class="col-sm-3">
+								<div class="row">
+									<button class="btn btn-info btns" type="button" name="button1" data-toggle="modal" data-target="#berkas"> Upload </button>
+									<button class="btn btn-success btns" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$id."/8" ?>'"> Download </button>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="panel-body">
-						<table id="tabeluser" class="table table-bordered table-hover toggle-circle" data-page-size="10">
+						<table id="tabelangsuran" class="table table-bordered table-hover toggle-circle" data-page-size="10">
 							<thead>
 								<tr>
 									<th>No</th>
@@ -46,6 +58,25 @@
 					</div>
 				</div>
 			</div><!--End page content-->
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="berkas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Upload Berkas Perjanjian </h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<form  action="<?= base_url().'upload_perjanjian/'.$id; ?>" method="post" enctype="multipart/form-data" >
+				<div class="modal-body">
+					<h4 class="a" for="exampleFormControlFile1" >Upload Perjanjian : </h4>
+					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="Register" class="btn btn-primary" >
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

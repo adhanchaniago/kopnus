@@ -18,6 +18,7 @@
 										<th data-toggle="true">Pinjaman</th>
 										<th data-hide="phone, tablet"><center>Tanggal Pengambilan</center></th>
 										<th data-hide="phone, tablet"><center>Status</center></th>
+										<th>Angsuran</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -25,9 +26,9 @@
 									<?php $i=1; foreach ($pinjaman as $l):?>
 										<tr>
 											<td><?= $i; ?></td>
-											<td style="width:40%;">Rp.<?php echo number_format($l['pinjaman'], 0, ".", ".") ?></td>
-											<td style="width:30%;"><center><?php echo tgl_indo($l['tanggal']); ?></center></td>
-											<td style="width:30%;"><center><?php $st = $l['status'];?>
+											<td style="width:35%;">Rp.<?php echo number_format($l['pinjaman'], 0, ".", ".") ?></td>
+											<td style="width:25%;"><center><?php echo tgl_indo($l['tanggal']); ?></center></td>
+											<td style="width:25%;"><center><?php $st = $l['status'];?>
 												<?php if ($st == "0"){ ?>
 													Belum Lunas
 												<?php }else{ ?>
@@ -37,19 +38,12 @@
 													<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url().'angsuran/'. $l['id_pinjaman'].'/'. $this->session->uid; ?>'">Lihat</button>
 												</center>
 											</td>
+											<td><center>
+												<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url(); ?>'">Download</button>
+											</center></td>
 										</tr>
-										<?php $i++;
-									endforeach; ?>
+										<?php $i++;endforeach; ?>
 								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="6">
-											<div class="text-right">
-												<ul class="pagination"></ul>
-											</div>
-										</td>
-									</tr>
-								</tfoot>
 							</table><!-- End Foo Table - Filtering -->
 						</div>
 					</div>

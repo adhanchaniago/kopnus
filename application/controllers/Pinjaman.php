@@ -57,7 +57,6 @@ class Pinjaman extends CI_Controller {
 			$data['berkas_ktp'] = $this->model_berkas->cek_berkas_ktp($id);
 			$data['berkas_npwp'] = $this->model_berkas->cek_berkas_npwp($id);
 			$data['berkas_sk'] = $this->model_berkas->cek_berkas_sk($id);
-			$data['berkas_perjanjian'] = $this->model_berkas->cek_berkas_perjanjian($id);
 			$data['jumlah'] = $set->num_rows();
 			$data['dtlpinj']= $this->model_user->dtlpinj($id);
 			$data['listpinj'] =$this->model_pinjam->list_pinjaman($id);
