@@ -204,22 +204,22 @@ class Model_berkas extends CI_Model {
     }
   }
   public function save_perjanjian($upload,$id){
-      $query = $this->db->query("SELECT berkas from tb_pinjaman where id_pinjaman='".$id."'");
-      $i2 = $query->row_array();
-      if (isset($i2)) {
-        $this->db->where('id_pinjaman',$id);
-        $query = $this->db->get('tb_pinjaman');
-        $row = $query->row();
-        unlink("./asset/upload/berkas/perjanjian/$row->berkas");
-        $data = array('berkas' => $upload['file']['file_name']);
-        $this->db->where('id_pinjaman',$id);
-        $this->db->update( 'tb_pinjaman', $data );
-      }else {
-        $data = array('berkas' => $upload['file']['file_name']);
-        $this->db->where('id_pinjaman',$id);
-        $this->db->update( 'tb_pinjaman', $data );
-      }
+    $query = $this->db->query("SELECT berkas from tb_pinjaman where id_pinjaman='".$id."'");
+    $i2 = $query->row_array();
+    if (isset($i2)) {
+      $this->db->where('id_pinjaman',$id);
+      $query = $this->db->get('tb_pinjaman');
+      $row = $query->row();
+      unlink("./asset/upload/berkas/perjanjian/$row->berkas");
+      $data = array('berkas' => $upload['file']['file_name']);
+      $this->db->where('id_pinjaman',$id);
+      $this->db->update( 'tb_pinjaman', $data );
+    }else {
+      $data = array('berkas' => $upload['file']['file_name']);
+      $this->db->where('id_pinjaman',$id);
+      $this->db->update( 'tb_pinjaman', $data );
     }
+  }
   function download($id,$id2){
     if ($id2 == "1") {
       $query = $this->db->query("SELECT * from tb_berkas_kk where norek='".$id."'");

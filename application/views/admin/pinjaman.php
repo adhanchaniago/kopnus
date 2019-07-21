@@ -46,7 +46,7 @@
 										</center></td>
 										<td>
 											<center>
-												<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url().'angsuran_admin/'. $h['id_pinjaman'].'/'. $dtlpinj['norek']; ?>'">Lihat</button>
+												<button class="btn btn-primary btn-sm" style="width:80%" type="button" onclick="location.href='<?= base_url().'angsuran_admin/'. $h['id_pinjaman'].'/'. $dtlpinj['norek']; ?>'">Lihat</button>
 											</center>
 										</td>
 									</tr>

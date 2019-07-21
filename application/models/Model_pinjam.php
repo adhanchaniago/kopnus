@@ -49,7 +49,6 @@ class Model_pinjam extends CI_Model {
 			$this->db->insert( 'tb_angsuran', $data );
 			$z++;
 		}
-		
 	}
 	public function list_pinjaman($id){
 		$query = $this->db->query("SELECT * from tb_pinjaman where norek='".$id."'");

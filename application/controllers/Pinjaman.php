@@ -66,7 +66,11 @@ class Pinjaman extends CI_Controller {
 		}
 	}
 	public function simpan($id){
+		$this->session->kali = $this->input->post('angsuran_kali');
 		$this->model_pinjam->simpan($id);
-		redirect('/nasabah');
+		$query = $this->db->query("SELECT id_pinjaman FROM tb_pinjaman where norek='".$id."' ORDER BY id_pinjaman DESC LIMIT 1");
+		$row = $query->row();
+		$data1=$row->id_pinjaman;
+		redirect('/cetak/'.$data1);
 	}
 }
