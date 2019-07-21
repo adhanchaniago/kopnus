@@ -18,6 +18,8 @@ class Angsuran extends CI_Controller {
 			$status = '0';
 			$set = $this->db->query("SELECT * from tb_angsuran where norek='".$uid."' and status='".$status."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 			$data['jumlah'] = $set->num_rows();
+			$set1 = $this->db->query("SELECT * from tb_pinjaman where id_pinjaman='".$id."' ")->row();
+			$data['berkas'] = $set1->berkas;
 			$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
 			$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
 			$this->load->template('angsuran',$data);
@@ -34,6 +36,8 @@ class Angsuran extends CI_Controller {
 			$status = '0';
 			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
+			$set1 = $this->db->query("SELECT * from tb_pinjaman where id_pinjaman='".$id."' ")->row();
+			$data['berkas'] = $set1->berkas;
 			$data['usr_angsuran']=$this->model_user->dtl_ang($id2);
 			$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
 			$data['id']= $id;

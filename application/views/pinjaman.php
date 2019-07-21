@@ -15,11 +15,10 @@
 								<thead>
 									<tr>
 										<th>No</th>
-										<th data-toggle="true">Pinjaman</th>
-										<th data-hide="phone, tablet"><center>Tanggal Pengambilan</center></th>
-										<th data-hide="phone, tablet"><center>Status</center></th>
-										<th>Angsuran</th>
-										<th></th>
+										<th>Pinjaman</th>
+										<th><center>Tanggal Pengambilan</center></th>
+										<th><center>Status</center></th>
+										<th><center>Angsuran</center></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -38,9 +37,6 @@
 													<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url().'angsuran/'. $l['id_pinjaman'].'/'. $this->session->uid; ?>'">Lihat</button>
 												</center>
 											</td>
-											<td><center>
-												<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?= base_url(); ?>'">Download</button>
-											</center></td>
 										</tr>
 										<?php $i++;endforeach; ?>
 								</tbody>

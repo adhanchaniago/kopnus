@@ -16,7 +16,9 @@
 							<div class="col-sm-3">
 								<div class="row">
 									<button class="btn btn-info btns" type="button" name="button1" data-toggle="modal" data-target="#berkas"> Upload </button>
-									<button class="btn btn-success btns" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$id."/8" ?>'"> Download </button>
+									<?php if (!empty($berkas)): ?>
+										<button class="btn btn-success btns" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$id."/8" ?>'"> Download </button>
+									<?php endif; ?>
 								</div>
 							</div>
 						</div>

@@ -82,3 +82,7 @@ body{
 #tabelangsuran{
 	width: 100%;
 }
+.btn-download{
+	position: relative;
+	left: 0;
+}

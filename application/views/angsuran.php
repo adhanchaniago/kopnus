@@ -5,13 +5,22 @@
 		</div>
 		<div id="page-content">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-9">
 					<div class="panel">
 						<div class="panel-heading">
-							<h3 class="panel-title">Pinjaman Rp.<?php echo number_format($list_pinjaman['pinjaman'], 0, ".", ".") ?></h3>
+							<div class="row">
+								<div class="col-sm-6">
+									<h3 class="panel-title">Pinjaman Rp.<?php echo number_format($list_pinjaman['pinjaman'], 0, ".", ".") ?></h3>
+								</div>
+								<div class="col-sm-6">
+									<?php if (!empty($berkas)): ?>
+										<button class="btn btn-success btn-download" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$id."/8" ?>'"> Download </button>
+									<?php endif; ?>
+								</div>
+							</div>
 						</div>
 						<div class="panel-body">
-							<table id="tabeluser" class="table table-bordered table-hover toggle-circle" data-page-size="10">
+							<table id="tabelangsuran" class="table table-bordered table-hover toggle-circle" data-page-size="10">
 								<thead>
 									<tr>
 										<th>No</th>
