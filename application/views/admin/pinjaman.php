@@ -27,6 +27,7 @@
 									<th style="width:20%">Pinjaman</th>
 									<th data-hide="phone, tablet"><center>Tanggal Pengambilan</center></th>
 									<th data-hide="phone, tablet"><center>Status</center></th>
+									<th data-hide="phone, tablet"><center>Yang Sudah Dibayar</center></th>
 									<th><center>Angsuran</center></th>
 								</tr>
 							</thead>
@@ -34,8 +35,8 @@
 								<?php $i=1; foreach ($listpinj as $h) :?>
 									<tr>
 										<td><center><?= $i; ?></center></td>
-										<td>Rp.<?php echo number_format($h['pinjaman'], 0, ".", ".") ?></td>
-										<td><center><?php echo tgl_indo($h['tanggal']); ?></center></td>
+										<td>Rp.<?= number_format($h['pinjaman'], 0, ".", ".") ?></td>
+										<td><center><?= tgl_indo($h['tanggal']); ?></center></td>
 										<td><center>
 											<?php $st = $h['status'];?>
 											<?php if ($st == "0"){ ?>
@@ -44,6 +45,10 @@
 												Lunas
 											<?php } ?>
 										</center></td>
+										<td><center>
+											Rp.<?= number_format($h['bayar'], 0, ".", ".") ?>
+											</center>
+										</td>
 										<td>
 											<center>
 												<button class="btn btn-primary btn-sm" style="width:80%" type="button" onclick="location.href='<?= base_url().'angsuran_admin/'. $h['id_pinjaman'].'/'. $dtlpinj['norek']; ?>'">Lihat</button>

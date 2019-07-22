@@ -62,6 +62,10 @@ class Model_pinjam extends CI_Model {
 		$query = $this->db->query("SELECT * from tb_pinjaman where norek='".$id2."' and id_pinjaman='".$id."'");
 		return $query->row_array();
 	}
+	function sisa($id){
+		$query = $this->db->query("SELECT SUM(angsuran) as total from tb_angsuran where id_pinjaman='".$id."' and status='0'");
+		return $query->row_array();
+	}
 	function last_id_pinjaman(){
 		$query = $this->db->query("SELECT id_pinjaman FROM tb_pinjaman ORDER BY id_pinjaman DESC LIMIT 1");
 		return $query;
@@ -71,6 +75,12 @@ class Model_pinjam extends CI_Model {
 		$array = array('id_angsuran' => $id, 'id_pinjaman' => $id2);
 		$this->db->where($array);
 		$this->db->update( 'tb_angsuran', $data );
+		$query = $this->db->query("SELECT sum(angsuran) as total FROM tb_angsuran where id_pinjaman='".$id2."' and status='1'");
+		$row = $query->row();
+		$data1=$row->total;
+		$data = array ('bayar' => $data1);
+		$this->db->where('id_pinjaman', $id2);
+		$this->db->update( 'tb_pinjaman', $data );
 	}
 	public function pelunasan($id2){
 		$data = array ('status' => '1');

@@ -9,10 +9,10 @@
 				<div class="panel">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-sm-6">
-								<h3 class="panel-title">Pinjaman Rp.<?php echo number_format($list_pinjaman['pinjaman'], 0, ".", ".") ?></h3>
+							<div class="col-sm-5">
+								<h3 class="panel-title">Pinjaman Rp.<?= number_format($list_pinjaman['pinjaman'], 0, ".", ".") ?></h3>
 							</div>
-							<div class="col-sm-3"></div>
+							<div class="col-sm-4"><h3 class="panel-title">Sisa Rp.<?= number_format($sisa['total'], 0, ".", ".") ?></h3></div>
 							<div class="col-sm-3">
 								<div class="row">
 									<button class="btn btn-info btns" type="button" name="button1" data-toggle="modal" data-target="#berkas"> Upload </button>
