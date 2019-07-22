@@ -29,7 +29,7 @@ class laporan extends CI_Controller
 		$alamat = $ssd->alamat;
 		$angsuran = $ssd->angsuran;
 		$jangka = $this->session->kali;
-		$ter = $this->terbilang($angsuran);
+		$ter = $this->kekata($angsuran);
 		$pdf->SetLeftMargin(28);
 		$pdf->SetRightMargin(28);
 		$pdf->cell(200,10,'Yang bertanda tangan dibawah ini :',0,1);
@@ -103,26 +103,33 @@ class laporan extends CI_Controller
 		$pdf->cell(50,6,'(_________________)',0,0);
 		$pdf->Output('Perjanjian Kredit '.$upper.'.pdf','D');
 	}
-	public function terbilang($nilai) {
-		$huruf = array( "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas");
-		if($nilai==0){
-			return "Kosong";
-		}elseif ($nilai < 12&$nilai!=0) {
-			return "" . $huruf[$nilai];
-		} elseif ($nilai < 20) {
-			return $this->terbilang($nilai - 10) . " Belas ";
-		} elseif ($nilai < 100) {
-			return $this->terbilang($nilai / 10) . " Puluh " . $this->terbilang($nilai % 10);
-		} elseif ($nilai < 200) {
-			return " Seratus " . $this->terbilang($nilai - 100);
-		} elseif ($nilai < 1000) {
-			return $this->terbilang($nilai / 100) . " Ratus " . $this->terbilang($nilai % 100);
-		} elseif ($nilai < 2000) {
-			return " Seribu " . $this->terbilang($nilai - 1000);
-		} elseif ($nilai < 1000000) {
-			return $this->terbilang($nilai / 1000) . " Ribu " . $this->terbilang($nilai % 1000);
-		} elseif ($nilai < 1000000000) {
-			return $this->terbilang($nilai / 1000000) . " Juta " . $this->terbilang($nilai % 1000000);
-		}
+	public function kekata($x){
+	    $x=abs($x);
+	    $angka=array("","satu","dua","tiga","empat","lima",
+	    "enam","tujuh","delapan","sembilan","sepuluh","sebelas");
+	    $temp="";
+	    if($x<12){
+	        $temp=" ".$angka[$x];
+	    }elseif($x<20){
+	        $temp=$this->kekata($x-10)." belas";
+	    }elseif($x<100){
+	        $temp=$this->kekata($x/10)." puluh".$this->kekata($x%10);
+	    }elseif($x<200){
+	        $temp=" seratus".$this->kekata($x-100);
+	    }elseif($x<1000){
+	        $temp=$this->kekata($x/100)." ratus".$this->kekata($x%100);
+	    }elseif($x<2000){
+	        $temp=" seribu".$this->kekata($x-1000);
+	    }elseif($x<1000000){
+	        $temp=$this->kekata($x/1000)." ribu".$this->kekata($x%1000);
+	    }elseif($x<1000000000){
+	        $temp= $this->kekata($x/1000000)." juta".$this->kekata($x%1000000);
+	    }elseif($x<1000000000000){
+	        $temp=$this->kekata($x/1000000000)." milyar".$this->kekata(fmod($x,1000000000));
+	    }elseif($x<1000000000000000){
+	        $temp=$this->kekata($x/1000000000000)." trilyun".$this->kekata(fmod($x,1000000000000));
+	    }
+	        return$temp;
 	}
+
 }
