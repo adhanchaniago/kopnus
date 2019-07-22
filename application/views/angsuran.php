@@ -12,10 +12,10 @@
 								<div class="col-sm-4">
 									<h3 class="panel-title">Pinjaman Rp.<?php echo number_format($list_pinjaman['pinjaman'], 0, ".", ".") ?></h3>
 								</div>
-								<div class="col-sm-4"><h3 class="panel-title">Sisa Rp.<?= number_format($sisa['total'], 0, ".", ".") ?></h3></div>
-								<div class="col-sm-5">
+								<div class="col-sm-6"><h3 class="panel-title">Sisa Rp.<?= number_format($sisa['total'], 0, ".", ".") ?>    Norek <?= $this->session->uid; ?></h3></div>
+								<div class="col-sm-2">
 									<?php if (!empty($berkas)): ?>
-										<button class="btn btn-success btn-download" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$id."/8" ?>'"> Download </button>
+										<button class="btn btn-success btn-download btns" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$id."/8" ?>'"> Download </button>
 									<?php endif; ?>
 								</div>
 							</div>
