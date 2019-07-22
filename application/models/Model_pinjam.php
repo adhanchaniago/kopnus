@@ -39,7 +39,7 @@ class Model_pinjam extends CI_Model {
 		$id_pinj = $data1;
 		$z=1;
 		for ($i=0; $i < $d2 ; $i++) {
-			$tgl2 = date('Y-m-d', strtotime('+31 days', strtotime($tgl2)));
+			$tgl2 = date('Y-m-d', strtotime('+1 month', strtotime($tgl2)));
 			$data = [
 				'norek' => $this->input->post('id'),
 				'id_pinjaman' => $id_pinj,
