@@ -20,6 +20,7 @@ class Angsuran extends CI_Controller {
 			$data['jumlah'] = $set->num_rows();
 			$set1 = $this->db->query("SELECT * from tb_pinjaman where id_pinjaman='".$id."' ")->row();
 			$data['berkas'] = $set1->berkas;
+			$data['id']= $id;
 			$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
 			$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
 			$this->load->template('angsuran',$data);
