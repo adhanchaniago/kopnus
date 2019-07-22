@@ -23,6 +23,7 @@ class Angsuran extends CI_Controller {
 			$data['id']= $id;
 			$data['list_angsuran']=$this->model_pinjam->list_angsuran($id,$id2);
 			$data['list_pinjaman']=$this->model_pinjam->list_pinj1($id,$id2);
+			$data['sisa']=$this->model_pinjam->sisa($id);
 			$this->load->template('angsuran',$data);
 		}else {
 			redirect(base_url('login'));

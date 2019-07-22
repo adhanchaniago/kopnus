@@ -9,10 +9,11 @@
 					<div class="panel">
 						<div class="panel-heading">
 							<div class="row">
-								<div class="col-sm-6">
+								<div class="col-sm-4">
 									<h3 class="panel-title">Pinjaman Rp.<?php echo number_format($list_pinjaman['pinjaman'], 0, ".", ".") ?></h3>
 								</div>
-								<div class="col-sm-6">
+								<div class="col-sm-4"><h3 class="panel-title">Sisa Rp.<?= number_format($sisa['total'], 0, ".", ".") ?></h3></div>
+								<div class="col-sm-5">
 									<?php if (!empty($berkas)): ?>
 										<button class="btn btn-success btn-download" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$id."/8" ?>'"> Download </button>
 									<?php endif; ?>
