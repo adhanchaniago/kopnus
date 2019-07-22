@@ -17,7 +17,7 @@
 										<th>No</th>
 										<th>Pinjaman</th>
 										<th><center>Tanggal Pengambilan</center></th>
-										<th><center>Angsuran</center></th>
+										<th><center>Yang sudah dibayar</center></th>
 										<th><center>Status</center></th>
 										<th></th>
 									</tr>
