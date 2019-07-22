@@ -22,12 +22,14 @@ class Model_pinjam extends CI_Model {
 		$d2 = $this->input->post('angsuran_kali');
 		$tgl1 = date('Y-m-d');
 		$total = ($d1 * 0.01 * $d2 + $d1)/$d2;
+		$sisa = $total * $d2;
 		$tgl2 = $tgl1;
 		$data = [
 			'norek' => $this->input->post('id'),
 			'pinjaman' => $this->input->post('pinjaman'),
 			'tanggal' => $tgl1,
 			'angsuran' => $total,
+			'sisa' => $sisa,
 			'status' => "0"
 		];
 		$this->db->insert( 'tb_pinjaman', $data );
@@ -75,10 +77,15 @@ class Model_pinjam extends CI_Model {
 		$array = array('id_angsuran' => $id, 'id_pinjaman' => $id2);
 		$this->db->where($array);
 		$this->db->update( 'tb_angsuran', $data );
-		$query = $this->db->query("SELECT sum(angsuran) as total FROM tb_angsuran where id_pinjaman='".$id2."' and status='1'");
+		$query = $this->db->query("SELECT angsuran, sum(angsuran) as total FROM tb_angsuran where id_pinjaman='".$id2."' and status='1'");
 		$row = $query->row();
 		$data1=$row->total;
-		$data = array ('bayar' => $data1);
+		$data2 = $row->angsuran;
+		$query = $this->db->query("SELECT sisa FROM tb_pinjaman where id_pinjaman='".$id2."'");
+		$row = $query->row();
+		$gb=$row->sisa;
+		$ttl= $gb-$data2;
+		$data = array ('bayar' => $data1, 'sisa' => $ttl);
 		$this->db->where('id_pinjaman', $id2);
 		$this->db->update( 'tb_pinjaman', $data );
 	}

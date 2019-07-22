@@ -156,7 +156,7 @@ class Home extends CI_Controller {
 			$status = '0';
 			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
-			$jth_tempo = $this->db->query("SELECT * from tb_angsuran inner join tb_user using (norek) where status='".$status."' and tanggal <= now() ");
+			$jth_tempo = $this->db->query("SELECT tb_user.norek,nama,angsuran_ke,tb_angsuran.angsuran,tb_angsuran.tanggal,tb_pinjaman.sisa from tb_angsuran inner join tb_user using (norek) inner join tb_pinjaman using (id_pinjaman) where tb_angsuran.status='".$status."' and tb_angsuran.tanggal <= now() ");
 			$data['laporan'] =$jth_tempo->result_array();
 			$this->load->template('admin/laporan', $data);
 		}else {

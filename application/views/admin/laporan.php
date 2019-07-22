@@ -30,7 +30,7 @@
 											<th><center>Angsuran Ke-</center></th>
 											<th><center>Biaya Angsuran</center></th>
 											<th><center>Tanggal Angsuran</center></th>
-											<th><center>Status</center></th>
+											<th><center>Sisa Angsuran</center></th>
 										</tr>
 									</thead>
 									<?php if (!empty($laporan)) {
@@ -42,10 +42,7 @@
 											<td><center>Ke-<?= $l['angsuran_ke']; ?></center></td>
 											<td><center>Rp.<?= number_format($l['angsuran'], 0, ".", ".") ?></center></td>
 											<td><center><?= tgl_indo($l['tanggal']); ?></center></td>
-											<td><center><?php $st = $l['status'];?>
-												<?php if ($st == "0"){ ?>
-													Belum Lunas
-												<?php } ?></center></td>
+											<td><center>Rp.<?= number_format($l['sisa'], 0, ".", ".") ?></center></td>
 											</tr>
 										</tbody>
 										<?php $i++; endforeach; } ?>
