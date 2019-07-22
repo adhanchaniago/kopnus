@@ -28,8 +28,13 @@ class laporan extends CI_Controller
 		$upper = strtoupper($ssd->nama);
 		$alamat = $ssd->alamat;
 		$angsuran = $ssd->angsuran;
+		$tanggal= $this->tgl_indo($ssd->tanggal);
 		$jangka = $this->session->kali;
+		$data = $this->db->query("SELECT * FROM tb_angsuran WHERE id_pinjaman = '" .$id. "' and angsuran_ke='1'");
+		$ssd1 = $data->row();
+		$ang1= $this->tgl_indo($ssd1->tanggal);
 		$ter = $this->kekata($angsuran);
+		$tgl = $this->tgl_indo(date('d-m-Y'));
 		$pdf->SetLeftMargin(28);
 		$pdf->SetRightMargin(28);
 		$pdf->cell(200,10,'Yang bertanda tangan dibawah ini :',0,1);
@@ -42,32 +47,45 @@ class laporan extends CI_Controller
 		$pdf->Ln(4);
 		$pdf->Cell(155,6,'Pasal 1',0,1,'C');
 		$pdf->Cell(155,6,'JUMLAH MAKSIMUM KREDIT',0,1,'C');
-		$pdf->multicell(0,6,'Jumlah maksimum kredit yang menjadi objek perjanjian ini adalah uang senilai Rp 600.000.000.',0,'J',false);
+		$pdf->multicell(0,6,'Jumlah maksimum kredit yang menjadi objek perjanjian ini adalah uang senilai Rp 250.000.000,00(dua ratus lima puluh juta).',0,'J',false);
 		$pdf->Ln(4);
 		$pdf->cell(155,6,'Pasal 2',0,1,'C');
-		$pdf->Cell(155,6,'JANGKA WAKTU KREDIT',0,1,'C');
-		$pdf->multicell(0,6,'Jangka waktu kredit dalam perjanjian ini adalah '.$jangka.' bulan yang telah di sepakati oleh kedua belah pihak. DEBITOR wajib melakukan pelunasan pembiayaan kepada Koperasi Nusantara selambat-lambatnya pada saat berakhirnya jangka waktu pembiayaan.',0,'J',false);
-		$pdf->Ln(4);
-		$pdf->cell(155,6,'Pasal 3',0,1,'C');
 		$pdf->Cell(155,6,'CARA PEMBERIAN KREDIT',0,1,'C');
 		$pdf->multicell(0,6,'Pembayaran Utang Wajib dilakukan oleh DEBITOR dalam mata uang yang sama dengan Fasilitas Kredit yang diberika oleh Koperasi Nusantara dan harus sudah efektif diterimaoleh Koperasi Nusantara di kantor cabang di Jl.Selamet Riyadi No.10 selambat-lambatnya pukul 17:00 (tujuh belas) waktu setempat.',0,'J',false);
 		$pdf->Ln(4);
-		$pdf->cell(155,6,'Pasal 4',0,1,'C');
+		$pdf->cell(155,6,'Pasal 3',0,1,'C');
 		$pdf->Cell(155,6,'PELUNASAN KREDIT',0,1,'C');
 		$pdf->multicell(0,6,'Kredit dilunasi oleh DEBITOR dengan cicilan perbulan sejumlah yang disepakati kedua belah pihak selama jangka waktu kredit sesuai pasal 2 perjanjian ini.',0,'J',false);
 		$pdf->Ln(4);
-		$pdf->cell(155,6,'Pasal 5',0,1,'C');
+		$pdf->cell(155,6,'Pasal 4',0,1,'C');
 		$pdf->Cell(155,6,'HAK DAN KEWAJIBAN PARA PIHAK',0,1,'C');
-		$pdf->multicell(0,6,'Koperasi Nusantara wajib memberikan kredit kepada DEBITOR sesuai jumlah yang diperjanjikan, dan berhak mendapatkan kembali pelunasannya.',0,'J',false);
+		$pdf->multicell(0,6,'KOPERASI NUSANTARA wajib memberikan kredit kepada DEBITOR sesuai jumlah yang diperjanjikan, dan berhak mendapatkan kembali pelunasannya.',0,'J',false);
 		$pdf->Ln(2);
-		$pdf->multicell(0,6,'DEBITOR berhak mendapatkan kredit dari Koperasi Nusantara sesuai jumlah yang diperjanjikan, dan wajib melunasi kredit yang dipinjam beserta bunga.',0,'J',false);
-		$pdf->Ln(4);
-		$pdf->cell(155,6,'Pasal 6',0,1,'C');
-		$pdf->Cell(155,6,'FASILITAS PEMBIAYAAN',0,1,'C');
+		$pdf->multicell(0,6,'DEBITOR berhak mendapatkan kredit dari KOPERASI NUSANTARA sesuai jumlah yang diperjanjikan, dan wajib melunasi kredit yang dipinjam beserta bunga.',0,'J',false);
+		$pdf->Ln(20);
+		$pdf->cell(155,6,'Pasal 5',0,1,'C');
+		$pdf->Cell(155,6,'FASILITAS KREDIT',0,1,'C');
 		$pdf->multicell(0,6,'Atas setiap pinajaman uag yang terutan berdasarkan perjanjian kredit, DEBITOR wajib membayar biaya biaya sebagai berikut:',0,'J',false);
 		$pdf->multicell(0,6,'1. Biaya administrasi pembiayaan sebesar Rp 0 (nol Rupiah)',0,'J',false);
-		$pdf->multicell(0,6,'2.	Penagihan angsuran perbulan sebesar Rp.'.number_format($angsuran, 0, ".", ".").'('.$ter.')',0,'J',false);
-		$pdf->multicell(0,6,'3.	Biaya lain lain yang timbul karna dan untuk pelaksanaan akad ini',0,'J',false);
+		$pdf->multicell(0,6,'2.	Penagihan angsuran perbulan sebesar Rp.'.number_format($angsuran, 0, ".", ".").' ('.$ter.')',0,'J',false);
+		$pdf->multicell(0,6,'3.	Biaya lain-lain yang timbul karena dan untuk pelaksanaan akad ini',0,'J',false);
+		$pdf->Ln(4);
+		$pdf->cell(155,6,'Pasal 6',0,1,'C');
+		$pdf->Cell(155,6,'JANGKA WAKTU KREDIT DAN JADWAL ANGSURAN',0,1,'C');
+		$pdf->cell(5,6,'1. ',0,0);
+		$pdf->multicell(0,6,'Jangka waktu fasilitas kredit : Rp.'.number_format($angsuran, 0, ".", ".").' Bulan terhitung sejak tanggal '.$tanggal,0,'J',false);
+		$pdf->cell(5,6,'2. ',0,0);
+		$pdf->multicell(0,6,'Angsuran bulanan sebesar Rp.'.number_format($angsuran, 0, ".", ".").' ('.$ter.') / bulan sesuai dengan jadwal angsuran yang telah disepakati.',0,'J',false);
+		$pdf->cell(5,6,'3. ',0,0);
+		$pdf->multicell(0,6,'Angsuran pertama harus dibayar pada tanggal '.$ang1,0,'J',false);
+		$pdf->cell(5,6,'4. ',0,0);
+		$pdf->multicell(0,6,'Pembayaran angsuran dalam '.$jangka.' kali angsuran yang harus dibayar tiap tanggal '.$tanggal,0,'J',false);
+		$pdf->cell(5,6,'5. ',0,0);
+		$pdf->multicell(0,6,'DEBITOR dapat melakukan pelunasan dipercepat dengan memberitahukan secara tertulis kepada Koperasi Nusantara.',0,'J',false);
+		$pdf->cell(5,6,'6. ',0,0);
+		$pdf->multicell(0,6,'Apabila pembayaran kewajiban yang harus dilakukan DEBITOR kepada Koperasi Nusantara bukan pada hari kerja, maka pembayaran harus dilakukan pada 1 (satu) hari kerja sebelum nya.',0,'J',false);
+		$pdf->cell(5,6,'7. ',0,0);
+		$pdf->multicell(0,6,'Permbayaran hutang berdasarkan perjanjian ini dilakukan dengan cara memotong uang pensiun yang diterima DEBITOR melalui PT POS Indonesia (Persero) atau dengan cara lain yang ditentukan oleh Koperasi Nusantara DEBITOR wajib memberikan surat kuasa kepada PT POS Indonesia (Persero) untuk melakukan pemotongan uang pensiun tersebut.',0,'J',false);
 		$pdf->Ln(4);
 		$pdf->cell(155,6,'Pasal 7',0,1,'C');
 		$pdf->Cell(155,6,'PEMBUKTIAN UTANG',0,1,'C');
@@ -76,8 +94,10 @@ class laporan extends CI_Controller
 		$pdf->cell(155,6,'Pasal 8',0,1,'C');
 		$pdf->Cell(155,6,'LARANGAN BAGI DEBITOR',0,1,'C');
 		$pdf->multicell(0,6,'Selama DEBITOR belum membayar lunas utang atau Batas Waktu Penarikan dan/atau Penggunaan Fasilitas Kredit belum berakhir, DEBITOR tidak diperkenankan untuk melakukan hal-hal dibawah ini, tanpa persetujuan tertulis dahulu dari Koperasi Nusantara',0,'J',false);
-		$pdf->multicell(0,6,'1.	Memperoleh pinjaman uang/kredit baru dari pihak lain dan/atau mengikatkan diri sebagai penanggung/penjamin dalam bentuk dan dengan nama apa pun dan/atau menggunakan harta kekayaan DEBITOR kepada pihak lain.',0,'J',false);
-		$pdf->multicell(0,6,'2.	Meminjam uang, termasuk tetapi tidak terbatas kepada perusahaan afiliasinya, kecuali dalam rangka menjalankan usaha sehari-hari.',0,'J',false);
+		$pdf->cell(5,6,'1. ',0,0);
+		$pdf->multicell(0,6,'Memperoleh pinjaman uang/kredit baru dari pihak lain dan/atau mengikatkan diri sebagai penanggung/penjamin dalam bentuk dan dengan nama apa pun dan/atau menggunakan harta kekayaan DEBITOR kepada pihak lain.',0,'J',false);
+		$pdf->cell(5,6,'2. ',0,0);
+		$pdf->multicell(0,6,'Meminjam uang, termasuk tetapi tidak terbatas kepada perusahaan afiliasinya, kecuali dalam rangka menjalankan usaha sehari-hari.',0,'J',false);
 		$pdf->Ln(4);
 		$pdf->cell(155,6,'Pasal 9',0,1,'C');
 		$pdf->Cell(155,6,'PERUBAHAN KETENTUAN PERJANJIAN KREDIT',0,1,'C');
@@ -89,18 +109,23 @@ class laporan extends CI_Controller
 		$pdf->Ln(2);
 		$pdf->multicell(0,6,'Mengenai Perjanjian Kredit dan segala akibat serta pelaksanaannya, Koperasi Nusantara dan DEBITOR memiliki tempat kediaman hokum yang tetap dan tidak berubah di Jl.R.A.Kartini No. 18/23,Makassar,Sulawesi Selatan tanpa mengurangu hak Koperasi Nusantara untuk menggugat DEBITOR di hadapan pengadilan lain di dalam wilayah Republik Indonesi berdasarkan ketentuan hokum yang berlaku.',0,'J',false);
 		$pdf->Ln(2);
-		$pdf->multicell(0,6,'Perjanjian Kredit ini dibuat di Koperasi Nusantara Cabang Makassar pada tanggan (tgl-bulan-tahun).',0,'J',false);
+		$pdf->multicell(0,6,'Perjanjian Kredit ini dibuat di Koperasi Nusantara Cabang Makassar pada tanggan '.$tgl.'.',0,'J',false);
 		$pdf->Ln(15);
 		$pdf->SetFont('Arial','B',12);
 		$pdf->Cell(28);
 		$pdf->cell(50,6,'Koperasi Nusantara',0,0);
 		$pdf->Cell(32);
 		$pdf->cell(50,6,'Debitor',0,0);
-		$pdf->Ln(35);
+		$pdf->Ln(20);
+		$pdf->cell(100);
+		$pdf->SetFont('Arial','',10);
+		$pdf->cell(50,6,'Materai Rp.6000,00',0,1);
+		$pdf->Ln(20);
+		$pdf->SetFont('Arial','B',12);
 		$pdf->Cell(25);
 		$pdf->cell(50,6,'(_________________)',0,0);
-		$pdf->Cell(20);
-		$pdf->cell(50,6,'(_________________)',0,0);
+		$pdf->Cell(22);
+		$pdf->cell(50,6,'('.$upper.')',0,0);
 		$pdf->Output('Perjanjian Kredit '.$upper.'.pdf','D');
 	}
 	public function kekata($x){
@@ -131,5 +156,25 @@ class laporan extends CI_Controller
 	    }
 	        return$temp;
 	}
-
+	function tgl_indo($tanggal){
+		$bulan = array (
+			1 =>   'Januari',
+			'Februari',
+			'Maret',
+			'April',
+			'Mei',
+			'Juni',
+			'Juli',
+			'Agustus',
+			'September',
+			'Oktober',
+			'November',
+			'Desember'
+		);
+		$pecahkan = explode('-', $tanggal);
+		// variabel pecahkan 0 = tanggal
+		// variabel pecahkan 1 = bulan
+		// variabel pecahkan 2 = tahun
+		return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+	}
 }
