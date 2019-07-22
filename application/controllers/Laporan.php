@@ -123,7 +123,7 @@ class laporan extends CI_Controller
 		$pdf->Ln(20);
 		$pdf->SetFont('Arial','B',12);
 		$pdf->Cell(25);
-		$pdf->cell(50,6,'(_________________)',0,0);
+		$pdf->cell(50,6,'ANDI BASO SARIPUDIN ',0,0);
 		$pdf->Cell(22);
 		$pdf->cell(50,6,'('.$upper.')',0,0);
 		$pdf->Output('Perjanjian Kredit '.$upper.'.pdf','D');
