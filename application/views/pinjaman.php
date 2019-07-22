@@ -17,8 +17,9 @@
 										<th>No</th>
 										<th>Pinjaman</th>
 										<th><center>Tanggal Pengambilan</center></th>
-										<th><center>Status</center></th>
 										<th><center>Angsuran</center></th>
+										<th><center>Status</center></th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -26,8 +27,12 @@
 										<tr>
 											<td><?= $i; ?></td>
 											<td style="width:35%;">Rp.<?php echo number_format($l['pinjaman'], 0, ".", ".") ?></td>
-											<td style="width:25%;"><center><?php echo tgl_indo($l['tanggal']); ?></center></td>
-											<td style="width:25%;"><center><?php $st = $l['status'];?>
+											<td style="width:20%;"><center><?php echo tgl_indo($l['tanggal']); ?></center></td>
+											<td style="width:20%;"><center>
+												Rp.<?= number_format($l['bayar'], 0, ".", ".") ?>
+											</center>
+										</td>
+											<td style="width:10%;"><center><?php $st = $l['status'];?>
 												<?php if ($st == "0"){ ?>
 													Belum Lunas
 												<?php }else{ ?>
