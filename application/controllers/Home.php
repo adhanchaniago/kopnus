@@ -3,9 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 	public function __construct(){
-	parent::__construct();
-	$this->load->model('model_user');
-	$this->load->model('model_pinjam');
+		parent::__construct();
+		$this->load->library('pdf');
+		$this->load->model('model_user');
+		$this->load->model('model_pinjam');
 	}
 	public function index(){
 		if (isset( $this->session->uid )) {
@@ -44,21 +45,21 @@ class Home extends CI_Controller {
 	}
 	public function signin(){
 		$nama = $this->input->post('nama');
-    $pass = $this->input->post('password');
+		$pass = $this->input->post('password');
 		$pass1 = md5($pass);
 		$user = $this->model_user->signin( $nama,$pass1 );
-    if( isset($user)){
-        // password cocok, login berhasil
-        // simpan data session untuk mengenali user di setiap halaman
-        $this->session->uid = $user['norek'];
-        $this->session->nama = $user['nama'];
-				$data['foto']= $user['foto'];
-        // kembali ke halaman depan
-				redirect('/', $data);
-      } else {
-				$data['cek']= "1";
-				$this->load->template('login',$data);
-      }
+		if( isset($user)){
+			// password cocok, login berhasil
+			// simpan data session untuk mengenali user di setiap halaman
+			$this->session->uid = $user['norek'];
+			$this->session->nama = $user['nama'];
+			$data['foto']= $user['foto'];
+			// kembali ke halaman depan
+			redirect('/', $data);
+		} else {
+			$data['cek']= "1";
+			$this->load->template('login',$data);
+		}
 	}
 	public function signout(){
 		$this->session->sess_destroy();
@@ -84,17 +85,23 @@ class Home extends CI_Controller {
 		$data['user'] =$this->model_user->data_user($uid);
 		$pass1 = $this->input->post('password');
 		$pass2 = $this->input->post('confirmPassword');
+		$this->session->pass1 = $pass1;
+		$this->session->norek1= $this->input->post('norek');
+		$this->session->nama1 = $this->input->post('nama');
+		$this->session->alamat1 = $this->input->post('alamat');
+		$this->session->telepon1 = $this->input->post('no_tlp');
 		$norek = $this->model_user->cek_norek();
 		if ( empty($norek)) {
 			if ($pass1 == $pass2) {
 				$this->model_user->register();
-					$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
-					$tgl = date('Y-m-d');
-					$status = '0';
-					$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
-					$data['jumlah'] = $set->num_rows();
+				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
+				$tgl = date('Y-m-d');
+				$status = '0';
+				$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
+				$data['jumlah'] = $set->num_rows();
 				$data['info'] = "0";
 				$this->load->template('admin/register', $data);
+				redirect('hasil');
 			}else {
 				$data['jatuh_tempo'] = $this->model_pinjam->jatuh_tempo();
 				$tgl = date('Y-m-d');
@@ -113,6 +120,25 @@ class Home extends CI_Controller {
 			$data['info'] = "3";
 			$this->load->template('admin/register', $data);
 		}
+	}
+	function cetak(){
+		$pdf = new FPDF('p','mm','A4');
+		$pdf->AddPage();
+		$pdf->SetFont('Arial','B',16);
+		$pdf->image(base_url().'asset/img/logo.jpg', 30, 5, 20, 20);
+		$pdf->Line(28,28,183,28);
+		$pdf->Ln(20);
+		$pdf->Cell(190,7,'Pembuatan Akun Nasabah',0,1,'C');
+		$pdf->Ln(4);
+		$pdf->SetLeftMargin(28);
+		$pdf->SetRightMargin(28);
+		$pdf->SetFont('Arial','',16);
+		$pdf->multicell(100,10,'Norek		       '.$this->session->norek1,0,'J',false);
+		$pdf->multicell(100,10,'Nama			     '.$this->session->nama1,0,'J',false);
+		$pdf->multicell(100,10,'Alamat		     '.$this->session->alamat1,0,'J',false);
+		$pdf->multicell(100,10,'Password	  '.$this->session->pass1,0,'J',false);
+		$pdf->multicell(100,10,'Telepon	     '.$this->session->telepon1,0,'J',false);
+		$pdf->Output('Akun '.$this->session->nama1.'.pdf','I');
 	}
 	public function profil(){
 		$uid=$this->session->uid;
@@ -140,7 +166,7 @@ class Home extends CI_Controller {
 		$nama = $this->session->uid;
 		$upload = $this->model_user->upload();
 		if($upload['result'] == "success"){ // Jika proses upload sukses
-			 // Panggil function save yang ada di model_user.php untuk menyimpan data ke database
+			// Panggil function save yang ada di model_user.php untuk menyimpan data ke database
 			$this->model_user->save($upload,$nama);
 			redirect('/'); // Redirect kembali ke halaman awal / halaman view data
 		}else{ // Jika proses upload gagal
@@ -163,7 +189,7 @@ class Home extends CI_Controller {
 			redirect(base_url('login'));
 		}
 	}
-public function laporan_tampil(){
+	public function laporan_tampil(){
 		$uid=$this->session->uid;
 		if (isset($uid)) {
 			$data['user'] = $this->model_user->data_user($uid);

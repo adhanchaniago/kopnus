@@ -31,6 +31,7 @@ $route['upload_perjanjian/(:any)']   				= 'berkas/upload_perjanjian/$1';
 $route['berkas']							       				= 'berkas';
 
 $route['cetak/(:any)']							        = 'laporan/index/$1';
+$route['hasil']							        = 'home/cetak';
 
 $route['update']        	 						= 'home/upload';
 $route['profil']        	 						= 'home/profil';
