@@ -266,7 +266,7 @@
 				<h4 class="modal-title" id="myModalLabel">Upload Berkas Slip Gaji </h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			</div>
-			<form  action="<?= base_url().'upload_slip/'.$user_berkas['norek'].'/'.$this->session->uid ?> ?>" method="post" enctype="multipart/form-data" >
+			<form  action="<?= base_url().'upload_slip/'.$user_berkas['norek'].'/'.$this->session->uid ?>" method="post" enctype="multipart/form-data" >
 				<div class="modal-body">
 					<h4 class="a" for="exampleFormControlFile1" >Upload Slip Gaji : </h4>
 					<input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto"><br>

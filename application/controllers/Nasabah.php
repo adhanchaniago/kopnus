@@ -23,7 +23,7 @@ class Nasabah extends CI_Controller {
 				$data['cari'] = $this->input->post('cari');
 				$this->session->set_userdata('keyword', $data['cari']);
 			}else{
-				$data['cari'] = $this->session->set_userdata('keyword');
+				$data['cari'] = $this->session->userdata('keyword');
 			}
 			$config['base_url'] = 'http://localhost/kopnus/nasabah/index/';
 			//$config['total_rows'] = $this->model_user->countuser();

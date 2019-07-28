@@ -110,7 +110,7 @@ class Model_berkas extends CI_Model {
       $this->db->where('norek',$id);
       $query = $this->db->get('tb_berkas_slip');
       $row = $query->row();
-      unlink("./asset/upload/berkas/slip/$row->foto_diri");
+      unlink("./asset/upload/berkas/slip/$row->slip");
       $data = array('slip' => $upload['file']['file_name']);
       $this->db->where('norek',$id);
       $this->db->update( 'tb_berkas_slip', $data );
