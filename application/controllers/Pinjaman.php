@@ -50,13 +50,20 @@ class Pinjaman extends CI_Controller {
 			$tgl = date('Y-m-d');
 			$status = '0';
 			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
-			$data['berkas_kk'] = $this->model_berkas->cek_berkas_kk($id);
-			$data['berkas_slip'] = $this->model_berkas->cek_berkas_slip($id);
-			$data['berkas_karip'] = $this->model_berkas->cek_berkas_karip($id);
-			$data['berkas_foto_diri'] = $this->model_berkas->cek_berkas_foto($id);
-			$data['berkas_ktp'] = $this->model_berkas->cek_berkas_ktp($id);
-			$data['berkas_npwp'] = $this->model_berkas->cek_berkas_npwp($id);
-			$data['berkas_sk'] = $this->model_berkas->cek_berkas_sk($id);
+			$querys = $this->db->query("SELECT * from tb_berkas where norek='".$id."'");
+			$query = $querys->row();
+			if (isset($query)) {
+				$kk = $query->status_kk;
+				$slip = $query->status_slip;
+				$karip = $query->status_karip;
+				$foto = $query->status_foto;
+				$ktp = $query->status_ktp;
+				$npwp = $query->status_npwp;
+				$sk = $this->model_berkas->cek_berkas_sk($id);
+				if ($kk == "0" && $slip == "0" && $karip == "0" && $foto == "0" && $ktp == "0" && $npwp == "0" && $sk == "0") {
+					$data['ada'] = 1;
+				}
+			}
 			$data['jumlah'] = $set->num_rows();
 			$data['dtlpinj']= $this->model_user->dtlpinj($id);
 			$data['listpinj'] =$this->model_pinjam->list_pinjaman($id);

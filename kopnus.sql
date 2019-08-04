@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jul 2019 pada 10.51
+-- Waktu pembuatan: 04 Agu 2019 pada 12.54
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.4
 
@@ -43,161 +43,47 @@ CREATE TABLE `tb_angsuran` (
 --
 
 INSERT INTO `tb_angsuran` (`id_angsuran`, `id_pinjaman`, `norek`, `angsuran_ke`, `angsuran`, `tanggal`, `status`) VALUES
-(1, 1, '0000000002', 1, '2300000.00', '2019-08-22', 1),
-(2, 1, '0000000002', 2, '2300000.00', '2019-07-20', 1),
-(3, 1, '0000000002', 3, '2300000.00', '2019-07-21', 0),
-(4, 1, '0000000002', 4, '2300000.00', '2019-11-23', 0),
-(5, 1, '0000000002', 5, '2300000.00', '2019-12-24', 0),
-(6, 1, '0000000002', 6, '2300000.00', '2020-01-24', 0),
-(7, 1, '0000000002', 7, '2300000.00', '2020-02-24', 0),
-(8, 1, '0000000002', 8, '2300000.00', '2020-03-26', 0),
-(9, 1, '0000000002', 9, '2300000.00', '2020-04-26', 0),
-(10, 1, '0000000002', 10, '2300000.00', '2020-05-27', 0),
-(11, 1, '0000000002', 11, '2300000.00', '2020-06-27', 0),
-(12, 1, '0000000002', 12, '2300000.00', '2020-07-28', 0),
-(13, 1, '0000000002', 13, '2300000.00', '2020-08-28', 0),
-(14, 1, '0000000002', 14, '2300000.00', '2020-09-28', 0),
-(15, 1, '0000000002', 15, '2300000.00', '2020-10-29', 0);
+(1, 1, '0000000002', 1, '1720588.24', '2019-07-23', 0),
+(2, 1, '0000000002', 2, '1720588.24', '2019-07-28', 0),
+(3, 1, '0000000002', 3, '1720588.24', '2019-10-23', 0),
+(4, 1, '0000000002', 4, '1720588.24', '2019-11-23', 0),
+(5, 1, '0000000002', 5, '1720588.24', '2019-12-23', 0),
+(6, 1, '0000000002', 6, '1720588.24', '2020-01-23', 0),
+(7, 1, '0000000002', 7, '1720588.24', '2020-02-23', 0),
+(8, 1, '0000000002', 8, '1720588.24', '2020-03-23', 0),
+(9, 1, '0000000002', 9, '1720588.24', '2020-04-23', 0),
+(10, 1, '0000000002', 10, '1720588.24', '2020-05-23', 0),
+(11, 1, '0000000002', 11, '1720588.24', '2020-06-23', 0),
+(12, 1, '0000000002', 12, '1720588.24', '2020-07-23', 0),
+(13, 1, '0000000002', 13, '1720588.24', '2020-08-23', 0),
+(14, 1, '0000000002', 14, '1720588.24', '2020-09-23', 0),
+(15, 1, '0000000002', 15, '1720588.24', '2020-10-23', 0),
+(16, 1, '0000000002', 16, '1720588.24', '2020-11-23', 0),
+(17, 1, '0000000002', 17, '1720588.24', '2020-12-23', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_berkas_foto_diri`
+-- Struktur dari tabel `tb_berkas`
 --
 
-CREATE TABLE `tb_berkas_foto_diri` (
-  `norek` varchar(10) NOT NULL,
-  `foto_diri` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_berkas_foto_diri`
---
-
-INSERT INTO `tb_berkas_foto_diri` (`norek`, `foto_diri`, `status`) VALUES
-('0000000002', '', 0),
-('0000000003', '', 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_berkas_karip`
---
-
-CREATE TABLE `tb_berkas_karip` (
-  `norek` varchar(10) NOT NULL,
-  `karip` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_berkas_karip`
---
-
-INSERT INTO `tb_berkas_karip` (`norek`, `karip`, `status`) VALUES
-('0000000002', '', 0),
-('0000000003', 'P80728-094902.jpg', 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_berkas_kk`
---
-
-CREATE TABLE `tb_berkas_kk` (
+CREATE TABLE `tb_berkas` (
   `norek` varchar(10) NOT NULL,
   `kk` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_berkas_kk`
---
-
-INSERT INTO `tb_berkas_kk` (`norek`, `kk`, `status`) VALUES
-('0000000002', 'default.png', 0),
-('0000000003', '', 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_berkas_ktp_suami_istri`
---
-
-CREATE TABLE `tb_berkas_ktp_suami_istri` (
-  `norek` varchar(10) NOT NULL,
-  `ktp_suami_istri` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_berkas_ktp_suami_istri`
---
-
-INSERT INTO `tb_berkas_ktp_suami_istri` (`norek`, `ktp_suami_istri`, `status`) VALUES
-('0000000002', 'P80726-054005.jpg', 0),
-('0000000003', '', 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_berkas_npwp`
---
-
-CREATE TABLE `tb_berkas_npwp` (
-  `norek` varchar(10) NOT NULL,
-  `npwp` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_berkas_npwp`
---
-
-INSERT INTO `tb_berkas_npwp` (`norek`, `npwp`, `status`) VALUES
-('0000000002', 'input.png', 0),
-('0000000003', '', 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_berkas_sk`
---
-
-CREATE TABLE `tb_berkas_sk` (
-  `norek` varchar(10) NOT NULL,
-  `sk` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_berkas_sk`
---
-
-INSERT INTO `tb_berkas_sk` (`norek`, `sk`, `status`) VALUES
-('0000000002', 'P80726-054628.jpg', 0),
-('0000000003', '', 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_berkas_slip`
---
-
-CREATE TABLE `tb_berkas_slip` (
-  `norek` varchar(10) NOT NULL,
   `slip` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
+  `npwp` varchar(50) NOT NULL,
+  `foto_diri` varchar(50) NOT NULL,
+  `karip` varchar(50) NOT NULL,
+  `ktp_suami_istri` varchar(50) NOT NULL,
+  `sk` varchar(50) NOT NULL,
+  `status_kk` varchar(1) NOT NULL,
+  `status_slip` varchar(1) NOT NULL,
+  `status_npwp` varchar(1) NOT NULL,
+  `status_foto` varchar(1) NOT NULL,
+  `status_karip` varchar(1) NOT NULL,
+  `status_ktp` varchar(1) NOT NULL,
+  `status_sk` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_berkas_slip`
---
-
-INSERT INTO `tb_berkas_slip` (`norek`, `slip`, `status`) VALUES
-('0000000002', 'input.png', 0),
-('0000000003', '', 0);
 
 -- --------------------------------------------------------
 
@@ -222,7 +108,7 @@ CREATE TABLE `tb_pinjaman` (
 --
 
 INSERT INTO `tb_pinjaman` (`id_pinjaman`, `norek`, `pinjaman`, `angsuran`, `bayar`, `sisa`, `berkas`, `tanggal`, `status`) VALUES
-(1, '0000000002', 30000000, '2300000.00', 4600000, 29900000, 'Perjanjian_Kredit_IVAN_DARMAWAN.pdf', '2019-07-22', 0);
+(1, '0000000002', 25000000, '1720588.24', 0, 29250000, '', '2019-07-23', 0);
 
 -- --------------------------------------------------------
 
@@ -246,7 +132,21 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`norek`, `nama`, `password`, `alamat`, `no_tlp`, `foto`) VALUES
 ('0000000001', 'Admin', '21232f297a57a5a743894a0e4a801fc3', 'Jln.SelamatRadi', '08213454', 'input.png'),
 ('0000000002', 'Ivan Darmawan', 'e10adc3949ba59abbe56e057f20f883e', 'Jln.Sabutung', '08213469', 'default.png'),
-('0000000003', 'Aprianto', 'e10adc3949ba59abbe56e057f20f883e', 'Jln.Bulusaraung no.123', '08334685', 'default.png');
+('0000000003', 'Aprianto', 'e10adc3949ba59abbe56e057f20f883e', 'Jln.Bulusaraung no.123', '08334685', 'default.png'),
+('0000000004', 'Calvin Thouw', 'e10adc3949ba59abbe56e057f20f883e', 'Jln.Bulusaraung no.123', '08134675174546', 'default.png'),
+('0000000005', 'Dodo', 'e10adc3949ba59abbe56e057f20f883e', 'fjhdakjfksjhjah', '16546151645', 'default.png'),
+('0000000006', 'Dodo1', 'e10adc3949ba59abbe56e057f20f883e', 'fjhdakjfksjhjah', '16546151645', 'default.png'),
+('0000000007', 'Dodo1', 'e10adc3949ba59abbe56e057f20f883e', 'fjhdakjfksjhjah', '16546151645', 'default.png'),
+('0000000008', 'Dodo1', 'e10adc3949ba59abbe56e057f20f883e', 'fjhdakjfksjhjah', '16546151645', 'default.png'),
+('0000000009', 'jfkjdsbfjbdjbk', 'ef4753431fb8ee27cafd9d891923e8f2', 'dsbdajbfsjkbsfj', '454164165', 'default.png'),
+('0000000010', 'jfkjdsbfjbdjbk', 'ef4753431fb8ee27cafd9d891923e8f2', 'dsbdajbfsjkbsfj', '454164165', 'default.png'),
+('0000000011', 'jfkjdsbfjbdjbk', 'ef4753431fb8ee27cafd9d891923e8f2', 'dsbdajbfsjkbsfj', '454164165', 'default.png'),
+('0000000012', 'daffsfsafsa', 'e10adc3949ba59abbe56e057f20f883e', 'dsafafafsaf', '123456789', 'default.png'),
+('0000000013', 'sddsafdasfas', '25f9e794323b453885f5181f1b624d0b', 'dafadfasfsa', '123456789', 'default.png'),
+('0000000014', 'gjgbbjbfsbj', 'e10adc3949ba59abbe56e057f20f883e', 'sdnfjabfkj', '12318919188', 'default.png'),
+('0000000015', 'gjgbbjbfsbj', 'e10adc3949ba59abbe56e057f20f883e', 'sdnfjabfkj', '12318919188', 'default.png'),
+('0000000016', 'gjgbbjbfsbj', 'e10adc3949ba59abbe56e057f20f883e', 'sdnfjabfkj', '12318919188', 'default.png'),
+('0000000017', 'gjgbbjbfsbj', 'e10adc3949ba59abbe56e057f20f883e', 'sdnfjabfkj', '12318919188', 'default.png');
 
 --
 -- Indexes for dumped tables
@@ -259,45 +159,9 @@ ALTER TABLE `tb_angsuran`
   ADD PRIMARY KEY (`id_angsuran`);
 
 --
--- Indeks untuk tabel `tb_berkas_foto_diri`
+-- Indeks untuk tabel `tb_berkas`
 --
-ALTER TABLE `tb_berkas_foto_diri`
-  ADD PRIMARY KEY (`norek`);
-
---
--- Indeks untuk tabel `tb_berkas_karip`
---
-ALTER TABLE `tb_berkas_karip`
-  ADD PRIMARY KEY (`norek`);
-
---
--- Indeks untuk tabel `tb_berkas_kk`
---
-ALTER TABLE `tb_berkas_kk`
-  ADD PRIMARY KEY (`norek`);
-
---
--- Indeks untuk tabel `tb_berkas_ktp_suami_istri`
---
-ALTER TABLE `tb_berkas_ktp_suami_istri`
-  ADD PRIMARY KEY (`norek`);
-
---
--- Indeks untuk tabel `tb_berkas_npwp`
---
-ALTER TABLE `tb_berkas_npwp`
-  ADD PRIMARY KEY (`norek`);
-
---
--- Indeks untuk tabel `tb_berkas_sk`
---
-ALTER TABLE `tb_berkas_sk`
-  ADD PRIMARY KEY (`norek`);
-
---
--- Indeks untuk tabel `tb_berkas_slip`
---
-ALTER TABLE `tb_berkas_slip`
+ALTER TABLE `tb_berkas`
   ADD PRIMARY KEY (`norek`);
 
 --
@@ -320,7 +184,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_angsuran`
 --
 ALTER TABLE `tb_angsuran`
-  MODIFY `id_angsuran` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_angsuran` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pinjaman`

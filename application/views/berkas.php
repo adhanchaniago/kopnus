@@ -38,7 +38,7 @@
 											<div class="media-object">Kartu Keluarga</div>
 										</td>
 										<td><center>
-											<?php if ($kk['status'] == "0") { ?>
+											<?php if ($berkas['status_kk'] == "0") { ?>
 												<i class="far fa-check-circle fa-2x"></i>
 											<?php } ?>
 										</center>
@@ -48,15 +48,15 @@
 											<?php if ($this->session->uid == "0000000001"){ ?>
 												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#kk"> Upload </button>
 											<?php }else {
-												if (!isset($kk['status'])) { ?>
+												if (empty($berkas['kk'])) { ?>
 													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#kk"> Upload </button>
-												<?php } ?>
+												<?php }?>
 											<?php } ?>
 										</center>
 									</td>
 									<td>
 										<center>
-											<?php if ($kk['status'] == "0") { ?>
+											<?php if ($berkas['status_kk'] == "0") { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/1' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -67,7 +67,7 @@
 										<div class="media-object">Slip Gaji</div>
 									</td>
 									<td><center>
-										<?php if ($slip['status'] == "0") { ?>
+										<?php if ($berkas['status_slip'] == "0") { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -76,7 +76,7 @@
 											<?php if ($this->session->uid == "0000000001"){ ?>
 												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#slip"> Upload </button>
 											<?php }else {
-												if (!isset($slip['status'])) { ?>
+												if (empty($berkas['slip'])) { ?>
 													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#slip"> Upload </button>
 												<?php } ?>
 											<?php } ?>
@@ -84,7 +84,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($slip['status'] == "0") { ?>
+											<?php if ($berkas['status_slip'] == "0") { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/2' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -95,7 +95,7 @@
 										<div class="media-object">NPWP</div>
 									</td>
 									<td><center>
-										<?php if ($npwp['status'] == "0") { ?>
+										<?php if ($berkas['status_npwp'] == "0") { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -104,7 +104,7 @@
 											<?php if ($this->session->uid == "0000000001"){ ?>
 												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#npwp"> Upload </button>
 											<?php }else {
-												if (!isset($npwp['status'])) { ?>
+												if (empty($berkas['npwp'])) { ?>
 													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#npwp"> Upload </button>
 												<?php } ?>
 											<?php } ?>
@@ -112,7 +112,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($npwp['status'] == "0") { ?>
+											<?php if ($berkas['status_npwp'] == "0") { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/3' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -123,7 +123,7 @@
 										<div class="media-object">Foto Diri</div>
 									</td>
 									<td><center>
-										<?php if ($foto_diri['status'] == "0") { ?>
+										<?php if ($berkas['status_foto'] == "0") { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -132,7 +132,7 @@
 											<?php if ($this->session->uid == "0000000001"){ ?>
 												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#foto_diri"> Upload </button>
 											<?php }else {
-												if (!isset($foto_diri['status'])) { ?>
+												if (empty($berkas['foto_diri'])) { ?>
 													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#foto_diri"> Upload </button>
 												<?php } ?>
 											<?php } ?>
@@ -140,7 +140,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($foto_diri['status'] == "0") { ?>
+											<?php if ($berkas['status_foto'] == "0") { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/4' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -151,7 +151,7 @@
 										<div class="media-object">Karip</div>
 									</td>
 									<td><center>
-										<?php if ($karip['status'] == "0") { ?>
+										<?php if ($berkas['status_karip'] == "0") { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -160,7 +160,7 @@
 											<?php if ($this->session->uid == "0000000001"){ ?>
 												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#karip"> Upload </button>
 											<?php }else {
-												if (!isset($karip['status'])) { ?>
+												if (empty($berkas['karip'])) { ?>
 													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#karip"> Upload </button>
 												<?php } ?>
 											<?php } ?>
@@ -168,7 +168,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($karip['status'] == "0") { ?>
+											<?php if ($berkas['status_karip'] == "0") { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/5' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -179,7 +179,7 @@
 										<div class="media-object">KTP Suami Istri</div>
 									</td>
 									<td><center>
-										<?php if ($ktp['status'] == "0") { ?>
+										<?php if ($berkas['status_ktp'] == "0") { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -188,7 +188,7 @@
 											<?php if ($this->session->uid == "0000000001"){ ?>
 												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#ktpsi"> Upload </button>
 											<?php }else {
-												if (!isset($ktp['status'])) { ?>
+												if (empty($berkas['ktp_suami_istri'])) { ?>
 													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#ktpsi"> Upload </button>
 												<?php } ?>
 											<?php } ?>
@@ -196,7 +196,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($ktp['status'] == "0") { ?>
+											<?php if ($berkas['status_ktp'] == "0") { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/6' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -207,16 +207,16 @@
 										<div class="media-object">SK</div>
 									</td>
 									<td><center>
-										<?php if ($sk['status'] == "0") { ?>
+										<?php if (!empty($sk['berkas'])) { ?>
 											<i class="far fa-check-circle fa-2x"></i>
-										<?php } ?></center>
+										<?php }	?></center>
 									</td>
 									<td>
 										<center>
 											<?php if ($this->session->uid == "0000000001"){ ?>
 												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
 											<?php }else {
-												if (!isset($sk['status'])) { ?>
+												if (empty($sk['berkas'])) { ?>
 													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
 												<?php } ?>
 											<?php } ?>
@@ -224,7 +224,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($sk['status'] == "0") { ?>
+											<?php if (!empty($sk['berkas'])) { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/7' ?>'"> Download </button>
 											<?php } ?>
 										</center>

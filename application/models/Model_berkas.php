@@ -35,172 +35,90 @@ class Model_berkas extends CI_Model {
       return $return;
     }
   }
-  public function data_berkas_kk($uid){
-    $query = $this->db->query("SELECT * from tb_berkas_kk where norek='".$uid."'");
-    return $query->row_array();
-  }
-  public function data_berkas_slip($uid){
-    $query = $this->db->query("SELECT * from tb_berkas_slip where norek='".$uid."'");
-    return $query->row_array();
-  }
-  public function data_berkas_npwp($uid){
-    $query = $this->db->query("SELECT * from tb_berkas_npwp where norek='".$uid."'");
-    return $query->row_array();
-  }
-  public function data_berkas_karip($uid){
-    $query = $this->db->query("SELECT * from tb_berkas_karip where norek='".$uid."'");
-    return $query->row_array();
-  }
-  public function data_berkas_foto_diri($uid){
-    $query = $this->db->query("SELECT * from tb_berkas_foto_diri where norek='".$uid."'");
-    return $query->row_array();
-  }
-  public function data_berkas_ktp($uid){
-    $query = $this->db->query("SELECT * from tb_berkas_ktp_suami_istri where norek='".$uid."'");
+  public function data_berkas($uid){
+    $query = $this->db->query("SELECT * from tb_berkas where norek='".$uid."'");
     return $query->row_array();
   }
   public function data_berkas_sk($uid){
-    $query = $this->db->query("SELECT * from tb_berkas_sk where norek='".$uid."'");
+    $query = $this->db->query("SELECT * from tb_pinjaman where norek='".$uid."'");
     return $query->row_array();
   }
-  public function save_kk($upload,$id){
-    $query = $this->db->query("SELECT * from tb_berkas_kk where norek='".$id."'");
+  public function save($upload,$id,$var1){
+    $query = $this->db->query("SELECT * from tb_berkas where norek='".$id."'");
     $i2 = $query->row_array();
     if (isset($i2)) {
       $this->db->where('norek',$id);
-      $query = $this->db->get('tb_berkas_kk');
+      $query = $this->db->get('tb_berkas');
       $row = $query->row();
-      unlink("./asset/upload/berkas/kk/$row->kk");
-      $data = array('kk' => $upload['file']['file_name']);
+      if ($var1 == 1) {
+        unlink("./asset/upload/berkas/kk/$row->kk");
+        $data = array('kk' => $upload['file']['file_name']);
+      }elseif ($var1 == 2) {
+        unlink("./asset/upload/berkas/kk/$row->slip");
+        $data = array('slip' => $upload['file']['file_name']);
+      }elseif ($var1 == 3) {
+        unlink("./asset/upload/berkas/kk/$row->npwp");
+        $data = array('npwp' => $upload['file']['file_name']);
+      }elseif ($var1 == 4) {
+        unlink("./asset/upload/berkas/kk/$row->foto_diri");
+        $data = array('foto_diri' => $upload['file']['file_name']);
+      }elseif ($var1 == 5) {
+        unlink("./asset/upload/berkas/kk/$row->karip");
+        $data = array('karip' => $upload['file']['file_name']);
+      }elseif ($var1 == 6) {
+        unlink("./asset/upload/berkas/kk/$row->ktp_suami_istri");
+        $data = array('ktp_suami_istri' => $upload['file']['file_name']);
+      }elseif ($var1 == 7) {
+        unlink("./asset/upload/berkas/kk/$row->sk");
+        $data = array('sk' => $upload['file']['file_name']);
+      }
       $this->db->where('norek',$id);
-      $this->db->update( 'tb_berkas_kk', $data );
+      $this->db->update( 'tb_berkas', $data );
     }else {
-      $data = [
-        'norek' => $id,
-        'kk' => $upload['file']['file_name'],
-        'status' => "0"
-      ];
-      $this->db->insert( 'tb_berkas_kk', $data );
-    }
-  }
-  public function save_foto_diri($upload,$id){
-    $query = $this->db->query("SELECT * from tb_berkas_foto_diri where norek='".$id."'");
-    $i2 = $query->row_array();
-    if (isset($i2)) {
-      $this->db->where('norek',$id);
-      $query = $this->db->get('tb_berkas_foto_diri');
-      $row = $query->row();
-      unlink("./asset/upload/berkas/foto_diri/$row->foto_diri");
-      $data = array('foto_diri' => $upload['file']['file_name']);
-      $this->db->where('norek',$id);
-      $this->db->update( 'tb_berkas_foto_diri', $data );
-    }else {
-      $data = [
-        'norek' => $id,
-        'foto_diri' => $upload['file']['file_name'],
-        'status' => "0"
-      ];
-      $this->db->insert( 'tb_berkas_foto_diri', $data );
-    }
-  }
-  public function save_slip($upload,$id){
-    $query = $this->db->query("SELECT * from tb_berkas_slip where norek='".$id."'");
-    $i2 = $query->row_array();
-    if (isset($i2)) {
-      $this->db->where('norek',$id);
-      $query = $this->db->get('tb_berkas_slip');
-      $row = $query->row();
-      unlink("./asset/upload/berkas/slip/$row->slip");
-      $data = array('slip' => $upload['file']['file_name']);
-      $this->db->where('norek',$id);
-      $this->db->update( 'tb_berkas_slip', $data );
-    }else {
-      $data = [
-        'norek' => $id,
-        'slip' => $upload['file']['file_name'],
-        'status' => "0"
-      ];
-      $this->db->insert( 'tb_berkas_slip', $data );
-    }
-  }
-  public function save_npwp($upload,$id){
-    $query = $this->db->query("SELECT * from tb_berkas_npwp where norek='".$id."'");
-    $i2 = $query->row_array();
-    if (isset($i2)) {
-      $this->db->where('norek',$id);
-      $query = $this->db->get('tb_berkas_npwp');
-      $row = $query->row();
-      unlink("./asset/upload/berkas/npwp/$row->npwp");
-      $data = array('npwp' => $upload['file']['file_name']);
-      $this->db->where('norek',$id);
-      $this->db->update( 'tb_berkas_npwp', $data );
-    }else {
-      $data = [
-        'norek' => $id,
-        'npwp' => $upload['file']['file_name'],
-        'status' => "0"
-      ];
-      $this->db->insert( 'tb_berkas_npwp', $data );
-    }
-  }
-  public function save_karip($upload,$id){
-    $query = $this->db->query("SELECT * from tb_berkas_karip where norek='".$id."'");
-    $i2 = $query->row_array();
-    if (isset($i2)) {
-      $this->db->where('norek',$id);
-      $query = $this->db->get('tb_berkas_karip');
-      $row = $query->row();
-      unlink("./asset/upload/berkas/karip/$row->karip");
-      $data = array('karip' => $upload['file']['file_name']);
-      $this->db->where('norek',$id);
-      $this->db->update( 'tb_berkas_karip', $data );
-    }else {
-      $data = [
-        'norek' => $id,
-        'karip' => $upload['file']['file_name'],
-        'status' => "0"
-      ];
-      $this->db->insert( 'tb_berkas_karip', $data );
-    }
-  }
-  public function save_ktp($upload,$id){
-    $query = $this->db->query("SELECT * from tb_berkas_ktp_suami_istri where norek='".$id."'");
-    $i2 = $query->row_array();
-    if (isset($i2)) {
-      $this->db->where('norek',$id);
-      $query = $this->db->get('tb_berkas_ktp_suami_istri');
-      $row = $query->row();
-      unlink("./asset/upload/berkas/ktp/$row->ktp_suami_istri");
-      $data = array('ktp_suami_istri' => $upload['file']['file_name']);
-      $this->db->where('norek',$id);
-      $this->db->update( 'tb_berkas_ktp_suami_istri', $data );
-    }else {
-      $data = [
-        'norek' => $id,
-        'ktp_suami_istri' => $upload['file']['file_name'],
-        'status' => "0"
-      ];
-      $this->db->insert( 'tb_berkas_ktp_suami_istri', $data );
-    }
-  }
-  public function save_sk($upload,$id){
-    $query = $this->db->query("SELECT * from tb_berkas_sk where norek='".$id."'");
-    $i2 = $query->row_array();
-    if (isset($i2)) {
-      $this->db->where('norek',$id);
-      $query = $this->db->get('tb_berkas_sk');
-      $row = $query->row();
-      unlink("./asset/upload/berkas/sk/$row->sk");
-      $data = array('sk' => $upload['file']['file_name']);
-      $this->db->where('norek',$id);
-      $this->db->update( 'tb_berkas_sk', $data );
-    }else {
-      $data = [
-        'norek' => $id,
-        'sk' => $upload['file']['file_name'],
-        'status' => "0"
-      ];
-      $this->db->insert( 'tb_berkas_sk', $data );
+      if ($var1 == 1) {
+        $data = [
+          'norek' => $id,
+          'kk' => $upload['file']['file_name'],
+          'status_kk' => "0"
+        ];
+      }elseif ($var1 == 2) {
+        $data = [
+          'norek' => $id,
+          'slip' => $upload['file']['file_name'],
+          'status_slip' => "0"
+        ];
+      }elseif ($var1 == 3) {
+        $data = [
+          'norek' => $id,
+          'npwp' => $upload['file']['file_name'],
+          'status_npwp' => "0"
+        ];
+      }elseif ($var1 == 4) {
+        $data = [
+          'norek' => $id,
+          'foto_diri' => $upload['file']['file_name'],
+          'status_foto' => "0"
+        ];
+      }elseif ($var1 == 5) {
+        $data = [
+          'norek' => $id,
+          'karip' => $upload['file']['file_name'],
+          'status_karip' => "0"
+        ];
+      }elseif ($var1 == 6) {
+        $data = [
+          'norek' => $id,
+          'ktp_suami_istri' => $upload['file']['file_name'],
+          'status_ktp' => "0"
+        ];
+      }elseif ($var1 == 7) {
+        $data = [
+          'norek' => $id,
+          'sk' => $upload['file']['file_name'],
+          'status_sk' => "0"
+        ];
+      }
+      $this->db->insert( 'tb_berkas', $data );
     }
   }
   public function save_perjanjian($upload,$id){
@@ -221,58 +139,16 @@ class Model_berkas extends CI_Model {
     }
   }
   function download($id,$id2){
-    if ($id2 == "1") {
-      $query = $this->db->query("SELECT * from tb_berkas_kk where norek='".$id."'");
-      return $query->row_array();
-    }elseif ($id2 == "2") {
-      $query = $this->db->query("SELECT * from tb_berkas_slip where norek='".$id."'");
-      return $query->row_array();
-    }elseif ($id2 == "3") {
-      $query = $this->db->query("SELECT * from tb_berkas_npwp where norek='".$id."'");
-      return $query->row_array();
-    }elseif ($id2 == "4") {
-      $query = $this->db->query("SELECT * from tb_berkas_foto_diri where norek='".$id."'");
-      return $query->row_array();
-    }elseif ($id2 == "5") {
-      $query = $this->db->query("SELECT * from tb_berkas_karip where norek='".$id."'");
-      return $query->row_array();
-    }elseif ($id2 == "6") {
-      $query = $this->db->query("SELECT * from tb_berkas_ktp_suami_istri where norek='".$id."'");
-      return $query->row_array();
-    }elseif ($id2 == "7") {
-      $query = $this->db->query("SELECT * from tb_berkas_sk where norek='".$id."'");
-      return $query->row_array();
-    }elseif ($id2 == "8") {
+    if ($id2 == "8") {
       $query = $this->db->query("SELECT * from tb_pinjaman where id_pinjaman='".$id."'");
+      return $query->row_array();
+    }else {
+      $query = $this->db->query("SELECT * from tb_berkas where norek='".$id."'");
       return $query->row_array();
     }
   }
-  public function cek_berkas_kk($id){
-    $query = $this->db->query("SELECT * from tb_berkas_kk where norek='".$id."'");
-    return $query->row_array();
-  }
-  public function cek_berkas_slip($id){
-    $query = $this->db->query("SELECT * from tb_berkas_slip where norek='".$id."'");
-    return $query->row_array();
-  }
-  public function cek_berkas_npwp($id){
-    $query = $this->db->query("SELECT * from tb_berkas_npwp where norek='".$id."'");
-    return $query->row_array();
-  }
-  public function cek_berkas_karip($id){
-    $query = $this->db->query("SELECT * from tb_berkas_karip where norek='".$id."'");
-    return $query->row_array();
-  }
-  public function cek_berkas_foto($id){
-    $query = $this->db->query("SELECT * from tb_berkas_foto_diri where norek='".$id."'");
-    return $query->row_array();
-  }
-  public function cek_berkas_ktp($id){
-    $query = $this->db->query("SELECT * from tb_berkas_ktp_suami_istri where norek='".$id."'");
-    return $query->row_array();
-  }
   public function cek_berkas_sk($id){
-    $query = $this->db->query("SELECT * from tb_berkas_sk where norek='".$id."'");
+    $query = $this->db->query("SELECT * from tb_pinjaman where norek='".$id."'");
     return $query->row_array();
   }
 }

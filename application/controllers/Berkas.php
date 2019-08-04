@@ -21,12 +21,7 @@ class Berkas extends CI_Controller {
 			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and norek='".$uid."' and (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY)) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['user_berkas'] = $this->model_user->data_user($uid);
-			$data['kk'] = $this->model_berkas->data_berkas_kk($uid);
-			$data['slip'] = $this->model_berkas->data_berkas_slip($uid);
-			$data['npwp'] = $this->model_berkas->data_berkas_npwp($uid);
-			$data['karip'] = $this->model_berkas->data_berkas_karip($uid);
-			$data['foto_diri'] = $this->model_berkas->data_berkas_foto_diri($uid);
-			$data['ktp'] = $this->model_berkas->data_berkas_ktp($uid);
+			$data['berkas'] = $this->model_berkas->data_berkas($uid);
 			$data['sk'] = $this->model_berkas->data_berkas_sk($uid);
 			$this->load->template('berkas',$data);
 		}else {
@@ -44,12 +39,7 @@ class Berkas extends CI_Controller {
 			$set = $this->db->query("SELECT * from tb_angsuran where status='".$status."' and (tanggal <= now() or (now() >= DATE_SUB(tanggal, INTERVAL 3 DAY))) ");
 			$data['jumlah'] = $set->num_rows();
 			$data['user_berkas'] = $this->model_user->data_user($id);
-			$data['kk'] = $this->model_berkas->data_berkas_kk($id);
-			$data['slip'] = $this->model_berkas->data_berkas_slip($id);
-			$data['npwp'] = $this->model_berkas->data_berkas_npwp($id);
-			$data['karip'] = $this->model_berkas->data_berkas_karip($id);
-			$data['foto_diri'] = $this->model_berkas->data_berkas_foto_diri($id);
-			$data['ktp'] = $this->model_berkas->data_berkas_ktp($id);
+			$data['berkas'] = $this->model_berkas->data_berkas($id);
 			$data['sk'] = $this->model_berkas->data_berkas_sk($id);
 			$this->load->template('berkas',$data);
 		}else {
@@ -61,7 +51,7 @@ class Berkas extends CI_Controller {
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-			$this->model_berkas->save_kk($upload,$id);
+			$this->model_berkas->save($upload,$id,$id2);
 			if ($id1 == '0000000001') {
 				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
 			}else {
@@ -76,7 +66,7 @@ class Berkas extends CI_Controller {
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-			$this->model_berkas->save_slip($upload,$id);
+			$this->model_berkas->save($upload,$id,$id2);
 			if ($id1 == '0000000001') {
 				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
 			}else {
@@ -91,7 +81,7 @@ class Berkas extends CI_Controller {
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-			$this->model_berkas->save_npwp($upload,$id);
+			$this->model_berkas->save($upload,$id,$id2);
 			if ($id1 == '0000000001') {
 				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
 			}else {
@@ -106,7 +96,7 @@ class Berkas extends CI_Controller {
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-			$this->model_berkas->save_foto_diri($upload,$id);
+			$this->model_berkas->save($upload,$id,$id2);
 			if ($id1 == '0000000001') {
 				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
 			}else {
@@ -122,7 +112,7 @@ class Berkas extends CI_Controller {
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-			$this->model_berkas->save_karip($upload,$id);
+			$this->model_berkas->save($upload,$id,$id2);
 			if ($id1 == '0000000001') {
 				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
 			}else {
@@ -138,7 +128,7 @@ class Berkas extends CI_Controller {
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-			$this->model_berkas->save_ktp($upload,$id);
+			$this->model_berkas->save($upload,$id,$id2);
 			if ($id1 == '0000000001') {
 				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
 			}else {
@@ -153,7 +143,7 @@ class Berkas extends CI_Controller {
 		$upload = $this->model_berkas->upload($id2);
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-			$this->model_berkas->save_sk($upload,$id);
+			$this->model_berkas->save($upload,$id,$id2);
 			if ($id1 == '0000000001') {
 				redirect('/berkas_admin/'.$id); // Redirect kembali ke halaman awal / halaman view data
 			}else {
@@ -176,36 +166,29 @@ class Berkas extends CI_Controller {
 	}
 	public function download($id,$id2){
 		$this->load->helper('download');
+		$fileinfo = $this->model_berkas->download($id,$id2);
 		if ($id2 == "1") {
-			$fileinfo = $this->model_berkas->download($id,$id2);
 			$file = './asset/upload/berkas/kk/'.$fileinfo	['kk'];
 			force_download($file, NULL);
 		}elseif ($id2 == "2") {
-			$fileinfo = $this->model_berkas->download($id,$id2);
 			$file = './asset/upload/berkas/slip/'.$fileinfo	['slip'];
 			force_download($file, NULL);
 		}elseif ($id2 == "3") {
-			$fileinfo = $this->model_berkas->download($id,$id2);
 			$file = './asset/upload/berkas/npwp/'.$fileinfo	['npwp'];
 			force_download($file, NULL);
 		}elseif ($id2 == "4") {
-			$fileinfo = $this->model_berkas->download($id,$id2);
 			$file = './asset/upload/berkas/foto_diri/'.$fileinfo	['foto_diri'];
 			force_download($file, NULL);
 		}elseif ($id2 == "5") {
-			$fileinfo = $this->model_berkas->download($id,$id2);
 			$file = './asset/upload/berkas/karip/'.$fileinfo	['karip'];
 			force_download($file, NULL);
 		}elseif ($id2 == "6") {
-			$fileinfo = $this->model_berkas->download($id,$id2);
 			$file = './asset/upload/berkas/ktp/'.$fileinfo	['ktp_suami_istri'];
 			force_download($file, NULL);
 		}elseif ($id2 == "7") {
-			$fileinfo = $this->model_berkas->download($id,$id2);
 			$file = './asset/upload/berkas/sk/'.$fileinfo	['sk'];
 			force_download($file, NULL);
 		}elseif ($id2 == "8") {
-			$fileinfo = $this->model_berkas->download($id,$id2);
 			$file = './asset/upload/berkas/perjanjian/'.$fileinfo	['berkas'];
 			force_download($file, NULL);
 		}
