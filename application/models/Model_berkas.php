@@ -39,10 +39,6 @@ class Model_berkas extends CI_Model {
     $query = $this->db->query("SELECT * from tb_berkas where norek='".$uid."'");
     return $query->row_array();
   }
-  public function data_berkas_sk($uid){
-    $query = $this->db->query("SELECT * from tb_pinjaman where norek='".$uid."'");
-    return $query->row_array();
-  }
   public function save($upload,$id,$var1){
     $query = $this->db->query("SELECT * from tb_berkas where norek='".$id."'");
     $i2 = $query->row_array();
@@ -54,22 +50,22 @@ class Model_berkas extends CI_Model {
         unlink("./asset/upload/berkas/kk/$row->kk");
         $data = array('kk' => $upload['file']['file_name']);
       }elseif ($var1 == 2) {
-        unlink("./asset/upload/berkas/kk/$row->slip");
+        unlink("./asset/upload/berkas/slip/$row->slip");
         $data = array('slip' => $upload['file']['file_name']);
       }elseif ($var1 == 3) {
-        unlink("./asset/upload/berkas/kk/$row->npwp");
+        unlink("./asset/upload/berkas/npwp/$row->npwp");
         $data = array('npwp' => $upload['file']['file_name']);
       }elseif ($var1 == 4) {
-        unlink("./asset/upload/berkas/kk/$row->foto_diri");
+        unlink("./asset/upload/berkas/foto_diri/$row->foto_diri");
         $data = array('foto_diri' => $upload['file']['file_name']);
       }elseif ($var1 == 5) {
-        unlink("./asset/upload/berkas/kk/$row->karip");
+        unlink("./asset/upload/berkas/karip/$row->karip");
         $data = array('karip' => $upload['file']['file_name']);
       }elseif ($var1 == 6) {
-        unlink("./asset/upload/berkas/kk/$row->ktp_suami_istri");
+        unlink("./asset/upload/berkas/ktp/$row->ktp_suami_istri");
         $data = array('ktp_suami_istri' => $upload['file']['file_name']);
       }elseif ($var1 == 7) {
-        unlink("./asset/upload/berkas/kk/$row->sk");
+        unlink("./asset/upload/berkas/sk/$row->sk");
         $data = array('sk' => $upload['file']['file_name']);
       }
       $this->db->where('norek',$id);
@@ -78,44 +74,37 @@ class Model_berkas extends CI_Model {
       if ($var1 == 1) {
         $data = [
           'norek' => $id,
-          'kk' => $upload['file']['file_name'],
-          'status_kk' => "0"
+          'kk' => $upload['file']['file_name']
         ];
       }elseif ($var1 == 2) {
         $data = [
           'norek' => $id,
-          'slip' => $upload['file']['file_name'],
-          'status_slip' => "0"
+          'slip' => $upload['file']['file_name']
         ];
       }elseif ($var1 == 3) {
         $data = [
           'norek' => $id,
-          'npwp' => $upload['file']['file_name'],
-          'status_npwp' => "0"
+          'npwp' => $upload['file']['file_name']
         ];
       }elseif ($var1 == 4) {
         $data = [
           'norek' => $id,
-          'foto_diri' => $upload['file']['file_name'],
-          'status_foto' => "0"
+          'foto_diri' => $upload['file']['file_name']
         ];
       }elseif ($var1 == 5) {
         $data = [
           'norek' => $id,
-          'karip' => $upload['file']['file_name'],
-          'status_karip' => "0"
+          'karip' => $upload['file']['file_name']
         ];
       }elseif ($var1 == 6) {
         $data = [
           'norek' => $id,
-          'ktp_suami_istri' => $upload['file']['file_name'],
-          'status_ktp' => "0"
+          'ktp_suami_istri' => $upload['file']['file_name']
         ];
       }elseif ($var1 == 7) {
         $data = [
           'norek' => $id,
-          'sk' => $upload['file']['file_name'],
-          'status_sk' => "0"
+          'sk' => $upload['file']['file_name']
         ];
       }
       $this->db->insert( 'tb_berkas', $data );
@@ -146,9 +135,5 @@ class Model_berkas extends CI_Model {
       $query = $this->db->query("SELECT * from tb_berkas where norek='".$id."'");
       return $query->row_array();
     }
-  }
-  public function cek_berkas_sk($id){
-    $query = $this->db->query("SELECT * from tb_pinjaman where norek='".$id."'");
-    return $query->row_array();
   }
 }

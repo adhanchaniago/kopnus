@@ -53,13 +53,13 @@ class Pinjaman extends CI_Controller {
 			$querys = $this->db->query("SELECT * from tb_berkas where norek='".$id."'");
 			$query = $querys->row();
 			if (isset($query)) {
-				$kk = $query->status_kk;
-				$slip = $query->status_slip;
-				$karip = $query->status_karip;
-				$foto = $query->status_foto;
-				$ktp = $query->status_ktp;
-				$npwp = $query->status_npwp;
-				$sk = $this->model_berkas->cek_berkas_sk($id);
+				$kk = $query->kk;
+				$slip = $query->slip;
+				$karip = $query->karip;
+				$foto = $query->foto_diri;
+				$ktp = $query->ktp_suami_istri;
+				$npwp = $query->npwp;
+				$sk = $query->sk;
 				if ($kk == "0" && $slip == "0" && $karip == "0" && $foto == "0" && $ktp == "0" && $npwp == "0" && $sk == "0") {
 					$data['ada'] = 1;
 				}

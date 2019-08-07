@@ -38,7 +38,7 @@
 											<div class="media-object">Kartu Keluarga</div>
 										</td>
 										<td><center>
-											<?php if ($berkas['status_kk'] == "0") { ?>
+											<?php if (!empty($berkas['kk'])) { ?>
 												<i class="far fa-check-circle fa-2x"></i>
 											<?php } ?>
 										</center>
@@ -56,7 +56,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($berkas['status_kk'] == "0") { ?>
+											<?php if (!empty($berkas['kk'])) { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/1' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -67,7 +67,7 @@
 										<div class="media-object">Slip Gaji</div>
 									</td>
 									<td><center>
-										<?php if ($berkas['status_slip'] == "0") { ?>
+										<?php if (!empty($berkas['slip'])) { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -84,7 +84,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($berkas['status_slip'] == "0") { ?>
+											<?php if (!empty($berkas['slip'])) { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/2' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -95,7 +95,7 @@
 										<div class="media-object">NPWP</div>
 									</td>
 									<td><center>
-										<?php if ($berkas['status_npwp'] == "0") { ?>
+										<?php if (!empty($berkas['npwp'])) { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -112,7 +112,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($berkas['status_npwp'] == "0") { ?>
+											<?php if (!empty($berkas['npwp'])) { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/3' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -123,7 +123,7 @@
 										<div class="media-object">Foto Diri</div>
 									</td>
 									<td><center>
-										<?php if ($berkas['status_foto'] == "0") { ?>
+										<?php if (!empty($berkas['foto_diri'])) { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -140,7 +140,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($berkas['status_foto'] == "0") { ?>
+											<?php if (!empty($berkas['foto_diri'])) { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/4' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -151,7 +151,7 @@
 										<div class="media-object">Karip</div>
 									</td>
 									<td><center>
-										<?php if ($berkas['status_karip'] == "0") { ?>
+										<?php if (!empty($berkas['karip'])) { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -168,7 +168,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($berkas['status_karip'] == "0") { ?>
+											<?php if (!empty($berkas['karip'])) { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/5' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -179,7 +179,7 @@
 										<div class="media-object">KTP Suami Istri</div>
 									</td>
 									<td><center>
-										<?php if ($berkas['status_ktp'] == "0") { ?>
+										<?php if (!empty($berkas['ktp_suami_istri'])) { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php } ?></center>
 									</td>
@@ -196,7 +196,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if ($berkas['status_ktp'] == "0") { ?>
+											<?php if (!empty($berkas['ktp_suami_istri'])) { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/6' ?>'"> Download </button>
 											<?php } ?>
 										</center>
@@ -207,7 +207,7 @@
 										<div class="media-object">SK</div>
 									</td>
 									<td><center>
-										<?php if (!empty($sk['berkas'])) { ?>
+										<?php if (!empty($berkas['sk'])) { ?>
 											<i class="far fa-check-circle fa-2x"></i>
 										<?php }	?></center>
 									</td>
@@ -216,7 +216,7 @@
 											<?php if ($this->session->uid == "0000000001"){ ?>
 												<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
 											<?php }else {
-												if (empty($sk['berkas'])) { ?>
+												if (empty($berkas['sk'])) { ?>
 													<button class="btn btn-info" type="button" name="button1" data-toggle="modal" data-target="#sk"> Upload </button>
 												<?php } ?>
 											<?php } ?>
@@ -224,7 +224,7 @@
 									</td>
 									<td>
 										<center>
-											<?php if (!empty($sk['berkas'])) { ?>
+											<?php if (!empty($berkas['sk'])) { ?>
 												<button class="btn btn-success" type="button" name="button2" onclick="location.href='<?= base_url().'download/'.$user_berkas['norek'].'/7' ?>'"> Download </button>
 											<?php } ?>
 										</center>

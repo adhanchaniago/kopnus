@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Agu 2019 pada 12.54
+-- Waktu pembuatan: 07 Agu 2019 pada 05.36
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `tb_angsuran` (
 --
 
 INSERT INTO `tb_angsuran` (`id_angsuran`, `id_pinjaman`, `norek`, `angsuran_ke`, `angsuran`, `tanggal`, `status`) VALUES
-(1, 1, '0000000002', 1, '1720588.24', '2019-07-23', 0),
+(1, 1, '0000000002', 1, '1720588.24', '2019-07-23', 1),
 (2, 1, '0000000002', 2, '1720588.24', '2019-07-28', 0),
 (3, 1, '0000000002', 3, '1720588.24', '2019-10-23', 0),
 (4, 1, '0000000002', 4, '1720588.24', '2019-11-23', 0),
@@ -75,15 +75,15 @@ CREATE TABLE `tb_berkas` (
   `foto_diri` varchar(50) NOT NULL,
   `karip` varchar(50) NOT NULL,
   `ktp_suami_istri` varchar(50) NOT NULL,
-  `sk` varchar(50) NOT NULL,
-  `status_kk` varchar(1) NOT NULL,
-  `status_slip` varchar(1) NOT NULL,
-  `status_npwp` varchar(1) NOT NULL,
-  `status_foto` varchar(1) NOT NULL,
-  `status_karip` varchar(1) NOT NULL,
-  `status_ktp` varchar(1) NOT NULL,
-  `status_sk` varchar(1) NOT NULL
+  `sk` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_berkas`
+--
+
+INSERT INTO `tb_berkas` (`norek`, `kk`, `slip`, `npwp`, `foto_diri`, `karip`, `ktp_suami_istri`, `sk`) VALUES
+('0000000002', 'WhatsApp_Image_2019-06-25_at_21_15_331.jpeg', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -108,7 +108,7 @@ CREATE TABLE `tb_pinjaman` (
 --
 
 INSERT INTO `tb_pinjaman` (`id_pinjaman`, `norek`, `pinjaman`, `angsuran`, `bayar`, `sisa`, `berkas`, `tanggal`, `status`) VALUES
-(1, '0000000002', 25000000, '1720588.24', 0, 29250000, '', '2019-07-23', 0);
+(1, '0000000002', 25000000, '1720588.24', 1720588, 27529412, '', '2019-07-23', 0);
 
 -- --------------------------------------------------------
 

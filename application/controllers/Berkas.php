@@ -22,7 +22,6 @@ class Berkas extends CI_Controller {
 			$data['jumlah'] = $set->num_rows();
 			$data['user_berkas'] = $this->model_user->data_user($uid);
 			$data['berkas'] = $this->model_berkas->data_berkas($uid);
-			$data['sk'] = $this->model_berkas->data_berkas_sk($uid);
 			$this->load->template('berkas',$data);
 		}else {
 			redirect(base_url('login'));
@@ -40,7 +39,6 @@ class Berkas extends CI_Controller {
 			$data['jumlah'] = $set->num_rows();
 			$data['user_berkas'] = $this->model_user->data_user($id);
 			$data['berkas'] = $this->model_berkas->data_berkas($id);
-			$data['sk'] = $this->model_berkas->data_berkas_sk($id);
 			$this->load->template('berkas',$data);
 		}else {
 			redirect(base_url('login'));
