@@ -157,7 +157,7 @@ class Berkas extends CI_Controller {
 		if($upload['result'] == "success"){ // Jika proses upload sukses
 			// Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
 			$this->model_berkas->save_perjanjian($upload,$id);
-				redirect('/nasabah/'); // Redirect kembali ke halaman awal / halaman view data
+			redirect('/nasabah/'); // Redirect kembali ke halaman awal / halaman view data
 		}else{ // Jika proses upload gagal
 			$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
 		}

@@ -130,32 +130,32 @@ class laporan extends CI_Controller
 		$pdf->Output('Perjanjian Kredit '.$upper.'.pdf','D');
 	}
 	public function kekata($x){
-	    $x=abs($x);
-	    $angka=array("","satu","dua","tiga","empat","lima",
-	    "enam","tujuh","delapan","sembilan","sepuluh","sebelas");
-	    $temp="";
-	    if($x<12){
-	        $temp=" ".$angka[$x];
-	    }elseif($x<20){
-	        $temp=$this->kekata($x-10)." belas";
-	    }elseif($x<100){
-	        $temp=$this->kekata($x/10)." puluh".$this->kekata($x%10);
-	    }elseif($x<200){
-	        $temp=" seratus".$this->kekata($x-100);
-	    }elseif($x<1000){
-	        $temp=$this->kekata($x/100)." ratus".$this->kekata($x%100);
-	    }elseif($x<2000){
-	        $temp=" seribu".$this->kekata($x-1000);
-	    }elseif($x<1000000){
-	        $temp=$this->kekata($x/1000)." ribu".$this->kekata($x%1000);
-	    }elseif($x<1000000000){
-	        $temp= $this->kekata($x/1000000)." juta".$this->kekata($x%1000000);
-	    }elseif($x<1000000000000){
-	        $temp=$this->kekata($x/1000000000)." milyar".$this->kekata(fmod($x,1000000000));
-	    }elseif($x<1000000000000000){
-	        $temp=$this->kekata($x/1000000000000)." trilyun".$this->kekata(fmod($x,1000000000000));
-	    }
-	        return$temp;
+		$x=abs($x);
+		$angka=array("","satu","dua","tiga","empat","lima",
+		"enam","tujuh","delapan","sembilan","sepuluh","sebelas");
+		$temp="";
+		if($x<12){
+			$temp=" ".$angka[$x];
+		}elseif($x<20){
+			$temp=$this->kekata($x-10)." belas";
+		}elseif($x<100){
+			$temp=$this->kekata($x/10)." puluh".$this->kekata($x%10);
+		}elseif($x<200){
+			$temp=" seratus".$this->kekata($x-100);
+		}elseif($x<1000){
+			$temp=$this->kekata($x/100)." ratus".$this->kekata($x%100);
+		}elseif($x<2000){
+			$temp=" seribu".$this->kekata($x-1000);
+		}elseif($x<1000000){
+			$temp=$this->kekata($x/1000)." ribu".$this->kekata($x%1000);
+		}elseif($x<1000000000){
+			$temp= $this->kekata($x/1000000)." juta".$this->kekata($x%1000000);
+		}elseif($x<1000000000000){
+			$temp=$this->kekata($x/1000000000)." milyar".$this->kekata(fmod($x,1000000000));
+		}elseif($x<1000000000000000){
+			$temp=$this->kekata($x/1000000000000)." trilyun".$this->kekata(fmod($x,1000000000000));
+		}
+		return$temp;
 	}
 	function tgl_indo($tanggal){
 		$bulan = array (
